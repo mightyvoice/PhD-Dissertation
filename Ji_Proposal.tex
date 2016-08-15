@@ -1,0 +1,104 @@
+%% LyX 2.0.8.1 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass{UNCC-thesis}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\usepackage{array}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{nomencl}
+% the following is useful when we have the old nomencl.sty package
+\providecommand{\printnomenclature}{\printglossary}
+\providecommand{\makenomenclature}{\makeglossary}
+\makenomenclature
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+\@ifundefined{showcaptionsetup}{}{%
+ \PassOptionsToPackage{caption=false}{subfig}}
+\usepackage{subfig}
+\makeatother
+
+\begin{document}
+
+\pagenumbering{roman}
+\fbmatterchapterformat
+% Doctype should be either dissertation proposal, dissertation, or thesis.
+% If you're getting a master's, specify "thesis" below.  
+% If you're getting a PhD, specify "dissertation" below.
+\doctype{dissertation}
+%%%%%%%%%%%%%%%%     IMPORTANT! IMPORTANT! IMPORTANT! %%%%%%%%%%%%%%%%
+% The rules below MUST be followed for the abstract page and chapter titles
+% to be correctly formatted.
+%
+% 1. Only the first letter of the entire title should be capitalized to allow the 
+%    title to appear as required by the graduate school on the Abstract page.
+% 2. Write chapter titles in ALL CAPS.
+%
+\title{Efficient Spectrum Management and Rendezvous Schemes for Cognitive Radios}
+\author{Ji Li}
+\degree{Doctor of Philosophy}
+\major{Electrical Engineering}
+\publicationyear{2015}
+
+\advisor{Dr. Jiang (Linda) Xie}
+
+% Add the full name and title of all your committee members,
+% apart from your advisor, one by one.  The style file expects
+% 3 to 5 committee members in addition to your advisor.
+
+\committeeMember{Dr. Yu Wang}
+\committeeMember{Dr. Tao Han}
+\committeeMember{Dr. Keejae Hong}
+
+
+% Generate the preliminary title page and copyright page.
+\maketitlepage
+\makecopyright
+
+\begin{abstract}
+You must have an abstract. The content of your abstract goes here. 
+
+The abstract is the briefest possible summary of the work and conclusions
+not exceeding one page in length.
+\end{abstract}
+
+
+
+\chapter{INTRODUCTION}
+
+\section{Cognitive Radio Networks}
+
+\section{Research Motivation}
+
+\section{Overview of Proposed Research}
+
+\section{Proposal Organization}
+
+\chapter{Related Work}
+\section{Current Rendevous Schemes}
+
+\chapter{Proposed Research}
+\section{Communication Framework for Wide-band Cognitive Radio Networks}
+\section{Rendezvous Schemes with Multiple Cognitive Radios}
+\section{Rendezvous Scheme Without Predetermined Send or Receiver}
+\section{Rendezvous with Directional Antenna}
+\section{Power Control Protocol to Maximize The Number of Common Available Channels}
+\chapter{Conclusion and Future Work}
+\section{Conclusion of Completed Work}
+\section{Future Work}
+\section{Publications}
+
+
+\fbmatterchapterformat
+
+\bibliographystyle{ieeetr}
+\bibliography{ji-li-all-references}
+
+
+\end{document}
