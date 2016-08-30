@@ -56,9 +56,8 @@
 % Doctype should be either dissertation proposal, dissertation, or thesis.
 % If you're getting a master's, specify "thesis" below.  
 % If you're getting a PhD, specify "dissertation" below.
-% 
 %\doctype{dissertation}
-\doctype{dissertation proposal}
+\doctype{proposal}
 %%%%%%%%%%%%%%%%     IMPORTANT! IMPORTANT! IMPORTANT! %%%%%%%%%%%%%%%%
 % The rules below MUST be followed for the abstract page and chapter titles
 % to be correctly formatted.
@@ -67,7 +66,7 @@
 %    title to appear as required by the graduate school on the Abstract page.
 % 2. Write chapter titles in ALL CAPS.
 %
-\title{Efficient Distributed Rendezvous Schemes and Spectrum Management Considering Practical Problems for Cognitive Radio Networks}
+\title{Efficient Distributed Rendezvous Schemes and Spectrum Management Considering Practical Scenarios for Cognitive Radio Networks}
 \author{Ji Li}
 \degree{Doctor of Philosophy}
 \major{Electrical Engineering}
@@ -179,7 +178,7 @@ In this research, we first illustrate the relationship among the number of commo
 
 Fig. \ref{fig:research_overview} shows the overview of our proposed Research. 
 
-In order to achieve efficient rendezvous and spectrum management in CRNs, we first propose a rendezvous framework for wide-band cognitive radio networks considering hundreds of channels. In this framework, we first propose a spectrum split scheme to split the wide-band spectrum into several spectrum segments and map each SU to a specific spectrum segment. Next, we propose an efficient rendezvous scheme specific for this framework considering spectrum splitting which enables two SUs to reach a fast and successful rendezvous. In the designed framework, we assume that a common available channel (CCC) is not required, there is not a central controller or base station for information exchange, and each SU does not know any information about the other SU before they achieve a successful rendezvous. All these assumptions are very practical concerning the characteristics and limitations of cognitive radio networks.
+In order to achieve efficient rendezvous and spectrum management in CRNs, we first propose a rendezvous framework for wide-band cognitive radio networks considering hundreds of channels. In this framework, we first propose a spectrum split scheme to split the wide-band spectrum into several spectrum segments and map each SU to a specific spectrum segment. Next, we propose an efficient rendezvous scheme specific for this framework considering spectrum splitting which enables two SUs to reach a fast and successful rendezvous. In the designed framework, we assume that a common available channel (CCC) is not required, there is not a central controller or base station for information exchange, and each SU does not know any information about other SUs before the initialization process. All these assumptions are very practical considering the characteristics and limitations of cognitive radio networks.
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=12cm,height=8cm]{ReserchOverview.jpg} 
@@ -188,15 +187,15 @@ In order to achieve efficient rendezvous and spectrum management in CRNs, we fir
     \end{center}  
 \end{figure} 
 
-Next, we propose two efficient rendezvous schemes under the scenarios that there is not a predetermined sender or receiver for a rendezvous process during the initialization phase of cognitive radio networks, which is very practical. Under this scenario, we define a new type of rendezvous called \textit{link rendezvous}. In order to design the rendezvous schemes to achieve successful  link rendezvous, we designed two innovative spectrum management schemes called \textit{channel group} and \textit{virtual channels}. In the proposed rendezvous schemes, we also assume each SU do not know any control information about the other SUs, which is very practical.
+Furthermore, we proposed two efficient rendezvous schemes considering there is not a predetermined sender or receiver for an SU during the initialization phase of a cognitive radio networks, which is very practical. In this scenario, we defined a new type of rendezvous called \textit{link rendezvous}. In order to design the rendezvous schemes to achieve link rendezvous, we designed two innovative spectrum management schemes called \textit{channel group} and \textit{virtual channels}. In the proposed rendezvous schemes, we assume each SU do not know any control information about the other SUs which is very practical.
 
-Moreover, we propose an efficient rendezvous scheme specific for  SUs which are equipped directional antennas. Under this scenario, the rendezvous process could be more completed since each SU could be equipped with heterogeneous directional antenna and it does not know any information about the other SUs. We define a new type of rendezvous called \textit{sector rendezvous} when considering directional antennas. Our propose rendezvous scheme can efficiently solve the sector rendezvous problem under practical scenarios.
+Moreover, we propose an efficient rendezvous scheme specific for the SU which is equipped a directional antenna. In this scenario, the rendezvous process could be more completed since each SU could be equipped with heterogeneous directional antenna but it does not know any information about the other SUs. We define a new type of rendezvous called \textit{sector rendezvous} when considering directional antenna. Our propose rendezvous scheme can efficiently solve the sector rendezvous problem under practical scenarios.
 
-Last, we propose a power control protocol which can maximize the number of common available channels between two SUs. Common available channels between two SUs are critical in achieving a successful rendezvous and spectrum handoff. In the proposed scheme, after two SUs successfully  achieve a  rendezvous, they first exchange some control information, based on which they could  perform distributed power control  to maximize the number of common available channels, which could improve the performance of their next rendezvous or spectrum handoff process.\\
+Last, we propose a power control protocol which can maximize the number of common available channels between two SUs. Common available channels between two SUs are critical in achieving a successful rendezvous and spectrum handoff. In the proposed scheme, after two SUs successfully rendezvous, they could exchange some control information  based which they could perform power control  to maximize the number of common available channels, which could facilitate their next rendezvous or spectrum handoff process.\\
 
 
 \section{Proposal Organization}
-The rest of this proposal is organized as follows. In Chapter \ref{char:RW}, the related works in CRNs are introduced. In Chapter \ref{char:PR}, five schemes are proposed regarding practical problems for the rendezvous process in CRNs. We conclude our research, address our future works, and list publications in Chapter \ref{char:conclusion}.
+The rest of this proposal is organized as follows. In Chapter \ref{char:RW}, the related works in CRN are introduced. In Chapter \ref{char:PR}, five schemes are proposed regarding practical problems for the rendezvous process in CRNs. We conclude our research, address our future works, and list publications in Chapter \ref{char:conclusion}.
 
 \chapter{Related Work}
 \label{char:RW}
