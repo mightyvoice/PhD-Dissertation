@@ -90,12 +90,10 @@
 \newpage
 
 \begin{abstract}
-According to the Federal Communications Commission
-(FCC), nearly all the spectrum from 3KHz to 300GHz has already been allocated to current wireless services. However, almost 85\% of all the allocated spectrum is under utilized. Cognitive radio emerges as a technology to realize the dynamic spectrum access by dynamically configuring its transmission parameters. With cognitive radios, unlicensed users can opportunistically access their available channels, which can improve the spectrum utilization.
+You must have an abstract. The content of your abstract goes here. 
 
-In a cognitive radio network, there are two types of users: primary users (PUs) and secondary users (SUs). PUs are the licensed users or the traditional wireless users who can access a specific licensed spectrum band. SUs are the unlicensed users equipped with cognitive radios which can opportunistically use currently unoccupied channels to transmit, but have to vacate channels for the returning PUs and then switch to other available channels for continuous transmissions. The process of vacating the currently using channels and then switching to a new available channel is called \textit{spectrum handoff}. When two SUs want to establish a link between each other, they have to first meet on the same channel which must be available for both of them simultaneously. This process is called \textit{rendezvous}.
-
-Past research works only focus on designing the channel hopping sequence for the rendezvous process while ignoring the practical problems like rendezvous in wide-band CRN, rendezvous without a predetermined sender and receiver, rendezvous considering directional antennas, and how to maximize the number of common available channels. In this research, we proposed several efficient rendezvous and spectrum management schemes considering those practical problems. Our proposed schemes are based on practical assumptions and can achieve fast rendezvous considering the above problems.
+The abstract is the briefest possible summary of the work and conclusions
+not exceeding one page in length.
 \end{abstract}
 
 
@@ -1725,33 +1723,11 @@ In this proposal, we proposed five schemes to realize efficient rendezvous and s
 \section{Future Work}
 The work listed below will be studied in the following months.
 \begin{itemize}
-\item Evaluate the performance of all the proposed schemes through simulations.
-\item In the proposed rendezvous framework  for wide-band CRN, we assume that the time slots of two SUs are aligned. However, in practical scenarios, two SUs could not be perfectly synchronized. We should consider this kind of scenario and propose
-related rendezvous schemes to solve this problem in the following months.
-\item For the rendezvous schemes without predetermined sender, receiver, and considering multiple radios, if some radios have already rendezvoused with some other SUs and obtained some control information, for the rest radios if they want perform rendezvous, how to use the obtained control information to avoid collisions and improve the rendezvous performance.
-\item For the rendezvous scheme considering directional antennas, currently we need two hopping sequences, one is the sector hopping sequence, and the other is the channel hopping sequence. If we can design just one channel hopping sequence to improve the performance by using the idea of virtual channel as we addressed in the rendezvous scheme without predetermined sender and receiver.
+\item 
 \end{itemize}
 
 \section{Publications}
-\begin{itemize}
-\item 
-J. Li and J. Xie, "Spectrum Splitting and Channel Hopping Based Communication Framework for Wide-band Cognitive Radio Networks", submitted to IEEE Trans. Mobile Computing, 2016.
 
-\item 
-J. Li and J. Xie, "Rendezvous Scheme Without a Predetermined Sender or Receiver in Cognitive Radio Ad-Hoc Networks", Proc. IEEE GLOBECOM, December, 2016.
-
-\item 
-J. Li and J. Xie, "Directional Antenna Based Distributed Blind Rendezvous in Cognitive Radio Ad-Hoc Networks", Proc. IEEE GLOBECOM, December, 2015.
-
-\item 
-J. Li and J. Xie, "Practical Fast Multiple Radio Blind Rendezvous Schemes in Ad-Hoc Cognitive Radio Networks", Proc. IEEE RESILIENCE WEEK, August, 2015.
-\item 
-J. Li and J. Xie, "A New Communication Framework for Wide-band Cognitive Radio Networks", Proc. IEEE SECON, JUNE, 2014.
-
-\item 
-J. Li and J. Xie, "A Power Control Protocol to Maximize the Number of Common Available Channels Between Two Secondary Users in Cognitive Radio Networks
-", Proc. IEEE GLOBECOM, December, 2013.
-\end{itemize}
 
 \fbmatterchapterformat
 
