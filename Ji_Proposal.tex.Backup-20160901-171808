@@ -1145,7 +1145,7 @@ is $\DF{4M-1}{4M}p_c$. Finally, the fail probability is $1-\DF{4M-1}{4M}p_c=\DF{
 1-p_c-\DF{p_c}{4M}\approx 1-p_c$
 \end{proof}
 
-Finally, we can get the \textbf{Theorem \ref{th:exp_t}} regarding the average link rendezvous time of the enhanced link rendezvous scheme in \textbf{Algorithm\ref{al:rend2}}.\addtocounter{theorem}{-6}
+Finally, we can get the \textbf{Theorem 2} regarding the average link rendezvous time of the enhanced link rendezvous scheme in \textbf{Algorithm\ref{al:rend2}}.\addtocounter{theorem}{-6}
 \begin{theorem}
 \label{th:exp_t}
 The expectation of link rendezvous time slots for \textbf{Algorithm\ref{al:rend2}}
@@ -1728,7 +1728,7 @@ The work listed below will be studied in the following months.
 \item In the proposed rendezvous framework  for wide-band CRN, we assume that the time slots of two SUs are aligned. However, in practical scenarios, two SUs could not be perfectly synchronized. We should consider this kind of scenario and propose
 related rendezvous schemes to solve this problem in the following months.
 \item For the rendezvous schemes without predetermined sender, receiver, and considering multiple radios, if some radios have already rendezvoused with some other SUs and obtained some control information, for the rest radios if they want perform rendezvous, how to use the obtained control information to avoid collisions and improve the rendezvous performance.
-\item For the rendezvous scheme considering directional antennas, currently we need two hopping sequences, one is the sector hopping sequence, and the other is the channel hopping sequence. We can design just one channel hopping sequence to improve the performance by using the idea of virtual channel as we addressed in the rendezvous scheme without predetermined sender and receiver.
+\item For the rendezvous scheme considering directional antennas, currently we need two hopping sequences, one is the sector hopping sequence, and the other is the channel hopping sequence. If we can design just one channel hopping sequence to improve the performance by using the idea of virtual channel as we addressed in the rendezvous scheme without predetermined sender and receiver.
 \end{itemize}
 
 \section{Publications}

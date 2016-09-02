@@ -1,0 +1,45 @@
+\vspace *{-10pt}
+\contentsline {chapter}{\numberline {1}INTRODUCTION}{vii}
+\contentsline {section}{\numberline {1.1}Background of Cognitive Radio Networks}{vii}
+\contentsline {section}{\numberline {1.2}Research Motivation}{ix}
+\contentsline {subsection}{\numberline {1.2.1}Framework for Wide-band Cognitive Radio Networks}{ix}
+\contentsline {subsection}{\numberline {1.2.2}Rendezvous Schemes Without Predetermined Sender and Receiver}{x}
+\contentsline {subsection}{\numberline {1.2.3}Rendezvous Process Considering Directional Antennas}{xi}
+\contentsline {subsection}{\numberline {1.2.4}Power Control to Maximize the Number of Common Available Channels}{xii}
+\contentsline {section}{\numberline {1.3}Overview of Proposed Research}{xiii}
+\contentsline {section}{\numberline {1.4}Proposal Organization}{xv}
+\contentsline {chapter}{\numberline {2}Related Work}{xvi}
+\contentsline {chapter}{\numberline {3}Proposed Research}{xviii}
+\contentsline {section}{\numberline {3.1}Communication Framework for Wide-band Cognitive Radio Networks}{xviii}
+\contentsline {subsection}{\numberline {3.1.1}System Model}{xviii}
+\contentsline {subsection}{\numberline {3.1.2}The Proposed Framework}{xix}
+\contentsline {subsection}{\numberline {3.1.3}Proposed Rendezvous Schemes Under the Symmetrical Model}{xxi}
+\contentsline {subsection}{\numberline {3.1.4}Under the Asymmetrical Model}{xxvii}
+\contentsline {subsection}{\numberline {3.1.5}Proposed Spectrum Splitting Scheme}{xxx}
+\contentsline {section}{\numberline {3.2}Rendezvous Schemes with Multiple Cognitive Radios}{xxxiii}
+\contentsline {subsection}{\numberline {3.2.1}System Model And Problem Description}{xxxiii}
+\contentsline {subsection}{\numberline {3.2.2}Rendezvous Schemes Without Any Information}{xxxv}
+\contentsline {subsection}{\numberline {3.2.3}A Basic Solution}{xxxvi}
+\contentsline {subsection}{\numberline {3.2.4}The Enhanced Rendezvous Scheme}{xxxviii}
+\contentsline {section}{\numberline {3.3}Rendezvous Scheme Without Predetermined Send or Receiver for Single Radio SU}{xlii}
+\contentsline {subsection}{\numberline {3.3.1}System Model And Problem Description}{xlii}
+\contentsline {subsection}{\numberline {3.3.2}Basic Link Rendezvous Scheme}{xliv}
+\contentsline {subsection}{\numberline {3.3.3}Enhanced Link Rendezvous Scheme}{xlviii}
+\contentsline {section}{\numberline {3.4}Rendezvous Process Considering Directional Antennas}{lvi}
+\contentsline {subsection}{\numberline {3.4.1}System Model and Problem Description}{lvi}
+\contentsline {subsection}{\numberline {3.4.2}Rendezvous Scheme Considering the Same Number of Sectors}{lx}
+\contentsline {subsection}{\numberline {3.4.3}Rendezvous Scheme for the General Scenario}{lxiii}
+\contentsline {section}{\numberline {3.5}Power Control Protocol to Maximize The Number of Common Available Channels}{lxvii}
+\contentsline {subsection}{\numberline {3.5.1}Problem Description}{lxvii}
+\contentsline {subsection}{\numberline {3.5.2}Analysis of the Sensing Range of a SU Sender}{lxvii}
+\contentsline {subsection}{\numberline {3.5.3}Analysis of the Sensing Range of a SU Receiver}{lxviii}
+\contentsline {subsection}{\numberline {3.5.4}System Model}{lxx}
+\contentsline {subsection}{\numberline {3.5.5}The Expectation of the Number of Common Available Channels}{lxx}
+\contentsline {subsection}{\numberline {3.5.6}The Optimization Solution}{lxxii}
+\contentsline {subsection}{\numberline {3.5.7}The Proposed Power Control Protocol}{lxxiv}
+\contentsline {chapter}{\numberline {4}Conclusion and Future Work}{lxxvii}
+\contentsline {section}{\numberline {4.1}Conclusion of Completed Work}{lxxvii}
+\contentsline {section}{\numberline {4.2}Future Work}{lxxvii}
+\contentsline {section}{\numberline {4.3}Publications}{lxxviii}
+\contentsline {chapter}{REFERENCES}{lxxix}
+\contentsfinish 

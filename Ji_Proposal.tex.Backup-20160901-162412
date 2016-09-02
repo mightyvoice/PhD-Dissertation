@@ -85,7 +85,7 @@
 \committeeMember{Dr. Keejae Hong}
 
 
-\maketitlepage
+%\maketitlepage
 %\makecopyright
 
 %\pagenumbering{Roman}
@@ -95,7 +95,7 @@
 \begin{abstract}
 Cognitive radio emerges as a technology to realize the dynamic spectrum access by dynamically configuring its transmission parameters. With cognitive radios, unlicensed users can opportunistically access their available channels, which can improve the spectrum utilization. In a cognitive radio network (CRN), there are two types of users: primary users (PUs) and secondary users (SUs). PUs are the licensed users or the traditional wireless users who can access a specific licensed spectrum band. SUs are the unlicensed users equipped with cognitive radios which can opportunistically use currently unoccupied channels to transmit, but have to vacate channels for the returning PUs and then switch to other available channels for continuous transmissions. The process of vacating the currently using channels and then switching to a new available channel is called \textit{spectrum handoff}. When two SUs want to establish a link, they have to meet on the same channel which must be available for both of them simultaneously. This process is called \textit{rendezvous}.
 
-Past research works in rendezvous only focused on designing the channel hopping sequence for the rendezvous process while ignoring some practical problems like rendezvous in wide-band CRN, rendezvous without a predetermined sender and receiver, rendezvous considering directional antennas, and how to maximize the number of common available channels. In this research, we propose five schemes to realize efficient rendezvous and spectrum management considering these practical problems under different scenarios. We first proposed a rendezvous and communication framework for wide-band CRN. Furthermore, we proposed two efficient rendezvous schemes without  predetermined sender and receiver. Moreover, we proposed a rendezvous scheme specifically for SUs equipped with directional antennas. Last, we proposed a power control protocol to maximize the number of common available channels. All of the proposed schemes can realize efficient rendezvous and  or spectrum management with practical assumptions under different scenarios.
+Past research works in rendezvous only focus on designing the channel hopping sequence for the rendezvous process while ignoring the some practical problems like rendezvous in wide-band CRN, rendezvous without a predetermined sender and receiver, rendezvous considering directional antennas, and how to maximize the number of common available channels. In this research, we propose five schemes to realize efficient rendezvous and spectrum management considering practical scenarios. We first proposed a rendezvous and communication framework for wide-band CRN. Furthermore, we proposed two efficient rendezvous schemes without  predetermined sender and receiver. Moreover, we proposed a rendezvous scheme specifically for SUs equipped with directional antennas. Last, we proposed a power control protocol to maximize the number of common available channels. All of the proposed schemes can realize efficient rendezvous and  or spectrum management with practical assumptions under different scenarios. Our proposed schemes are based on practical assumptions and can achieve fast rendezvous considering the above problems.
 \end{abstract}
 
 \chapter{INTRODUCTION}
@@ -1145,7 +1145,7 @@ is $\DF{4M-1}{4M}p_c$. Finally, the fail probability is $1-\DF{4M-1}{4M}p_c=\DF{
 1-p_c-\DF{p_c}{4M}\approx 1-p_c$
 \end{proof}
 
-Finally, we can get the \textbf{Theorem \ref{th:exp_t}} regarding the average link rendezvous time of the enhanced link rendezvous scheme in \textbf{Algorithm\ref{al:rend2}}.\addtocounter{theorem}{-6}
+Finally, we can get the \textbf{Theorem 2} regarding the average link rendezvous time of the enhanced link rendezvous scheme in \textbf{Algorithm\ref{al:rend2}}.\addtocounter{theorem}{-6}
 \begin{theorem}
 \label{th:exp_t}
 The expectation of link rendezvous time slots for \textbf{Algorithm\ref{al:rend2}}
@@ -1182,7 +1182,7 @@ We assume that the SU receiver is covered by the $p$th transmission sector of th
 We define the process that a SU hops to a transmission sector as the \textit{sector hopping process}. If we denote the index of the sector a SU is on at time slot $t$ as $S_{t}$, the sequence $S_{0}, S_{1}, \dots, S_{t}, \dots$ is called a \textit{sector hopping sequence}. An example in Fig. \ref{fig:necessary} shows why both SUs should perform the sector hopping process by following a sector hopping sequence. If the SU receiver just stays within a sector waiting for the RTS packet, it may never hear the SU sender since their transmission sectors may never cover each other like the scenario in Fig. \ref{fig:necessary}. Since a SU does not know others' location before a successful blind rendezvous, both SUs should perform the sector hopping process to achieve a successful sector rendezvous.\\
  \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=8cm,height=6cm]{need.eps} 
+        \includegraphics[width=5cm,height=3.5cm]{need.eps} 
          \vspace{-0.2cm}
         \caption{An example to show the necessity of the sector hopping process.} 
         \label{fig:necessary}
@@ -1196,7 +1196,7 @@ The \textit{sector rendezvous problem} is defined as follows. We denote the sect
 The first problem about the sector rendezvous problem is the \textit{indexing problem}. As two SUs do not know any information about each other before a successful channel rendezvous, the way they index their sectors may be quit different and unknown to each other, which may lead to $p\neq q$ for a rendezvous pair. Fig. \ref{fig:index} shows an example of the indexing problem, in which the rendezvous pair is $(2, 4)$. We denote the number of the sectors of the SU sender and SU receiver as $N_{s}$ and $N_{r}$, respectively. We can notice that the indexes of all the sectors of a SU form a permutation of the numbers from $1$ to $N_{s}$ or $N_{r}$. Our goal is to design a distributed sector hopping sequence for each SU which can guarantee a successful sector rendezvous within a bounded time considering the indexing problem.\\
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=7cm,height=6cm]{index.eps} 
+        \includegraphics[width=4cm,height=3.5cm]{index.eps} 
          \vspace{-0.2cm}
         \caption{An example of the indexing problem and different sector number problem.} 
         \label{fig:index}
@@ -1634,7 +1634,7 @@ which means that our approximate optimal solution is valid and applicable.
 \vspace{-0.4cm}
 \setlength{\abovecaptionskip}{-0.1cm}
     \begin{center} 
-        \includegraphics[width=8cm,height=7cm]{opt_val.eps} 
+        \includegraphics[width=6cm,height=5cm]{opt_val.eps} 
         \caption{The real minimum values and our approximate values.} 
         \label{fig:opt_val} 
     \end{center} 
@@ -1728,7 +1728,7 @@ The work listed below will be studied in the following months.
 \item In the proposed rendezvous framework  for wide-band CRN, we assume that the time slots of two SUs are aligned. However, in practical scenarios, two SUs could not be perfectly synchronized. We should consider this kind of scenario and propose
 related rendezvous schemes to solve this problem in the following months.
 \item For the rendezvous schemes without predetermined sender, receiver, and considering multiple radios, if some radios have already rendezvoused with some other SUs and obtained some control information, for the rest radios if they want perform rendezvous, how to use the obtained control information to avoid collisions and improve the rendezvous performance.
-\item For the rendezvous scheme considering directional antennas, currently we need two hopping sequences, one is the sector hopping sequence, and the other is the channel hopping sequence. We can design just one channel hopping sequence to improve the performance by using the idea of virtual channel as we addressed in the rendezvous scheme without predetermined sender and receiver.
+\item For the rendezvous scheme considering directional antennas, currently we need two hopping sequences, one is the sector hopping sequence, and the other is the channel hopping sequence. If we can design just one channel hopping sequence to improve the performance by using the idea of virtual channel as we addressed in the rendezvous scheme without predetermined sender and receiver.
 \end{itemize}
 
 \section{Publications}
