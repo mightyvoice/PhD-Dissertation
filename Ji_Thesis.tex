@@ -175,7 +175,7 @@ Fig. \ref{fig:research_overview} shows the overview of our proposed Research.
 In order to achieve efficient rendezvous and spectrum management in CRNs, we first propose a rendezvous framework for wide-band cognitive radio networks considering hundreds of channels. In this framework, we first propose a spectrum split scheme to split the wide-band spectrum into several spectrum segments and map each SU to a specific spectrum segment. Next, we propose an efficient rendezvous scheme specific for this framework considering spectrum splitting which enables two SUs to reach a fast and successful rendezvous. In the designed framework, we assume that a CCC is not required, there is not a central controller or base station for information exchange, and each SU does not know any information about the other SU before they achieve a successful rendezvous. All these assumptions are very practical concerning the characteristics and limitations of cognitive radio networks.
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=12cm,height=8cm]{ReserchOverview.jpg} 
+        \includegraphics[width=12cm,height=8cm]{ResearchOverview.jpg} 
         \caption{Overview of the proposed research} 
         \label{fig:research_overview}
     \end{center}  
@@ -490,6 +490,214 @@ According to the conclusions under the symmetrical model and \textbf{Algorithm \
         \end{proof}
   Note that the $ETTR$ of our proposed rendezvous algorithms linearly increases with $n$. This is much better than other existing rendezvous algorithms under the asymmetrical model whose $ETTR$ is at least $O(n^{2})$ such as the ones in \cite{zLin11JSBCH,  zLin13EJSRA, rGandhi12FRFMC}.
 
+\subsection{Unaligned Time Slots}
+Considering a  more practical scenario where each SU pair's time-slot system
+cannot be synchronized perfectly before information exchange due to hardware
+constrains, which causes the time slots between a SU pair not aligned and
+the time they can meet on a common available channel not the length of a
+whole time slot. A successful rendezvous requires both meeting on a common
+available channel and a successful exchange of RTS and CTS packets. When
+the time slots of a SU pair are not aligned, the time they meet on a common
+available channel may not be long enough for them to exchange RTS and CTS
+packets, which will lead to an unsuccessful rendezvous even though they have
+met on a common available channel. In this section, we justify that our proposed
+rendezvous schemes in \textbf{Algorithm \ref{al:sym}} and \textbf{Algorithm
+\ref{al:asym}} can be applied to the asynchronous time-slot scenario without
+any modification.\\
+
+We denote $\lambda$ as the time required to complete a RTS and CTS packet
+exchange, $\Delta$ as the offset of the time slots between a SU pair, $\delta$
+as the length of a time slot, and $\varepsilon$ as the distance between the
+positions of the channels the SU pair are on in the hopping sequence when
+the SU sender starts a rendezvous process.  We assume that $\lambda \leq
+\delta/2$. Otherwise, two SUs may never rendezvous under certain scenarios
+because of insufficient time to exchange RTS-CTS packets. For example, in
+Fig. \ref{fig:asys1}, if $\Delta < \lambda$ and $\delta - \Delta < \lambda$,
+the overlap of two time slots is not long enough to complete a RTS-CTS exchange.
+We will address this problem in the next subsection by designing an optimal
+length of a time slot which can guarantee a successful rendezvous.
+
+We can induce the following four lemmas. 
+
+\addtocounter{theorem}{1}
+\begin{lemma}
+\label{lemma:asym_slot1}
+When $\delta-\Delta \geq \lambda$ and the system time of the SU sender is
+$\Delta$ seconds ahead of the SU receiver's, $\varepsilon$ does not change.
+\end{lemma}
+\begin{proof}
+Under this scenario, $\delta-\Delta \geq \lambda$ indicates that the overlapping
+part of the time slots of a SU pair is long enough for a RTS and CTS packet
+exchange. Therefore, this scenario is equivalent to the original rendezvous
+discussed previously. 
+\end{proof}
+An example of Lemma \ref{lemma:asym_slot1} is shown in Fig. \ref{fig:asys1}.
+\begin{figure}[hbtp] 
+    \begin{center} 
+        \includegraphics[width=7cm,height=2.3cm]{sec_3_1-unaligned1.jpg} 
+        \caption{The first scenario regarding a rendezvous considering unaligned
+time slots.} 
+        \label{fig:asys1} 
+    \end{center} 
+\end{figure} 
+
+\begin{lemma}
+\label{lemma:asym_slot2}
+When $\delta-\Delta < \lambda$ and the system time of the SU sender is $\Delta$
+seconds ahead of the SU receiver's, $\varepsilon$ changes to $(\varepsilon-1+2n)$
+mod $2n$, where $n$ is the total number of channels in a SS.
+\end{lemma}
+\begin{proof}
+Under this scenario, $\delta-\Delta < \lambda$ indicates that the overlapping
+part of the time slots of a SU pair is not long enough for a RTS and CTS
+packet exchange. However, the overlapping part between the current time slot
+of the SU sender and the previous time slot of the SU receiver is  $\Delta$,
+where $\Delta > \delta/2 \geq \lambda$. Therefore, $\varepsilon$ is decreased
+by one under this scenario. Considering the circular property of $\varepsilon$,
+$\varepsilon$ should be $(\varepsilon-1+2n)$ mod $2n$.
+\end{proof}
+An example of Lemma \ref{lemma:asym_slot2} is shown in Fig. \ref{fig:asys2}.
+\begin{figure}[hbtp] 
+    \begin{center} 
+        \includegraphics[width=7cm,height=2.3cm]{sec_3_1-unaligned2.jpg} 
+        \caption{The second scenario regarding a rendezvous considering unaligned
+time slots.} 
+        \label{fig:asys2} 
+    \end{center}
+\end{figure}  
+
+\begin{lemma}
+\label{lemma:asym_slot3}
+When $\delta-\Delta \geq \lambda$ and the system time of the SU receiver
+is $\Delta$ seconds ahead of the SU sender's, $\varepsilon$ does not change.
+\end{lemma}
+\begin{proof}
+Under this scenario, $\delta-\Delta \geq \lambda$ indicates that the overlapping
+part of the time slots of a SU pair is long enough for a RTS and CTS packet
+exchange. Therefore, this scenario is equivalent to the scenario in Lemma
+\ref{lemma:asym_slot1}.
+\end{proof}
+
+An example of Lemma \ref{lemma:asym_slot3} is shown in Fig. \ref{fig:asys3}.
+\begin{figure}[hbtp] 
+    \begin{center} 
+        \includegraphics[width=7cm,height=2.3cm]{sec_3_1-unaligned3.jpg} 
+        \caption{The third scenario regarding a rendezvous considering unaligned
+time slots.} 
+        \label{fig:asys3} 
+    \end{center} 
+\end{figure}  
+
+\begin{lemma}
+\label{lemma:asym_slot4}
+When $\delta-\Delta < \lambda$ and the system time of the SU receiver is
+$\Delta$ seconds ahead of the SU sender's, $\varepsilon$ changes to $(\varepsilon+1)$
+mod $2n$, where $n$ is the total number of channels in a SS.
+\end{lemma}
+\begin{proof}
+Under this scenario, $\delta-\Delta < \lambda$ indicates that the overlapping
+part of the time slots of a SU pair is not long enough for a RTS and CTS
+packet exchange. However, the overlapping part between the current time slot
+of the SU sender and the next time slot of the SU receiver is $\Delta$, where
+$\Delta > \delta/2 \geq \lambda$. Therefore $\varepsilon$ is increased by
+one under this scenario. Considering the circular property of $\varepsilon$,
+$\varepsilon$ should be $(\varepsilon+1)$ mod $2n$.
+\end{proof}
+
+An example of Lemma \ref{lemma:asym_slot4} is shown in Fig. \ref{fig:asys4}.
+\begin{figure}[hbtp] 
+    \begin{center} 
+        \includegraphics[width=7cm,height=2.3cm]{sec_3_1-unaligned4.jpg} 
+        \caption{The fourth scenario regarding a rendezvous considering unaligned
+time slots.} 
+        \label{fig:asys4} 
+    \end{center} 
+\end{figure}  
+
+According to the above examples we can get the following theorem:
+\addtocounter{theorem}{-5}
+\begin{theorem}
+\label{theorem:asym_garan}
+Considering unaligned time slots, our proposed rendezvous schemes under both
+the symmetrical and asymmetrical models can still work without any modification.
+\end{theorem}
+\begin{proof}
+According to the four scenarios above, under the asynchronous scenario, $\varepsilon$
+has three different values: $\varepsilon$, $(\varepsilon-1+2n)$ mod $2n$,
+and $(\varepsilon+1) $ mod $2n$, where $2n$ is the length of the channel
+hopping sequence. All of the three values are still within the range $[0,2n-1]$.
+Therefore, according to the proof of Lemma \ref{lemma:guar_rend}, considering
+the asynchronous time-slot scenario has no difference comparing to without
+considering it when implementing our proposed channel hopping sequence. Therefore,
+under this scenario, we do not need to modify our proposed rendezvous schemes.
+\end{proof} 
+
+\subsection{The Optimal Time Slot Length}
+A successful rendezvous requires a RTS-CTS packet exchange. Therefore, when
+considering  unaligned time slots, a successful rendezvous not only  requires
+two SUs on a common available channel, but also enough overlapping time in
+that channel to finish exchanging RTS-CTS packets. In this subsection, we
+address how to find the optimal length of a time slot which can guarantee
+a successful RTS-CTS packet exchange under our rendezvous schemes.\\
+
+During a rendezvous process, a time slot with a length $\delta$ can be divided
+into two parts: one is the sensing part with a length $t_{s}$ and the other
+is the part for exchanging RTS and CTS packets with a length $t_{t}$. Our
+goal is to minimize  $t_{t}$, since more exchanges of RTS and CTS mean more
+energy consumption and are not necessary. Assume that a successful RTS-CTS
+packet exchange requires at least $\lambda$ seconds.  Considering the duality,
+there are only two scenarios regarding the overlapping time.\\
+
+For the first scenario shown in Fig. \ref{fig:optTimeSlot1}, the shadow area
+represents an overlap of the RTS-CTS exchanging period. We have 
+\begin{align*}
+Minimize \ \ \  &t_{t};\\
+s.t. \ \ \  &\delta = t_{s} + t_{t};\\
+&\lambda \leq \delta/2;\\
+&\lambda \leq \delta - \Delta -t_{s} ;\\
+&0 \leq \Delta \leq t_{s};
+\end{align*}
+The answer for the first scenario $t^{1}_{t\_min} = max\{2\lambda-t_{s},
+\lambda+t_{s}\}$, with the known $\lambda$ and $t_{s}$.\\
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=8cm,height=3cm]{sec_3_1-optTimeSlot1.jpg}
+\caption{The first scenario considering unaligned time slots}
+\label{fig:optTimeSlot1}
+\end{center}
+\end{figure}
+
+For the second scenario shown in Fig. \ref{fig:optTimeSlot2}, we have
+\begin{align*}
+Minimize \ \ \  &t_{t};\\
+s.t. \ \ \  &\delta = t_{s} + t_{t};\\
+&\lambda \leq \delta/2 ;\\
+&\lambda \leq \delta - \Delta -t_{s} \ or\ \lambda \leq \Delta - t_{s};\\
+&t_{s} < \Delta < \delta.
+\end{align*}
+The answer for the second scenario $t^{2}_{t\_min} = max\{2\lambda-t_{s},
+2\lambda+t_{s}\} = 2\lambda+t_{s}$, with the known $\lambda$ and $t_{s}$.\\
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=8cm,height=3cm]{sec_3_1-optTimeSlot2.jpg}
+\caption{The second scenario considering unaligned time slots}
+\label{fig:optTimeSlot2}
+\end{center}
+\end{figure}
+
+Therefore, the optimal $t_{t}$ that can guarantee a successful rendezvous
+for the two scenarios is $t_{t\_min} = max\{t^{1}_{t\_min}, t^{2}_{t\_min}\}\}
+= 2\lambda+t_{s}$. Based on this and \textbf{Theorem \ref{theorem:asym_garan}},
+we can get the following theorem:
+\begin{theorem}
+\label{theorem:opt_time}
+When considering unaligned time slots, the minimum length of a time slot
+to guarantee a successful rendezvous is $2(\lambda + t_{s})$, where $\lambda$
+is the time for a RTS-CTS exchange and $t_{s}$ is the time for spectrum sensing.
+\end{theorem} 
+
 \subsection{Proposed Spectrum Splitting Scheme}
 \label{sec:split}
 First, our proposed spectrum splitting algorithm is based on the following mathematical truth.
@@ -560,6 +768,527 @@ Let $\theta$ be the minimum number of channels in a SS. We will discuss how to c
 \end{algorithm}
 
 Based on \textbf{Lemma \ref{lemma:spl_1_4t2}} to \textbf{Lemma \ref{lemma:spl_4_4t1}} and \textbf{Algorithm \ref{al:spl}}, each SU can use the same scheme to split the whole spectrum which guarantees the existence of our designed channel hopping sequence in each spectrum segment. An example of our spectrum splitting scheme is that when $M=100$ and $\theta=20$, the SSL is $[28,24,24,24]$ and each element in this SSL can guarantee the existence of our rendezvous sequence according to \textbf{Lemma \ref{lemma:exist}}.
+
+\subsection{Performance Evaluation}
+\label{sec:performance}
+In this section, we evaluate the performance of our proposed framework in
+terms of \textit{ETTR} of rendezvous, the average normalized throughput,
+the time to finish information exchange, and the effect of $\theta$ under
+the symmetrical and asymmetrical models. Our simulation programs are based
+the Python language. Since our simulations are under different scenarios,
+which require different simulation parameters, we introduce the simulation
+parameters before showing results of each scenario rather than giving a table
+containing all parameters at the beginning of this section. 
+
+\subsubsection{The \textit{ETTR}  of Rendezvous under the Symmetrical Model}
+In order to evaluate our proposed rendezvous algorithm under the symmetrical
+model, we compare our proposed schemes with an existing CRN rendezvous algorithm
+called jump-stay  \cite{zLin11JSBCH} with guaranteed rendezvous. We consider
+a scenario that there are two SUs:  one is the SU sender and the other is
+the SU receiver. The SU sender tries to rendezvous with the SU receiver by
+using our proposed scheme and the jump-stay scheme.\\
+
+Fig. \ref{fig:rend_sym1} shows the \textit{ETTR} of our proposed scheme and
+the jump-stay scheme when the SU sender tries to rendezvous with a SU receiver
+whose HS has $10$ to $50$ channels.  In this simulation, we assume that the
+ratio of the  number of available channels for the SU pair to the total number
+of channels in the SU receiver's HS is $0.8$. From the figure we can see
+that the average time to rendezvous under both schemes increases linearly
+with the total number of channels. This is consistent with our conclusion
+in \textbf{Theorem \ref{theo:ettr}} and the results in \cite{zLin11JSBCH}.
+The figure shows that the \textit{ETTR} of our proposed rendezvous algorithm
+is always lower than that of the jump-stay scheme when a single SS of a wide-band
+spectrum is considered.\\
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=10cm,height=8cm]{sec_3_1-rend_sym1.eps}
+\caption{The \textit{ETTR} within a SS under the symmetrical model}
+\label{fig:rend_sym1}
+\end{center}
+\end{figure}
+
+Fig. \ref{fig:rend_sym2} shows the \textit{ETTR} of our proposed scheme and
+the jump-stay scheme in a wide-band scenario with the total number of channels
+changing from $50$ to $300$. In this simulation, we assume that the ratio
+of the  number of available channels for the SU pair to the total number
+of channels in the wide-band spectrum is $0.8$ and $\theta=20$ in the spectrum
+splitting scheme. The figure shows that our proposed rendezvous algorithm
+can always achieve a much lower \textit{ETTR} as compared to the jump-stay
+scheme in a wide-band scenario. This is because that the channel hopping
+of the jump-stay scheme includes all the channels of the whole spectrum,
+while our scheme can perform rendezvous in a smaller SS because of the proposed
+spectrum splitting scheme. Furthermore, due to the spectrum splitting without
+changing $\theta$, the performance of our scheme does not change much even
+when the total number of channels increases.
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=10cm,height=8cm]{sec_3_1-rend_sym2.eps}
+\caption{The \textit{ETTR} of the whole spectrum under the symmetrical model}
+\label{fig:rend_sym2}
+\end{center}
+\end{figure}
+
+% \begin{figure}[hbtp]
+%        \centering
+%        \subfigure[The \textit{ETTR} within a SS under the symmetrical model]{
+%        \label{fig:rend_sym1}
+%                \includegraphics[width=2cm,height=5cm]{sec_3_1-rend_sym1.eps} 
+%        }
+%        \subfigure[The \textit{ETTR} of the whole spectrum under the symmetrical
+%model]{
+%        \label{fig:rend_sym2}
+%        \includegraphics[width=2cm,height=5cm]{sec_3_1-rend_sym2.eps} 
+%        }
+%        \label{fig:rend_sym}
+%        \caption{The \textit{ETTR} under the symmetrical model.}
+%\end{figure} 
+
+\subsubsection{The \textit{ETTR}  of Rendezvous under the Asymmetrical Model}
+We compare our proposed rendezvous algorithm with the jump-stay scheme \cite{zLin11JSBCH}
+and enhanced jump-stay scheme \cite{zLin13EJSRA} under the asymmetrical model
+which is more practical (the enhanced jump-stay scheme only considers the
+asymmetrical model).
+
+Fig. \ref{fig:rend_asym1} shows the \textit{ETTR} of our proposed scheme,
+the jump-stay scheme, and the enhanced jump-stay scheme, when the SU sender
+tries to rendezvous with the SU receiver whose HS has $10$ to $50$ channels.
+In this simulation, we assume that the ratio of the number of available channels
+for the SU pair to the total number of channels in the SU receiver's HS is
+$0.5$, the SU pair has the same number of available channels, and $50\%$
+of their available channels are the same.  The figure shows that the performance
+of our proposed rendezvous algorithm is better than the jump-stay scheme
+and enhanced jump-stay scheme under the asymmetrical model within a single
+SS.
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=10cm,height=8cm]{sec_3_1-rend_asym1.eps}
+\caption{The \textit{ETTR} within a SS under the asymmetrical model.}
+\label{fig:rend_asym1}
+\end{center}
+\end{figure}
+
+Fig. \ref{fig:rend_asym2} shows the \textit{ETTR} of our proposed scheme,
+the jump-stay scheme, and the enhanced jump-stay scheme in a wide-band scenario
+with the total number of channels changing from $50$ to $300$. In this simulation,
+we assume that $\theta=20$ in the spectrum splitting scheme, the ratio of
+the number of available channels for the SU pair to the total number of channels
+in the whole wide-band spectrum is $0.5$, the SU pair has the same number
+of available channels, and $80\%$ of their available channels are the same.
+This figure shows that the performance of our proposed rendezvous algorithm
+is always much better than the jump-stay scheme and the enhanced jump-stay
+scheme in a wide-band scenario. 
+
+\begin{figure}[hbt]
+\begin{center}
+\includegraphics[width=10cm,height=8cm]{sec_3_1-rend_asym2.eps}
+\caption{The \textit{ETTR} of the whole spectrum under the asymmetrical
+model.}
+\label{fig:rend_asym2}
+\end{center}
+\end{figure}
+
+% \begin{figure}[hbtp]
+%        \centering
+%        \subfigure[The \textit{ETTR} within a SS under the asymmetrical model]{
+%        \label{fig:rend_asym1}
+%                \includegraphics[width=4cm,height=5cm]{rend_asym1.eps} 
+%        }
+%        \subfigure[The \textit{ETTR} of the whole spectrum under the asymmetrical
+%model]{
+%        \label{fig:rend_asym2}
+%        \includegraphics[width=4cm,height=5cm]{rend_asym2.eps} 
+%        }
+%        \label{fig:rend_asym}
+%        \caption{The \textit{ETTR}  under the asymmetrical model.}
+%\end{figure}
+
+ Fig. \ref{fig:com_avai_fac} shows the \textit{ETTR} of our proposed scheme,
+the jump-stay scheme, and the enhanced jump-stay scheme within a SS with
+a total of $40$ channels when the ratio (defined as the common available
+ratio) of the number of common available channels between two SUs to the
+number of their individual total available channels (assume each SU has the
+same number of available channels) changes from $0.1$ to $0.9$. In this simulation,
+we assume that the ratio of the number of available channels for the SU pair
+to the total number of channels in the SS is $0.5$. This figure shows that
+the performance of our proposed rendezvous algorithm is always much better
+than the jump-stay scheme. Our scheme performs better than the enhanced jump-stay
+scheme when the common available ratio changes from $0.1$ to $0.5$ and performs
+almost the same as the enhanced jump-stay scheme when the common available
+ratio changes from $0.6$ to $0.9$, which means that  our scheme has an advantage
+when the available channel sets of the two SUs are more  distinct.
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1-com_avai_fac.eps} 
+      \caption{The \textit{ETTR} under different common available ratio.}
+    \label{fig:com_avai_fac} 
+    \end{center}   
+\end{figure} 
+
+\subsubsection{The Time for Information Exchange}
+As we discussed in Section \ref{sec:framework}, in order to get the control
+information of other SUs, a SU has to periodically hop to each spectrum segment
+(SS) to rendezvous with a SU currently in that SS and exchanges their own
+and known control information. In this subsection, we show simulation results
+on the time of this process. In the following simulations, the same spectrum
+splitting scheme is applied for all the three rendezvous schemes and each
+SU's neighbors are randomly generated to form a practical multiple-hop network.
+We assume that a SU can only rendezvous with its one-hop neighbors.\\
+
+First, we consider how long it  takes for a SU to finish hopping and rendezvousing
+within all the SSs, assuming that during the process, other SUs only hop
+within their home SS. This simulates the scenario that a newly joined SU
+tries to get other SUs' control information. As discussed in Section  \ref{sec:framework},
+a SU will hop to the next SS only after it has rendezvoused with a SU in
+the current SS or it has stayed in that SS for more than MTTR time slots,
+where MTTR is the maximum time to guarantee a rendezvous for the applied
+rendezvous algorithm.\\
+
+Fig. \ref{fig:oneSuSs1} shows the time for a SU to finish hopping within
+all the SSs under the three rendezvous schemes, when the total number of
+channels $M$ changes from $50$ to $150$ and the number of SUs $N$ is $20$.
+Our proposed scheme has the same good performance as the enhanced jump-stay
+scheme and outperforms the original jump-stay scheme when $M$ is below $150$,
+while outperforms the other two jump-stay schemes when $M$ changes from $200$
+to $300$. The reason is that our rendezvous scheme can achieve the fastest
+rendezvous  and has the smallest MTTR among all the three schemes. The time
+increases drastically when $M$ changes from $150$ to $300$, due to the increase
+of the number of SSs and the decrease of the number of SUs in a SS.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_oneSuSs1.eps} 
+      \caption{The time for a SU to finish the whole information exchange
+process as $M$ increases.}
+	\label{fig:oneSuSs1} 
+    \end{center}   
+\end{figure} 
+
+Fig. \ref{fig:oneSuSs2} shows the time to finish the whole information exchange
+process when the number of SUs $N$ changes from $10$ to $50$ and the total
+number of channels $M$ is $100$. Our proposed scheme has the same good performance
+as the enhanced jump-stay scheme when $N=10,40,50$ and always outperforms
+the original jump-stay scheme. However, our scheme performs much better than
+the other two schemes when $N=20,30$. The vibration of the results comes
+from the trade-off that when $N$ increases, the chance to achieve a rendezvous
+in one SS increases, but the probability that a collision happens also increases.\\
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_oneSuSs2.eps} 
+      \caption{The time for a SU to finish the whole information exchange
+process as $N$ increases.}
+    \label{fig:oneSuSs2} 
+    \end{center}   
+\end{figure} 
+
+% \begin{figure}[hbtp]
+%        \centering
+%        \subfigure[Time as $M$ increases]{
+%        \label{fig:oneSuSs1}
+%                \includegraphics[width=4cm,height=5cm]{sec_3_1_oneSuSs1.eps} 
+%        }
+%        \subfigure[Time as $N$ increases]{
+%        \label{fig:oneSuSs2}
+%        \includegraphics[width=4cm,height=5cm]{sec_3_1_oneSuSs2.eps} 
+%        }
+%        \label{fig:oneSuSs}
+%        \caption{The time for a SU to finish the whole information exchange
+%process.}
+%\end{figure}
+
+Second, we consider how long it takes all SUs to finish hopping and rendezvousing
+within all the SSs, assuming that all the SUs start this process simultaneously.
+This simulates the scenario that several SUs start to form a CRN and try
+to get other SUs' control information. 
+
+Fig. \ref{fig:allSuSs1} shows the
+time for all SUs to finish the whole process , when $N=20$ and $M$ changes
+from $50$ to $300$. In this figure, our proposed scheme outperforms both
+jump-stay schemes because of faster rendezvous and smaller MTTR. The time
+increases with $M$ since more channels increase the time to rendezvous.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_allSuSs1.eps} 
+      \caption{The time for all SUs to finish the whole information exchange
+process as $M$ increases.}
+    \label{fig:allSuSs1} 
+    \end{center}   
+\end{figure} 
+
+Fig. \ref{fig:allSuSs2} shows the time for all SUs to finish the whole process,
+when $M=100$ and $N$ changes from $10$ to $50$. Our scheme still outperforms
+the other two jump-stay schemes. The time to finish the whole process decreases
+as $N$ increases. This is because that more SUs in the whole network results
+in more SUs in a SS, which increases the chance of one SU to rendezvous with
+each other.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_allSuSs2.eps} 
+      \caption{The time for all SUs to finish the whole information exchange
+process as $N$ increases.}
+    \label{fig:allSuSs2} 
+    \end{center}   
+\end{figure} 
+
+% \begin{figure}[hbtp]
+%        \centering
+%        \subfigure[Time as $M$ increases]{
+%        \label{fig:allSuSs1}
+%                \includegraphics[width=4cm,height=5cm]{allSuSs1.eps} 
+%        }
+%        \subfigure[Time as $N$ increases]{
+%        \label{fig:allSuSs2}
+%        \includegraphics[width=4cm,height=5cm]{allSuSs2.eps} 
+%        }
+%        \label{fig:allSuSs}
+%        \caption{The time for all SUs to finish the whole information exchange
+%process.}
+%\end{figure}
+
+Therefore, our proposed scheme outperforms the two jump-stay schemes when
+considering a practical CRN where the control information exchange and update between SUs are necessary.
+
+
+\subsubsection{The Average Normalized Throughput}
+We consider practical communication scenarios in a CRN with multiple SU pairs
+and traffic flows. We evaluate  the average normalized throughput for each
+user in a CRN which is the average ratio of the number of data packets successfully
+transmitted out by a SU sender to the total number of data packets generated
+in a period of time. Since there are no other existing similar rendezvous
+schemes deigned for wide-band CRNs considering the practical communication
+scenario we consider here, we apply both jump-stay and enhanced jump-stay
+rendezvous schemes to a wide-band CRN under both the symmetrical and asymmetrical models. We assume that there are $30$ SUs in the network: $15$ are the SU
+senders and $15$ are the SU receivers. The average packet arrival rate for
+each SU sender is $5\ packets/sec$. The length of each packet in the unit
+of time slots is a random number in $[1,20]$. We assume that $\theta=20$,
+the total number of channels in the wide-band CRN changes from $50$ to $300$,
+and the ratio of the number of available channels for the SU pair to the
+total number of channels in the whole wide-band spectrum is $0.8$.\\
+
+ Fig. \ref{fig:thru_sym1} shows the average normalized throughput of our
+proposed scheme   and the jump-stay scheme under the symmetrical model when
+the total number of channels within a wide-band spectrum changes from $50$
+to $300$. The result shows that our proposed scheme can maintain a very high
+average normalized throughput which is much better than the jump-stay scheme
+when considering the whole wide-band spectrum. This is because that after
+splitting the spectrum, the time to rendezvous of each transmission pair
+is much shorter. Thus, the overall throughput is benefited.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_thru_sym1.eps} 
+      \caption{The average normalized throughput under the symmetrical
+model as the number of total channels increases.}
+    \label{fig:thru_sym1} 
+    \end{center}   
+\end{figure} 
+ 
+Fig. \ref{fig:thru_sym2} shows the average normalized throughput of our proposed
+scheme and the jump-stay scheme under the symmetrical model when the SU packet
+arrival rate changes from $1$ to $20$. We consider a wide-band spectrum with
+$200$ channels here. The result shows that our proposed scheme can maintain
+a very high average normalized throughput which is much better than the jump-stay
+scheme under different SU packet arrival rates. We can also notice that the
+average normalized throughput of the jump-stay scheme decreases significantly
+when the SU packet arrival rate increases, while our scheme can still keep
+a high throughput. 
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_thru_sym2.eps} 
+      \caption{The average normalized throughput under the symmetrical
+model as the SU packet arrival rate increases.}
+    \label{fig:thru_sym2} 
+    \end{center}   
+\end{figure} 
+
+% \begin{figure}[hbtp]
+%        \centering
+%        \subfigure[The effect of the number of total channels]{
+%        \label{fig:thru_sym1}
+%                \includegraphics[width=4cm,height=5cm]{thru_sym.eps} 
+%        }
+%        \subfigure[The effect of SU packet arrival rate]{
+%        \label{fig:thru_sym2}
+%        \includegraphics[width=4cm,height=5cm]{thru_sym2.eps} 
+%        }
+%        \label{fig:thru_sym}
+%        \caption{The average normalized throughput under the symmetrical
+%model.}
+%\end{figure}
+
+Fig. \ref{fig:thru_asym1} shows the average normalized throughput of our
+proposed scheme, the jump-stay scheme, and the enhanced jump-stay scheme
+under the asymmetrical model when the total number of channels varies from
+$50$ to $300$. The result shows that the average normalized throughput of
+our proposed scheme is much higher than that of the jump-stay scheme and
+enhanced jump-stay scheme when the whole wide-band spectrum is considered.
+We can also notice that the performance of the jump-stay scheme and the enhanced
+jump-stay scheme fluctuates with the increment of the total number of  channels,
+while our scheme can still keep a high normalized throughput because of the
+proposed  framework and rendezvous schemes.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_thru_asym1.eps} 
+      \caption{The average normalized throughput under the asymmetrical
+model as  the number of total channels increases.}
+    \label{fig:thru_asym1} 
+    \end{center}   
+\end{figure} 
+
+ Fig. \ref{fig:thru_asym2} shows the average normalized throughput of our
+proposed scheme, the jump-stay scheme, and the enhanced jump-stay scheme
+under the asymmetrical model when the SU packet arrival rate changes from
+$1$ to $20$. We consider a wide-band spectrum with $200$ channels. The result
+shows that our proposed scheme performs much better than both the jump-stay
+scheme and enhanced jump-stay scheme when the SU packet arrival rate changes.
+Therefore, our proposed scheme can adapt to different SU traffic under the
+asymmetrical model.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_thru_asym2.eps} 
+      \caption{The average normalized throughput under the asymmetrical
+model as the SU packet arrival rate increases.}
+    \label{fig:thru_asym2} 
+    \end{center}   
+\end{figure} 
+
+%\begin{figure}[hbtp]
+%        \centering
+%        \subfigure[The results of the number of total channels]{
+%        \label{fig:thru_asym1}
+%                \includegraphics[width=4cm,height=5cm]{thru_asym.eps} 
+%        }
+%        \subfigure[The effect of SU packet arrival rate]{
+%        \label{fig:thru_asym2}
+%        \includegraphics[width=4cm,height=5cm]{thru_asym2.eps} 
+%        }
+%        \label{fig:thru_asym}
+%        \caption{The average normalized throughput under the asymmetrical
+%model.}
+%\end{figure} 
+
+\subsubsection{The Effect of the Value of $\theta$}
+Our spectrum splitting scheme is based on a predetermined value $\theta$.
+Therefore, how to determine an  appropriate $\theta$ is crucial for our proposed
+communication framework. In this subsection, we show the effect of $\theta$
+on the average normalized throughput and the average collision ratio which
+can help us to determine $\theta$ under both the symmetrical and asymmetrical
+models. The average collision ratio is defined as the ratio of the number
+of  successful rendezvous with collisions to the total number of rendezvous.
+The parameters in the following simulation are the same as the ones in the
+last subsection, except the total number of channels and $\theta$. We set
+the total number of channels to be $100$ and change the value of $\theta$
+from $10$ to $50$.\\
+
+Fig. \ref{fig:theta_sym1} shows the effect of $\theta$ under the symmetrical
+model on the average normalized throughput. When $\theta$ increases, the
+number of channels in each SS increases. This may result in a longer time
+to rendezvous in our proposed scheme. Thus, the average normalized throughput
+decreases. 
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_theta_sym1.eps} 
+      \caption{The effect of $\theta$ to the throughput under the symmetrical model.}
+    \label{fig:theta_sym1} 
+    \end{center}   
+\end{figure} 
+
+Fig. \ref{fig:theta_sym2} shows the effect of $\theta$ on the
+average collision ratio under the symmetrical model. When $\theta$ increases,
+the average collision ratio decreases. This is reasonable since when $\theta$
+increases, a SU pair can rendezvous on more channels in a SS. Thus, the probability
+that multiple SUs rendezvous on the same channel is reduced. By observing
+Fig. \ref{fig:theta_sym1} and Fig. \ref{fig:theta_sym2} together, we can
+notice that when the collision ratio increases, the average normalized throughput
+increases also. This indicates that the rendezvous collisions under the symmetrical
+model may not affect the throughput.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_theta_sym2.eps} 
+      \caption{The effect of $\theta$ to the collision ratio under the symmetrical model.}
+    \label{fig:theta_sym2} 
+    \end{center}   
+\end{figure} 
+
+%\begin{figure}[hbtp]
+%        \centering
+%        \subfigure[The effect of $\theta$ to the throughput]{
+%        \label{fig:theta_sym1}
+%                \includegraphics[width=4cm,height=5cm]{theta_sym1.eps} 
+%        }
+%        \subfigure[The effect of $\theta$ to the collision ratio]{
+%        \label{fig:theta_sym2}
+%        \includegraphics[width=4cm,height=5cm]{theta_sym2.eps} 
+%        }
+%        \label{fig:theta_sym}
+%        \caption{The effect of $\theta$ under the symmetrical model.}
+%\end{figure}
+
+Fig. \ref{fig:theta_asym1} shows the effect of $\theta$ under the asymmetrical
+model on the average normalized throughput. When $\theta$ increases, the
+average normalized throughput  first increases and then decreases. The reason
+is that under the asymmetrical model, each SU will use all the channels in
+a SS to design a channel hopping sequence. When the number of channels in
+a SS is small, the \textit{ETTR} decreases, but the probability of a collision
+between  the communicating pairs in the same SS increases, which may decease
+the average normalized throughput. On the other hand, when the number of
+channels in a SS increases, the \textit{ETTR}  increases, which can also
+decrease the average normalized throughput. Therefore, there exists an optimal
+$\theta$ for the asymmetrical model to maximize the average normalized throughput.
+Under this particular scenario, we can set $\theta$ to be $35$ or $40$ to
+get the maximum average normalized throughput. 
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_theta_asym1.eps} 
+      \caption{The effect of $\theta$ to the throughput under the asymmetrical model.}
+    \label{fig:theta_asym1} 
+    \end{center}   
+\end{figure} 
+
+
+Fig. \ref{fig:theta_asym2}
+shows the effect of $\theta$ on the average collision ratio under the asymmetrical
+model. When $\theta$ increases, the collision ratio decreases. By observing
+Fig. \ref{fig:theta_asym1} and Fig. \ref{fig:theta_asym2} together, we can
+notice that when the collision ratio decreases, the throughput fluctuates.
+This indicates that the rendezvous collision under the asymmetrical model
+is a factor which can affect the throughput.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_theta_asym2.eps} 
+      \caption{The effect of $\theta$ to the collision ratio under the asymmetrical model.}
+    \label{fig:theta_asym2} 
+    \end{center}   
+\end{figure} 
+
+%\begin{figure}[hbtp]
+%        \centering
+%        \subfigure[The effect of $\theta$ to the throughput]{
+%        \label{fig:theta_asym1}
+%                \includegraphics[width=4cm,height=5cm]{theta_asym1.eps} 
+%        }
+%        \subfigure[The effect of $\theta$ to the collision ratio]{
+%        \label{fig:theta_asym2}
+%        \includegraphics[width=4cm,height=5cm]{theta_asym2.eps} 
+%        }
+%        \label{fig:theta_asym}
+%        \caption{The effect of $\theta$ under the asymmetrical model.}
+%\end{figure}
+
+Based on the above analysis, when the system performance requirements are
+given, an appropriate $\theta$ can be predetermined.  
 
 \section{Rendezvous Schemes Without Predetermined Sender and Receiver Considering  Multiple Cognitive Radios}
 In this section, we propose two efficient rendezvous schemes under the scenarios that
@@ -1766,7 +2495,7 @@ J. Li and J. Xie, "Directional Antenna Based Distributed Blind Rendezvous in Cog
 \item 
 J. Li and J. Xie, "Practical Fast Multiple Radio Blind Rendezvous Schemes in Ad-Hoc Cognitive Radio Networks", Proc. IEEE RESILIENCE WEEK, August, 2015.
 \item 
-J. Li and J. Xie, "A New Communication Framework for Wide-band Cognitive Radio Networks", Proc. IEEE SECON, JUNE, 2014.
+J. Li and J. Xie, "A New Communication Framework for Wide-band Cognitive Radio Networks", Proc. IEEE SECON, June, 2014.
 
 \item 
 J. Li and J. Xie, "A Power Control Protocol to Maximize the Number of Common Available Channels Between Two Secondary Users in Cognitive Radio Networks
