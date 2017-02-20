@@ -1446,6 +1446,183 @@ The enhanced rendezvous scheme in Algorithm \ref{al:enhanced} can guarantee a su
   We define a channel group between two SUs as a valid group if there is a common available channel in it. As long as two SUs have at least one common available channel, there is a valid group between them as they split all the channels into the sam channel groups. Therefore, the two SUs will hop to a valid group as long as they follow the hopping sequence which can guarantee a successful \textit{channel rendezvous} on a common available channel. According to \textbf{Algorithm \ref{al:enhanced}}, two SUs have the same send-or-receive allocations only when they choose the same random integer from the range $[0, 2^{R}-1]$. The probability that two SUs independently choose the same integer from  $[0, 2^{R}-1]$ is $\DF{1}{2^{R}}\times\DF{1}{2^{R}} = \DF{1}{2^{2R}}$. There are totally $2^{R}$ different integers from $[0, 2^{R}-1]$. Therefore, the final probability of a link rendezvous failure is $(\DF{1}{2^{2R}}\times 2^{R})^{\eta} = \DF{1}{2^{R\eta}}$.
 \end{proof}
 
+\subsection{Performance Evaluation}
+\label{sec:performance}
+In this part, we evaluate the performance of the proposed blind rendezvous
+schemes. Since to the best of the our knowledge, our proposed schemes are
+the first ones who consider the \textit{send-or-receive} problem, there are
+no existing schemes we can compare with. Therefore, in the simulations, we
+compare the performance of our proposed basic scheme with the proposed enhanced
+one. In the simulations, we set two SUs to perform the rendezvous process.
+The two SUs do not know any information about each other. We assume the two
+SUs are located within each other's transmission range to guarantee the sending
+and receiving RTS packets. Each SU is equipped with $R$ radios. There are
+total $M$ channels two SUs can access. All of these simulations are based
+on the channel-hopping sequence from a widely used rendezvous scheme called
+the jump-stay scheme \cite{zLin11JSBCH, hLiu12JSRAF}. 
+
+\subsubsection{The impact of the number of total channels}
+In this simulation, we set $R = 4$, $M$ from $10$ to $50$, and the channel
+available ratio of each SU is $0.5$ which means the number of current available
+channels of a SU to the number of all the channels. 
+
+In Fig. \ref{fig:rend1},  we show the average time to a \textit{link rendezvous} by implementing the
+basic scheme and the enhanced one. For each result, we perform $10000$ simulations
+to measure the average rendezvous time. The results indicate that the enhanced
+rendezvous scheme is much better than the basic rendezvous scheme considering
+the \textit{send-or-receive} problem. As $M$ increases, both schemes consume
+more time to rendezvous. This is reasonable since according to the jump-stay
+scheme, the expected rendezvous time increases as the total number of channels
+increases. Moreover, we can notice that as $M$ increases, the difference
+between the results from the basic scheme and the enhanced one also increase.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_2_rend1.eps} 
+      \caption{The average rendezvous time as the total number of channel increases.}
+    \label{fig:rend1} 
+    \end{center}   
+\end{figure} 
+
+In Fig. \ref{fig:rend11}, we shows the successful ratios of
+the rendezvous of both the basic and enhanced rendezvous schemes. The successful
+ratio is defined as the number of successful rendezvous to the total number
+of performed rendezvous. According to the \textit{send-or-receive problem},
+two SUs cannot achieve a successful rendezvous even when they hop the same
+channel, if during that time slot they applied the same send-or-receive allocations,
+which may cause collisions between RTS packets. Therefore, the successful
+ratio of rendezvous is an important metric to evaluate a rendezvous scheme
+considering the \textit{send-or-receive problem}. In Fig. \ref{fig:rend11},
+the successful ratio of both scheme are very close to $100\%$, which means
+they are very useful for practical implementations.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_2_rend11.eps} 
+      \caption{The successful rendezvous ratio as the total number of channel increases.}
+    \label{fig:rend11} 
+    \end{center}   
+\end{figure} 
+
+% \begin{figure}[hbtp]
+%        \centering
+%    \subfigure[The average rendezvous time]{
+%      \label{fig:rend1}
+%      \includegraphics[width=4cm,height=5cm]{rend1.eps}
+%    }
+%    \subfigure[The successful rendezvous ratio]{
+%      \label{fig:rend11}
+%      \includegraphics[width=4cm,height=5cm]{rend11.eps} 
+%    }
+%        \caption{The impact from the total number of channel.}
+%\end{figure}
+
+\subsubsection{The impact of the channel available ratio}
+In this part, we evaluate the impact of the channel available ratio which
+is defined as the number of available channels of a SU to the total number
+of channel. In the simulations,  we set $R = 4$, $M = 30$, and the channel
+available ratio from $0.3$ to $0.9$. 
+
+In Fig. \ref{fig:rend2}, we can notice
+that both schemes result in lower rendezvous time as the channel available
+ratio increases. This is because, with a higher channel available ratio,
+the two schemes can utilize more channels to perform channel hopping and
+RTS transmissions, which increases the probability of a successful \textit{link
+rendezvous}.  Furthermore, the enhanced scheme always outperforms the basic
+one, but when the channel available ratio increases, the difference between
+the two schemes' results decreases. This is the reason that when the channel
+available ratio increases, the difference between two schemes is less obvious,
+since the main difference between the two schemes is that the enhanced one
+can well utilize all the cognitive radios and the available channels.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_2_rend2.eps} 
+      \caption{The average rendezvous time as the channel available ratio increases.}
+    \label{fig:rend2} 
+    \end{center}   
+\end{figure} 
+
+Fig. \ref{fig:rend22} shows the successful rendezvous ratio of the two schemes
+as the channel available ratio increases. We can notice that only when the
+channel available ratio is $0.3$, the successful rendezvous ratio is a little
+bit lower than $100\%$, while always $100\%$ when the value is higher than
+$0.3$. Therefore, both of our proposed schemes can be applied in different
+cognitive radio networks with different channel availability.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_2_rend22.eps} 
+      \caption{The successful rendezvous ratio as the channel available ratio increases.}
+    \label{fig:rend22} 
+    \end{center}   
+\end{figure} 
+
+% \begin{figure}[hbtp]
+%        \centering
+%        \subfigure[The average rendezvous time]{
+%      \label{fig:rend2}
+%      \includegraphics[width=4cm,height=5cm]{rend2.eps} 
+%        }
+%        \subfigure[The successful rendezvous ratio]{
+%      \label{fig:rend22}
+%      \includegraphics[width=4cm,height=5cm]{rend22.eps} 
+%        }
+%        %\label{fig:rend22}
+%        \vspace{-0.2cm}
+%        \caption{The impact of the channel available ratio.}
+%\end{figure}  
+
+\subsubsection{The impact of the number of cognitive radios}
+In this part, we evaluate the impact of the number of cognitive radios on
+the average rendezvous time and the  successful rendezvous ratio. 
+
+Fig. \ref{fig:rend3}
+indicates that the enhanced scheme always outperforms the basic one when
+the number of cognitive radios increases. However, the difference between
+the results of the two schemes decreases as the number of cognitive radios
+increases. This is because as the number of cognitive radios increases, each
+SU can utilize more available channels during one time slot, therefore the
+difference between the two schemes is not very obvious.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_2_rend3.eps} 
+      \caption{The average rendezvous time as the number of cognitive radio increases.}
+    \label{fig:rend3} 
+    \end{center}   
+\end{figure} 
+
+
+Fig. \ref{fig:rend33} shows the rendezvous successful ratio
+of the proposed schemes as the number of cognitive radios of each SU increases.
+We can notice that both proposed schemes can achieve $100\%$ successful ratio
+as the number of cognitive radios of each SU changes from $2$ to $8$. The
+results indicates that both of the proposed schemes can be applied to various
+cognitive radio networks when SUs are equipped with multiple cognitive radios.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_2_rend33.eps} 
+      \caption{The successful rendezvous ratio as the number of cognitive radio increases.}
+    \label{fig:rend33} 
+    \end{center}   
+\end{figure} 
+
+% \begin{figure}[hbtp]
+%        \centering
+%        \subfigure[The average rendezvous time]{
+%      \label{fig:rend3}
+%      \includegraphics[width=4cm,height=5cm]{rend3.eps} 
+%        }
+%        \subfigure[The successful rendezvous ratio]{
+%      \label{fig:rend33}
+%      \includegraphics[width=4cm,height=5cm]{rend33.eps} 
+%        }
+%        %\label{fig:rend33}
+%        \vspace{-0.2cm}
+%        \caption{The impact of the number of cognitive radios.}
+%\end{figure} 
 
 \section{Rendezvous Schemes Without Predetermined Send and Receiver Considering a Single Radio}
 In this section, we propose two efficient rendezvous schemes under the scenarios
@@ -1903,6 +2080,223 @@ The expectation of link rendezvous time slots is:
 \end{equation}
 \end{proof}
 
+\subsection{Performance Evaluations}
+In this section, we show simulation results regarding our proposed link rendezvous
+schemes under a practical CRN.  In our simulations, we assume that there
+are two SUs and $N_p$ PUs coexisting. During each time slot, each SU hops
+to a channel according to a channel hopping sequence. If a PU within the
+SU's sensing range is using the channel, the SU cannot perform rendezvous
+on this channel and should wait for the next time slot. For a PU, if there
+are data packets in the queue waiting for transmitting, it just randomly
+chooses a channel from channel $1$ to channel $M$. Otherwise, it just keeps
+silent and waits for the next data packet. We assume that the data packet
+arrival rate of each PU obeys Poisson distribution. The main parameters in
+our simulations are shown in Table \ref{table:parameters}.
+\begin{table}[htb]
+\caption{Simulation Parameters} 
+\centering 
+\begin{tabular}{|l|c|} 
+\hline 
+Side length of the simulation area $L$ & 200m\\ 
+\hline 
+The distance between the two SUs & 60m\\ 
+\hline 
+The transmission range of each SU & 80m\\
+\hline 
+The sensing range of each SU & 100m\\ 
+\hline 
+The Number of PUs: $N_{p}$ & 20 \\ 
+\hline 
+The Number of channels: $M$ & 20 \\ 
+\hline 
+The length of each time slot & 2ms\\ 
+\hline 
+The total number of time slots in a simulation: $T$ & 50000\\ 
+\hline 
+The length of a PU packet & 100 slots\\ 
+\hline 
+The PU packet arrival rate $\lambda_{p}$ & 5 per second\\ 
+\hline 
+\end{tabular} 
+\label{table:parameters} 
+\end{table} 
+
+\subsubsection{Average Link Rendezvous Time Under Different Scenarios}
+To the best of our knowledge, there are no existing rendezvous schemes considering
+the link rendezvous problem. Therefore, in this paper, we compare the performance
+of our proposed link rendezvous scheme with the random scheme that each SU
+randomly chooses to send or receive during each time slot. As the random
+scheme should work on an existing channel hopping sequence, in the simulations,
+we apply the channel hopping sequence in \cite{jLi14ANCFF} which has similar
+features with the virtual channel hopping sequence we propose in the enhanced
+link rendezvous scheme.
+
+Fig. \ref{fig:t_M} shows the average link rendezvous time of the random scheme
+and the proposed scheme when the total number of channels $M$ increases from
+$10$ to $50$. In the simulations, we set the number of PUs as $20$ and the
+average packet of each PU as $1$ packet per second. The results indicate
+that the proposed scheme outperforms the random scheme when the total number
+of channels increases from $10$ to $50$. We can also notice that the average
+link rendezvous time almost has a linear relation with the total number of
+channels under the proposed scheme, which coincide the analysis in \textbf{Theorem
+\ref{th:exp_t}}.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_3_t_M.eps} 
+      \caption{The average link rendezvous time as the total number of channels increases.}
+    \label{fig:t_M} 
+    \end{center}   
+\end{figure} 
+
+Fig. \ref{fig:t_pu} shows the average link rendezvous time of the random
+scheme
+and the proposed scheme when the total number of PUs increases from
+$10$ to $50$. In the simulations, we set the total number of channels as
+$30$ and the average packet of each PU as $1$ packet per second. The results
+indicate
+that the proposed scheme outperforms the random scheme when the total number
+of PUs increases from $10$ to $50$. We can also notice that the results under
+the enhanced scheme change  less than the results under the random scheme,
+which indicate that the enhanced scheme is more adaptable to various networking
+conditions.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_3_t_pu.eps} 
+      \caption{The average link rendezvous time as the total number of PUs increases.}
+    \label{fig:t_pu} 
+    \end{center}   
+\end{figure} 
+
+% \begin{figure}[hbtp]
+%      \centering
+%      \subfigure[The average link rendezvous time as the total number of
+%channels increases]{
+%      \label{fig:t_M}
+%      \includegraphics[width=4cm,height=4.8cm]{t_M.eps}
+%      }
+%      \subfigure[The average link rendezvous time as the total number of
+%PUs increases]{
+%      \label{fig:t_pu}
+%      \includegraphics[width=4cm,height=4.8cm]{t_pu.eps} 
+%      }
+%     \vspace{-0.2cm}
+%     \caption{The average link rendezvous time.}
+%\end{figure}
+ 
+\subsubsection{Link Rendezvous Successful Ratio}
+In this section, we evaluate the successful link rendezvous ratios of the
+proposed scheme and the random scheme. The successful link rendezvous ratio
+of a link rendezvous scheme in a simulation is defined as the number of successful
+link rendezvous to the number of total link rendezvous processes. In the
+following simulations, we measure the successful link rendezvous ratio of
+both the random and proposed link rendezvous schemes within $M^2$ and $4M$
+time slots under different scenarios. We first choose $M^2$ since we want
+to measure an upper bound of the link rendezvous time. We choose $4M$ since
+one round of the proposed link rendezvous scheme is $4M$ which is a lower
+bound for the link rendezvous time.
+
+Fig. \ref{fig:r0_M} shows the successful link rendezvous  ratios of the random
+scheme
+and the proposed scheme within $M^2$ time slots, when the total number of
+channels $M$ increases from $10$ to $50$ and the number of PU is $20$. We
+can notice that only when $M=10$, both  link rendezvous schemes did not achieve
+a very high successful link rendezvous ratio. The reason is that since $M=10$
+and $N_p=20$, there are less available channels for each SU than the scenarios
+that $M>10$ and $N_p=20$. 
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_3_r0_M.eps} 
+      \caption{Successful link ratios within $M^2$ time slots as the number of total
+channels increases.}
+    \label{fig:r0_M} 
+    \end{center}   
+\end{figure} 
+
+Fig. \ref{fig:r1_M}  shows the successful link
+rendezvous ratios within $4M$ time slots. We can notice that  as $M$ increases,
+the results of both  schemes increase. This is because that when $N_p$ keeps
+the same while $M$ increases, there are more available channels for each
+SU, which is advantageous for a successful link rendezvous. 
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_3_r1_M.eps} 
+      \caption{Successful link ratios within $4M$ time slots as the number of total
+channels increases.}
+    \label{fig:r1_M} 
+    \end{center}   
+\end{figure} 
+
+% \begin{figure}[hbtp]
+%      \centering
+%      \subfigure[Successful link ratios within $M^2$ time slots]{
+%      \label{fig:r0_M}
+%      \includegraphics[width=4cm,height=4.8cm]{r0_M.eps}
+%      }
+%      \subfigure[Successful link ratios within $4M$ time slots]{
+%      \label{fig:r1_M}
+%      \includegraphics[width=4cm,height=4.8cm]{r1_M.eps} 
+%      }
+%     %\label{fig:r_M}
+%     \vspace{-0.2cm}
+%     \caption{The successful link rendezvous ratios as the number of total
+%channels increases.}
+%\end{figure}
+
+Fig. \ref{fig:r0_pu} shows the successful link rendezvous  ratios
+of the random
+scheme
+and the proposed scheme within $M^2$ time slots, when the total number of
+PUs $N_p$ increases from $10$ to $50$ and the number of total channels $M=30$.
+We
+can notice that both the random and proposed link rendezvous
+schemes achieve very high successful link rendezvous ratios.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_3_r0_pu.eps} 
+      \caption{Successful link ratios within $M^2$ time slots as the number of PUs
+ increases.}
+    \label{fig:r0_pu} 
+    \end{center}   
+\end{figure} 
+
+ Fig. \ref{fig:r1_pu}
+ shows the successful link rendezvous ratios of the two  link rendezvous
+schemes within $4M$ time slots. We can
+notice that  as $N_p$ increases, the results of both proposed schemes decrease.
+This is because that when $M$ keeps the same while $N_p$ increases, there
+are less available channels for each SU, which can lead to longer link rendezvous
+time since two SUs need first hop to a common available channel to achieve
+a successful link rendezvous.
+
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_3_r1_pu.eps} 
+      \caption{Successful link ratios within $4M$ time slots as the number of PUs
+ increases.}
+    \label{fig:r1_pu} 
+    \end{center}   
+\end{figure} 
+
+%\begin{figure}[hbtp]
+%        \centering
+%        \subfigure[Successful link ratios within $M^2$ time slots]{
+%      \label{fig:r0_pu}
+%      \includegraphics[width=4cm,height=4.8cm]{r0_pu.eps} 
+%        }
+%        \subfigure[Successful link ratios within $4M$ time slots]{
+%      \label{fig:r1_pu}
+%      \includegraphics[width=4cm,height=4.8cm]{r1_pu.eps} 
+%        }
+%        \vspace{-0.2cm}
+%        \caption{The successful link rendezvous ratios as the number of PUs
+% increases.}
+%\end{figure} 
+
 \section{Rendezvous Process Considering Directional Antennas}
 In this section, we propose an efficient rendezvous scheme specific for  SUs which
 are equipped directional antennas. Under this scenario, the rendezvous process
@@ -2115,6 +2509,152 @@ Our proposed distributed schemes in \textbf{Algorithm \ref{al:rend_rev}} and \te
 \begin{proof}
 After adjustments, $N_{s}$ and $N_{r}$ should be prime numbers. If $N_{s} = N_{r}$ after the adjustments, the two SUs can achieve a successful sector rendezvous within $N_{s}^{2}$ sector hops according to \textbf{Theorem \ref{th:guarantee1}}. If $N_{s} \neq N_{r}$ after the adjustments, the two SUs may not achieve a successful sector rendezvous within $N_{s}^{2}$ sector hops. Therefore, after $N_{s}^{2}$ sector hops, the SU sender can realize that $N_{s} \neq N_{r}$ and then generates a sector hopping sequence based on \textbf{Algorithm \ref{al:seq_rev}}. According to \textbf{Theorem \ref{th:guarantee2}}, during the next $N_{s}N_{r}$ sector hops, two SUs can achieve a successful sector rendezvous. Therefore, two SUs can achieve a successful sector rendezvous within at most $N_{s}^{2}+N_{s}N_{r}$ sector hops, considering all scenarios.
 \end{proof}
+
+\subsection{Performance Evaluation}
+\label{sec:sim}
+In this section, we show simulation results regarding our proposed sector
+rendezvous schemes under a practical CRN. The simulation parameters are shown
+in Table \ref{table:parameters}. 
+\begin{table}[htb]
+\caption{Simulation Parameters} 
+\centering 
+\begin{tabular}{|l|c|} 
+\hline 
+Side length of the simulation area $L$ & 200m\\ 
+\hline 
+The distance between the two SUs & 60m\\ 
+\hline 
+The transmission range of each SU & 80m\\ 
+\hline 
+The Number of PUs: $N_{p}$ & 20 \\ 
+\hline 
+The Number of channels: $M$ & 20 \\ 
+\hline 
+The length of each time slot & 2ms\\ 
+\hline 
+The total number of time slots in a simulation: $T$ & 50000\\ 
+\hline 
+The length of a PU packet & 100 slots\\ 
+\hline 
+The PU packet arrival rate $\lambda_{p}$ & 5 per second\\ 
+\hline 
+\end{tabular} 
+\label{table:parameters} 
+\end{table}
+\subsubsection{Performance of the Sector Rendezvous Schemes}
+To the best of our knowledge, there are no existing sector rendezvous schemes.
+Therefore, in this paper, we compare the performance of our proposed schemes
+with the random sector rendezvous scheme. Under the random sector rendezvous
+scheme, each SU randomly chooses a transmission sector during each sector
+hop based on its own sector indexes.
+
+Fig. \ref{fig:sec_rend1} shows the average number of sector
+hops before a successful sector rendezvous of our proposed scheme and the
+random sector rendezvous scheme. In this simulation, the number of transmission
+sectors for the SU sender $N_{s}$ is a prime number in the range $[3,13]$,
+while the number of transmission sectors for the SU receiver $N_{r} = 7$
+(according to \textbf{Algorithm \ref{al:rend_rev}} and \textbf{Algorithm
+\ref{al:rend_send}}, we only choose prime numbers). The figure shows that
+our proposed schemes always outperform the random scheme in terms of less
+sector hops. As $N_{s}$ increases, the average number of sector hops of both
+schemes increases, but our proposed schemes increase slower than the random
+scheme.
+\begin{figure}[hbtp] 
+    \begin{center} 
+        \includegraphics[width=10cm,height=8cm]{sec_3_4_sec_rend1.eps} 
+        \caption{The average number of sector hops before a successful sector
+rendezvous.} 
+        \label{fig:sec_rend1}
+    \end{center} 
+\end{figure}
+
+Fig. \ref{fig:sec_rend2} shows the successful sector rendezvous
+ratios of our proposed schemes and the random scheme within a bounded time,
+when $N_{r}=7$ and $N_{s}$ is a prime number from the range $[3,13]$. According
+to \textbf{Theorem \ref{th:guarantee3}}, the bounded time we choose is $N_{s}^{2}+N_{s}N_{r}$,
+for each $N_{s}$ and $N_{r}$. The simulation results show that the successful
+sector rendezvous ratios of our proposed schemes are always $100\%$, while
+the results of the random scheme are not. The results indicate that the random
+scheme cannot guarantee a successful sector rendezvous within a bounded time
+as low as ours. Furthermore, the results coincide with \textbf{Theorem \ref{th:guarantee3}}
+very well, which indicates that our proposed schemes can be applied in practical
+scenarios.
+\begin{figure}[hbtp] 
+    \begin{center} 
+        \includegraphics[width=10cm,height=8cm]{sec_3_4_sec_rend2.eps} 
+        \caption{Successful sector rendezvous ratio within a bounded time.}
+        \label{fig:sec_rend2}
+    \end{center} 
+\end{figure}
+ 
+\subsubsection{Average Time Slots to Successfully Set Up a Link}
+The ultimate goal of our proposed sector rendezvous scheme is to let two
+SUs successfully set up a communication link for information exchange. Setting
+up a link between two SUs with directional antennas requires a successful
+sector rendezvous and channel rendezvous simultaneously. To evaluate the
+average time to set up a link, we combine an efficient channel rendezvous
+scheme called the enhanced jump-stay scheme \cite{zLin13EJSRA} with our proposed
+sector rendezvous scheme. We also apply the enhanced jump-stay scheme with
+the random sector rendezvous scheme.
+
+Fig. \ref{fig:chan_rend_sec_num} shows the average number
+of time slots for setting up a communication link when $N_{r} = 7$ and $N_{s}$
+are different prime numbers from $[3,13]$. The number of time slots a SU
+stays in a transmission sector for channel rendezvous after a sector rendezvous
+in the simulation is $20$, which means that after staying $20$ time slots
+of channel hopping in a transmission sector, a SU should hop to the next
+sector if a link is not successfully set up. The figure shows that our proposed
+schemes always outperform the random sector rendezvous scheme. Furthermore,
+as $N_{s}$ increases, the average time of our proposed schemes increase slower
+than the random scheme.
+\begin{figure}[hbtp] 
+    \begin{center} 
+        \includegraphics[width=10cm,height=8cm]{sec_3_4_chan_rend_sec_num.eps}
+        \vspace{-0.4cm}
+        \caption{Average time to successfully set up a link as $N_{s}$ increases.}
+        \label{fig:chan_rend_sec_num}
+    \end{center} 
+\end{figure}
+
+Fig. \ref{fig:chan_rend_pu_num} shows the impact of the number
+of PUs on the average time to set up a link. We can notice that our proposed
+schemes always outperform the random scheme as the number of PUs increases.
+Moreover, as the number of PUs increases, the results of both our proposed
+schemes and the random scheme change slightly. The reason is that even the
+total number of PUs increases, the number of PUs in a sector may not change
+much, which slightly changes the channel availability. The results justify
+our research motivation of applying directional antennas which can cause
+interference to less number of PUs,  as compared with omni-directional antennas.
+\begin{figure}[hbtp] 
+    \begin{center} 
+        \includegraphics[width=10cm,height=8cm]{sec_3_4_chan_rend_pu_num.eps} 
+        \caption{Average time to successfully set up a link as the number
+of PUs increases.} 
+        \label{fig:chan_rend_pu_num}
+    \end{center} 
+\end{figure}
+
+In Fig. \ref{fig:chan_rend_mttr}, we show the average time
+to set up a link as the number of time slots a SU stays in a transmission
+sector increases. Our proposed schemes always outperform the random scheme
+as the number of time slots in a transmission sector increases. Moreover,
+we can notice that as the number of time slots in a transmission sector increases,
+the results of both schemes increase. This is because that by applying a
+directional antenna, a SU can get more available channels as less number
+of PUs are sensed in a transmission sector. When the number of available
+channels is large comparing to the total number of channels, the probability
+that two SUs choose a common available channel is very high. Therefore, if
+each SU stays more time in a transmission sector but their transmissions
+cannot cover each, it wastes more time before a successful sector rendezvous
+and channel rendezvous happen.
+\begin{figure}[hbtp] 
+    \begin{center} 
+        \includegraphics[width=10cm,height=8cm]{sec_3_4_chan_rend_mttr.eps} 
+        \caption{Average time to successfully set up a link as the number
+of time slots in a transmission sector increases.} 
+        \label{fig:chan_rend_mttr}
+    \end{center} 
+\end{figure}
 
 \section{Power Control Protocol to Maximize the Number of Common Available Channels}
 In this section, we propose a power control protocol which can maximize the number of
@@ -2393,7 +2933,7 @@ which means that our approximate optimal solution is valid and applicable.
 
 \subsection{The Proposed Power Control Protocol} 
 \label{sec:pro} 
-\vspace{-0.2cm} In order to implement the optimization solution, we make the following assumptions.  
+In order to implement the optimization solution, we make the following assumptions.  
 We assume that each SU is equipped with a GPS to get its own coordinates.  
 Moreover, according to our proposed algorithms, the SU pair should know some  
 parameters of each other. How to get these parameters without a common control  
@@ -2409,8 +2949,7 @@ SU wants to send packets to the other, it sends the RTS packet on the currently
 staying channel. After receiving the CTS packet from the other SU in the later  
 time slot, it sends data packets to the SU receiver. 
 
-
-\vspace{-0.2cm} In order to implement our  
+In order to implement our  
 proposed power control protocol, we design the algorithms for the SU sender  
 and SU receiver. When the SU sender wants to send packets to the SU receiver,  
 it will execute Algorithm 1. After receiving the RTS packet, the SU receiver will  
@@ -2466,6 +3005,232 @@ algorithm has a low time cost and is easy to implement.
   \end{algorithmic} 
 \end{algorithm} 
 
+\subsection{Performance Evaluation} 
+\label{sec:simu} 
+In this section, we evaluate the performance of our proposed power control
+protocol  
+under different scenarios.  We show the improvement of our algorithms in
+packet  
+successful delivery ratio which is the ratio of the number of successfully
+received  
+packets to the total transmitted packets. In our simulations, we assume that
+the SUs  
+and PUs use the same time-slotted system. Each time slot is divided into
+two phases for 
+the SUs: the first is the sensing phase and the second is the transmission
+phase \cite{lWang12OTCSD}. Furthermore, once a SU senses a collision 
+with a PU's transmission, the collided packet is discarded and then the SU
+pair 
+should perform a spectrum handoff.  
+Because there is no existing comparable algorithm that can maximize     
+the number of common available channels between two SUs yet, we compare the
+performance of the SU pair which implements our optimization with the one
+without  
+implementing our optimization.  
+
+In the simulation, we assume that SU pair knows each other's available channels
+ and consider the following two channel selection schemes for the SU pair
+during  
+ a spectrum handoff:  
+\begin{enumerate} 
+  \item \textit{Random selection}: the SU pair randomly selects a channel
+from their currently common available channels to continue the transmission. 
+  \item \textit{Greedy channel selection}: the SU pair chooses the channel
+from their currently common available channels with the longest free time slots during
+a recent  observation \cite{aHsu07ACMPU}. 
+\end{enumerate}
+
+In our simulation, the two SUs perform rendezvous using the common hopping
+algorithm   
+\cite{ySong10CHBPS}. Furthermore, we ignore the time spent in channel rendezvous 
+and spectrum handoffs because in our simulation, we focus on the impact of
+the  
+number of common available channels.  All the needed parameters in the simulations
+are listed in Table \ref{table:parameters}. 
+
+\begin{table}[htb]\caption{Simulation Parameters} 
+\centering 
+\begin{tabular}{|l|c|} 
+\hline 
+Side length of the simulation area $L$ & 500m\\ 
+\hline 
+The distance between the two SUs & 10m\\ 
+\hline 
+Number of PUs: $N$ & 50 \\ 
+\hline 
+Number of channels: $M$ & 50 \\ 
+\hline 
+The antenna related constant: $\kappa_{1}$, $\kappa_{2}$, $\kappa_{3}$, and$\kappa_{4}$
+ & -25.54db\\ 
+\hline 
+The path-loss factor: $\alpha$ & 3.0\\ 
+\hline 
+The minimum required SIR for the SU receiver & 9.0db\\ 
+\hline 
+The transmission power of a PU: $P_{pu}$ & 2w\\ 
+\hline 
+The maximum acceptable interference power for a PU: $P_{pu\_min}$ & $7.5\times10^{-8}mw$\\
+
+\hline 
+The length of each time slot & 2ms\\ 
+\hline 
+The whole simulation time: $T$ & 1000s\\ 
+\hline 
+The length of a packet & 50 slots\\ 
+\hline 
+The PU packet arrival rate & 10 per second\\ 
+\hline 
+The SU packet arrival rate & 10 per second\\ 
+\hline 
+\end{tabular} 
+\label{table:parameters} 
+\end{table} 
+
+Fig. \ref{fig:num_chan} illustrates the improvement of the number of common
+available  
+channels using our proposed optimization. 
+The solid line represents the number of common available channels of the
+SU pair when the SU  
+sender always uses the optimal transmission power which is $20.65mw$. The
+dashed  
+line shows the number of common available channels when the SU's transmission
+power  
+changes from $5mw$ to $60mw$. We can see that without using the optimal 
+transmission power, the number of the common available channels is   
+lower than the one using the optimal transmission power.  
+Moreover, we can also see that in the range of $[15mw, 25mw]$, the difference
+between the two lines is very small, which means that the optimal transmission
+power $20.65mw$ that comes from our mathematical model is reasonable. 
+\begin{figure}[hbtp] 
+     \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_5_chan_num.eps} 
+      \caption{The improvement of the number of common available channels.}
+    \label{fig:num_chan} 
+    \end{center}   
+\end{figure}  
+
+Fig. \ref{fig:pck_ratio} shows the comparison of the packet successful delivery 
+ratio (the number of successfully received packets/the total number of transmitted
+packets) among the schemes using different channel selection algorithms in
+spectrum handoffs with and without our proposed optimization. In this figure, the
+two cases  with our optimization always use the optimal transmission power $20.65mw$,
+while the other two cases without using the optimal transmission use the
+power  changing from $5mw$ to $60mw$. 
+From the figure we can observe that for both channel selection schemes,
+using the  optimal transmission power can effectively improve the successful delivery
+ratio.  Moreover, the distance between the two lines with the same  
+channel selection scheme is very small when the SU transmission power of
+the scheme without our optimization is $20mw$, which indicates our approximate
+optimal transmission power $20.65mw$ is valid. Furthermore,  
+from the figure, we can see that the greedy channel selection scheme can
+lead to a larger  successful delivery ratio than the random channel selection scheme.  
+This is intuitive because the greedy scheme always chooses the best channel
+in terms of the longest recent available period.  
+Therefore, the probability of choosing a channel which will become busy in
+the near future may be lower than that of the random selection scheme. In summary,
+the performance of our proposed transmission power optimization is influenced
+by the channel selection scheme during spectrum handoffs. 
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_5_pkt_ratio.eps} 
+      \caption{The improvement of the packet successful delivery ratio.}
+    \label{fig:pck_ratio} 
+    \end{center}   
+\end{figure}  
+
+Fig. \ref{fig:sen_period} shows the impact of the sensing period on our optimization. 
+In order to get its available channels, a SU has to sense all the channels.
+This process  
+is usually time-consuming. Therefore, a SU usually only conducts full-spectrum
+sensing  
+and updates its available channel set periodically. The period of performing
+a  
+full-spectrum sensing is called a sensing period, which means that the SU
+will  
+not know for sure whether its current available channels are still available
+between  
+two spectrum sensing actions. This is another important reason of performing
+spectrum handoffs.  Thus, we evaluate the performance of our optimization
+algorithm under different  
+sensing periods. We obtain the results when the sensing period changes from
+100,  
+1,000, 10,000, 100,000, to 500,000 time slots. We use $60mw$ as the SU transmission
+power 
+of the two schemes without our optimization. The figure shows that the impact
+of  
+the sensing period is almost the same for the two schemes with and without
+our optimization 
+, and the schemes with  
+our optimization always outperform the ones without our optimization, which
+means  
+that our optimization can perform well under different sensing period. 
+\begin{figure}[hbtp]   
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_5_sen_period.eps} 
+      \caption{The impact of the sensing period.} 
+    \label{fig:sen_period} 
+    \end{center}  
+\end{figure} 
+
+Fig. \ref{fig:su_traffic} shows the impact of the SU packet arrival rate.
+In the simulation,  
+we set the PU packet arrival rate as 10 per second and let the SU packet
+arrival rate change  
+from 1, 5, 10, 15, to 20 per second. We use $60mw$ as the SU transmission
+power 
+of the two schemes without our optimization. From the figure we can see that
+when the SU  
+packet arrival rate changes from 1 to 10, our optimization can produce a
+much better  
+successful delivery ratio. However, when the packet arrival rate becomes
+larger than 10, the performance of all  
+schemes degrades, but the schemes using our algorithms still perform better
+and the  
+performance of the two channel selection schemes is of no difference. 
+This is because even with more common available channels, the SU pair will
+only use  
+one channel during each transmission. The larger packet arrival rate will
+result in more  
+collisions and discarded packets when the number of total transmitted packets
+is the same. 
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_5_su_traffic.eps} 
+      \caption{The impact of the SU packet arrival rate.} 
+    \label{fig:su_traffic} 
+    \end{center}   
+\end{figure} 
+
+Fig. \ref{fig:pu_traffic} shows the impact of the PU packet arrival rate.
+In the simulation,  
+we let the SU packet arrival rate be 10 per second and the PU packet arrival
+rate change  
+from 1, 5, 10, 15, to 20 per second. We use $60mw$ as the SU transmission
+power 
+of the two schemes without our optimization. The figure shows that when the
+PU packet arrival rate  
+is very low (less than 5 packets per second), all the four schemes can produce
+almost the  
+same high successful delivery ratio. The reason is that in this scenario,
+the probability  
+of collisions is low because of the low PU packet arrival rate.  
+Thus, the impact of more common available channels is not noticeable. As
+the PU packet  
+arrival rate increases, the performance of the schemes using our optimization
+is more  
+and more better than the ones without our optimization. This is because that
+more  
+collisions will occur under this scenario, which triggers more spectrum handoffs.
+Accordingly, our proposed optimization is more suitable when the PU packet
+arrival  
+rate is not very low. 
+\begin{figure}[hbtp] 
+    \begin{center} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_5_pu_traffic.eps} 
+      \caption{The impact of the PU packet arrival rate.} 
+    \label{fig:pu_traffic} 
+    \end{center} 
+\end{figure}   
 
 \chapter{CONCLUSION AND FUTURE WORK}
 \label{char:conclusion}
