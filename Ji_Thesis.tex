@@ -234,7 +234,7 @@ and map each SU to a specific spectrum segment. Next, we propose an efficient
 rendezvous scheme specific for this framework considering spectrum splitting
 which enables two SUs to reach a fast and successful rendezvous.
 \subsection{System Model}
-\label{sec:sys}
+\label{sec_3_1_sys}
 We consider that SUs in a CRN can dynamically access a  wide-band spectrum which has a total of $M$ channels indexed from $1$ to $M$, where $M$ is a large number which could be hundreds. There are totally $N$ SUs. Each SU is equipped with only one cognitive radio that cannot perform spectrum sensing and data transmission at the same time. Each SU has a unique ID which can be a  positive integer. Furthermore, we assume that each SU can obtain its available channel set  using a spectrum sensing algorithm \cite{iAkyildiz06NGDSA}. Initially, an SU does not know any information about other SUs, even their unique IDs. A  time-slotted system is adopted in this CRN. In each time slot, an SU either hops onto a channel according to its hopping sequence or stays on its current channel to continue the current communication with another SU. Time slots of different SUs are not necessarily synchronized, which is practical and easy to implement. SUs in the CRN attempt to get  information about other SUs within its transmission range, send packets to other SUs, or receive packets from other SUs. 
 
 In the rest of the section, we consider the following two scenarios concerning the available channel sets of an SU pair.
@@ -255,7 +255,7 @@ The goal of our proposed framework is to design efficient distributed schemes fo
     \end{center}  
 \end{figure} 
 
-During the initialization process, each SU first divides the whole wide-band spectrum into several virtual spectrum segments (SS). Based on \textbf{Algorithm \ref{al:spl}} (which is explained in Section \ref{sec:split}), each SU can get a unique list containing the number of channels in each SS. We call it the spectrum splitting list (SSL). Using the unique SSL, an SU can obtain the channel index of the start and end channel in each SS (shown in \textbf{Algorithm \ref{al:id}}). Then, each SU  uses its ID (based on \textbf{Algorithm \ref{al:id}}) to determine its home spectrum segment (HS). \textbf{Algorithm \ref{al:id}} is based on mapping all the SUs evenly to the whole spectrum, where we assume that the IDs of SUs are evenly distributed within a certain range. An SU  hops from a channel to another according to the designed channel hopping sequence (based on \textbf{Algorithm \ref{al:generate}} which is explained in Section \ref{sec:seq}) within its HS. Since  SUs are not synchronized, they may be at different positions of the same hopping sequence even they locate in the same HS. This is the initialization process of an SU who just starts in a CRN, as shown in the left of Fig. \ref{fig:frame}.
+During the initialization process, each SU first divides the whole wide-band spectrum into several virtual spectrum segments (SS). Based on \textbf{Algorithm \ref{al:spl}} (which is explained in Section \ref{sec:split}), each SU can get a unique list containing the number of channels in each SS. We call it the spectrum splitting list (SSL). Using the unique SSL, an SU can obtain the channel index of the start and end channel in each SS (shown in \textbf{Algorithm \ref{al:id}}). Then, each SU  uses its ID (based on \textbf{Algorithm \ref{al:id}}) to determine its home spectrum segment (HS). \textbf{Algorithm \ref{al:id}} is based on mapping all the SUs evenly to the whole spectrum, where we assume that the IDs of SUs are evenly distributed within a certain range. An SU  hops from a channel to another according to the designed channel hopping sequence (based on \textbf{Algorithm \ref{sec_3_1_algorithm_generate}} which is explained in Section \ref{sec:seq}) within its HS. Since  SUs are not synchronized, they may be at different positions of the same hopping sequence even they locate in the same HS. This is the initialization process of an SU who just starts in a CRN, as shown in the left of Fig. \ref{fig:frame}.
 \begin{algorithm} 
   \caption{The algorithm to determine a SU's home spectrum's index}
   \begin{algorithmic}[1] 
@@ -309,22 +309,22 @@ When $n = 4t+2$ or $4t+3$, where $t$ is an integer and $t \geq 1$, the rendezvou
         \begin{proof}
         Designing a rendezvous sequence $s$ as described in \textbf{Lemma \ref{lemma:guar_rend}} is equivalent to dividing  $1,2,\dots, 2n$,  these $2n$ numbers into two lists $l_{l}$ and $l_{r}$, each of which has exactly $n$ different numbers, such that for $k=1,2,\dots,n$, $l_{r}[k] - l_{l}[k] = k$. Then, we have
         \begin{equation}
-        \label{eq:sum1}
+        \label{sec_3_1_eq_sum1}
         \sum^{n}_{k=1}l_{r}[k]-\sum^{n}_{k=1}l_{l}[k]=\sum^{n}_{k=1}k=\DF{n(n+1)}{2},
         \end{equation}
         \begin{equation}
-        \label{eq:sum2}
+        \label{sec_3_1_eq_sum2}
         \sum^{n}_{k=1}l_{r}[k]+\sum^{n}_{k=1}l_{l}[k]=\sum^{2n}_{k=1}k=n(2n+1).
         \end{equation}
-        Combining \eqref{eq:sum1} and \eqref{eq:sum2}, we can get 
+        Combining \eqref{sec_3_1_eq_sum1} and \eqref{sec_3_1_eq_sum2}, we can get 
         \begin{equation}
-        \label{eq:sum3}
+        \label{sec_3_1_eq_sum3}
         \sum^{n}_{k=1}l_{r}[k]=\DF{5n^{2}+3n}{4}.
         \end{equation}
-        When $n=4t+2$ or $4t+3$,where $t$ is an integer and $t \geq 1$, the right-hand side of \eqref{eq:sum3} is not an integer which contradicts the fact that it is a sum of $n$ integers.
+        When $n=4t+2$ or $4t+3$,where $t$ is an integer and $t \geq 1$, the right-hand side of \eqref{sec_3_1_eq_sum3} is not an integer which contradicts the fact that it is a sum of $n$ integers.
         \end{proof}
 \begin{lemma}
-\label{lemma:exist}
+\label{sec_3_1_lemma_exist}
 When $n=4t$ or $4t+1$, where $t$ is an integer and $t \geq 1$, the rendezvous sequence always exists.
 \end{lemma}
         \begin{proof}
@@ -332,12 +332,12 @@ When $n=4t$ or $4t+1$, where $t$ is an integer and $t \geq 1$, the rendezvous se
         When $n=5$, sequence $"1,1,5,2,4,2,3,5,4,3"$ satisfies the requirements of our desired rendezvous sequence.
         When $n > 5$, the proof can be found in the second page of \cite{tSkolem57OCDOI}.
         \end{proof}
-Based on the proof of \textbf{ Lemma \ref{lemma:no_exist}} and \textbf{ Lemma \ref{lemma:exist}}, we propose \textbf{Algorithm \ref{al:generate}} to generate our desired rendezvous sequence. Using the channel hopping sequence generated based on \textbf{Algorithm \ref{al:generate}} and \textbf{Lemma \ref{lemma:guar_rend}}, we design the rendezvous algorithm under the symmetrical model as shown in \textbf{Algorithm \ref{al:sym}}.
+Based on the proof of \textbf{ Lemma \ref{lemma:no_exist}} and \textbf{ Lemma \ref{sec_3_1_lemma_exist}}, we propose \textbf{Algorithm \ref{sec_3_1_algorithm_generate}} to generate our desired rendezvous sequence. Using the channel hopping sequence generated based on \textbf{Algorithm \ref{sec_3_1_algorithm_generate}} and \textbf{Lemma \ref{lemma:guar_rend}}, we design the rendezvous algorithm under the symmetrical model as shown in \textbf{Algorithm \ref{al:sym}}.
 %\renewcommand\baselinestretch{0.8}\selectfont 
 \begin{algorithm} 
   \caption{The algorithm to generate a rendezvous sequence}
   \begin{algorithmic}[1] 
-  \label{al:generate}
+  \label{sec_3_1_algorithm_generate}
     \REQUIRE ~~\\
     The number of channels to generate the channel hopping sequence: $n$
     \ENSURE ~~\\
@@ -389,7 +389,7 @@ Based on the proof of \textbf{ Lemma \ref{lemma:no_exist}} and \textbf{ Lemma \r
         \ELSE
                 \STATE $m = n$;\\
         \ENDIF
-    \STATE Generate the channel hopping sequence $s$ based on $m$ and \textbf{Algorithm \ref{al:generate}};\\
+    \STATE Generate the channel hopping sequence $s$ based on $m$ and \textbf{Algorithm \ref{sec_3_1_algorithm_generate}};\\
     \FOR{$k=1$ to $2m$}
                 \IF{$s_{k} > n$}
                         \STATE $s_{k} = s_{k} \% n$;\ \ /* To guarantee $s_{k}$ to be within $n$ */\\
@@ -406,7 +406,7 @@ Based on the proof of \textbf{ Lemma \ref{lemma:no_exist}} and \textbf{ Lemma \r
   \end{algorithmic} 
 \end{algorithm}
 
-We define a round of  channel hopping as  the length of the $2n$ time slots an SU hops sequentially and circularly  according to the channel hopping sequence. An example of rendezvous in one channel hopping round under the symmetrical model is shown in Fig. \ref{fig:sys_ren}. We assume that the number of available channels of an SU pair is $4$. We label each available channel using the index from $1$ to $4$.  Based on \textbf{Algorithm \ref{al:generate}}, their channel hopping sequence is $"1,1,4,2,3,2,4,3"$. Assume that the SU sender starts hopping from the channel  whose index is $s_{1}=1$ and the SU receiver currently stays on the channel whose index is $s_{3}=4$. Then, the SU sender and receiver will rendezvous on the channel whose index is $s_{4}=2$ after $3$ time slots.
+We define a round of  channel hopping as  the length of the $2n$ time slots an SU hops sequentially and circularly  according to the channel hopping sequence. An example of rendezvous in one channel hopping round under the symmetrical model is shown in Fig. \ref{fig:sys_ren}. We assume that the number of available channels of an SU pair is $4$. We label each available channel using the index from $1$ to $4$.  Based on \textbf{Algorithm \ref{sec_3_1_algorithm_generate}}, their channel hopping sequence is $"1,1,4,2,3,2,4,3"$. Assume that the SU sender starts hopping from the channel  whose index is $s_{1}=1$ and the SU receiver currently stays on the channel whose index is $s_{3}=4$. Then, the SU sender and receiver will rendezvous on the channel whose index is $s_{4}=2$ after $3$ time slots.
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=6cm,height=2.3cm]{sys.jpg} 
@@ -428,7 +428,7 @@ From \textbf{Lemma \ref{lemma:guar_rend}} and \textbf{Algorithm \ref{al:sym}}, w
 \subsection{Proposed Rendezvous Schemes Under the Asymmetrical Model}
  Under the asymmetrical model, the SU sender and receiver have different available channel sets. The challenge here is that before rendezvous happens, the SU sender does not know the available channel set of the SU receiver. Here, we assume that they have at least one common available channel. Otherwise, they can never achieve a successful rendezvous.\\
  
-As an SU pair may have different available channel sets, each SU's channel hopping sequence should  contain all the channels within the SU receiver's HS. We assume that there are totally $n$ channels in the SU receiver's HS which are indexed from $1$ to $n$. The spectrum splitting scheme in Section \ref{sec:split} can guarantee the existence of the channel hopping sequences. We still use  \textbf{Algorithm \ref{al:generate}} to design the basic channel hopping sequence based on these $n$ channels for both the SU sender and receiver. Additionally, we will replace the unavailable channels in the base channel hopping sequence with the ones randomly chosen from the SU sender's or receiver's own available channels to get their own channel hopping sequences. According to \textbf{Lemma \ref{lemma:guar_rend}}, the replacements will not change the property of our channel hopping sequence. Our goal is to design a rendezvous algorithm which can guarantee rendezvous on different channels during several rounds of the channel hopping until rendezvous on the channel which is commonly available for an SU pair. According to the property of the rendezvous sequence, we can simply change the starting position of an SU sender's channel hopping during each channel hopping round. During a new channel hopping round, after changing the  distance between the SU pair's  positions in the channel hopping sequence, the SU sender and receiver can rendezvous on a new channel. The details of the rendezvous algorithm under the asymmetrical model are shown in \textbf{Algorithm \ref{al:asym}}.
+As an SU pair may have different available channel sets, each SU's channel hopping sequence should  contain all the channels within the SU receiver's HS. We assume that there are totally $n$ channels in the SU receiver's HS which are indexed from $1$ to $n$. The spectrum splitting scheme in Section \ref{sec:split} can guarantee the existence of the channel hopping sequences. We still use  \textbf{Algorithm \ref{sec_3_1_algorithm_generate}} to design the basic channel hopping sequence based on these $n$ channels for both the SU sender and receiver. Additionally, we will replace the unavailable channels in the base channel hopping sequence with the ones randomly chosen from the SU sender's or receiver's own available channels to get their own channel hopping sequences. According to \textbf{Lemma \ref{lemma:guar_rend}}, the replacements will not change the property of our channel hopping sequence. Our goal is to design a rendezvous algorithm which can guarantee rendezvous on different channels during several rounds of the channel hopping until rendezvous on the channel which is commonly available for an SU pair. According to the property of the rendezvous sequence, we can simply change the starting position of an SU sender's channel hopping during each channel hopping round. During a new channel hopping round, after changing the  distance between the SU pair's  positions in the channel hopping sequence, the SU sender and receiver can rendezvous on a new channel. The details of the rendezvous algorithm under the asymmetrical model are shown in \textbf{Algorithm \ref{al:asym}}.
 %\renewcommand\baselinestretch{0.8}\selectfont 
 \begin{algorithm} 
   \caption{The rendezvous algorithm for an SU sender under the asymmetrical model}
@@ -440,7 +440,7 @@ As an SU pair may have different available channel sets, each SU's channel hoppi
     \STATE Use \textbf{Algorithm \ref{al:spl}} to get the SSL of the whole spectrum band: $l$;
     \STATE Use \textbf{Algorithm \ref{al:id}} to get the index of the HS of the SU receiver: $r$;\\
     \STATE $n=l[r]$;\ \ /* The index starts from $0$ */\\
-    \STATE Generate the channel hopping sequence $s$ based on $n$ and \textbf{Algorithm \ref{al:generate}};\\
+    \STATE Generate the channel hopping sequence $s$ based on $n$ and \textbf{Algorithm \ref{sec_3_1_algorithm_generate}};\\
     \FOR{$i = 1$ to $2n$}
       \STATE $j=i$;\ \ /* The starting hopping position of the current round */\\
              \FOR{$k=0$ to $2n-1$}
@@ -740,7 +740,7 @@ if $t = 2q$, $q$ is an integer and $q \geq 1$, then $ a = 8q+1$, thus $a=4q+(4q+
 If $t = 2q+1, q \geq 1$, then $a = 8q+5$, thus $a=4(q+1)+(4q+1)$.
 \end{proof}
 
-Let $\theta$ be the minimum number of channels in a SS. We will discuss how to choose the value of $\theta$ in Section \ref{sec:performance} through simulation results. Given $\theta$, SUs can execute \textbf{Algorithm \ref{al:spl}} to determine the SSL.
+Let $\theta$ be the minimum number of channels in a SS. We will discuss how to choose the value of $\theta$ in Section \ref{sec_3_1_performance} through simulation results. Given $\theta$, SUs can execute \textbf{Algorithm \ref{al:spl}} to determine the SSL.
 
 \begin{algorithm} 
   \caption{The algorithm to determine the number of channels in each spectrum segment}
@@ -767,10 +767,10 @@ Let $\theta$ be the minimum number of channels in a SS. We will discuss how to c
   \end{algorithmic} 
 \end{algorithm}
 
-Based on \textbf{Lemma \ref{lemma:spl_1_4t2}} to \textbf{Lemma \ref{lemma:spl_4_4t1}} and \textbf{Algorithm \ref{al:spl}}, each SU can use the same scheme to split the whole spectrum which guarantees the existence of our designed channel hopping sequence in each spectrum segment. An example of our spectrum splitting scheme is that when $M=100$ and $\theta=20$, the SSL is $[28,24,24,24]$ and each element in this SSL can guarantee the existence of our rendezvous sequence according to \textbf{Lemma \ref{lemma:exist}}.
+Based on \textbf{Lemma \ref{lemma:spl_1_4t2}} to \textbf{Lemma \ref{lemma:spl_4_4t1}} and \textbf{Algorithm \ref{al:spl}}, each SU can use the same scheme to split the whole spectrum which guarantees the existence of our designed channel hopping sequence in each spectrum segment. An example of our spectrum splitting scheme is that when $M=100$ and $\theta=20$, the SSL is $[28,24,24,24]$ and each element in this SSL can guarantee the existence of our rendezvous sequence according to \textbf{Lemma \ref{sec_3_1_lemma_exist}}.
 
 \subsection{Performance Evaluation}
-\label{sec:performance}
+\label{sec_3_1_performance}
 In this section, we evaluate the performance of our proposed framework in
 terms of \textit{ETTR} of rendezvous, the average normalized throughput,
 the time to finish information exchange, and the effect of $\theta$ under
@@ -921,7 +921,7 @@ ratio changes from $0.6$ to $0.9$, which means that  our scheme has an advantage
 when the available channel sets of the two SUs are more  distinct.
 \begin{figure}[hbtp] 
     \begin{center} 
-      \includegraphics[width=10cm,height=8cm]{sec_3_1-com_avai_fac.eps} 
+      \includegraphics[width=10cm,height=8cm]{sec_3_1_com_avai_fac.eps} 
       \caption{The \textit{ETTR} under different common available ratio.}
     \label{fig:com_avai_fac} 
     \end{center}   
@@ -1295,7 +1295,7 @@ In this section, we propose two efficient rendezvous schemes under the scenarios
 there is not a predetermined sender or receiver for a rendezvous process
 during the initialization phase of cognitive radio networks when SUs are equipped with multiple radios.
 \subsection{System Model and Problem Description}
-\label{sec:pro}
+\label{sec_3_2_pro}
 In this research, we assume that there are totally $N$ SUs and $N_{p}$ PUs coexisting. There are totally $M$ channels that all the SUs and PUs can access.  Each SU is equipped with a GPS  which can get its location coordinates. Furthermore, each SU is equipped with exactly $R$  homogeneous
 half-duplex cognitive radios. Therefore, a cognitive radio cannot send and receive signals simultaneously. We assume that for a SU, all its cognitive radios use the same transmission power and have the same interference range.\\
 
@@ -1320,9 +1320,9 @@ Therefore, the problem is how to generate a \textit{task allocation list} $\math
 \subsection{The Basic Rendezvous Scheme}
 In this section, we discuss the blind rendezvous problem between two SUs when considering multiple cognitive radios and the \textit{send-or-receive problem}. At the beginning of the initialization phase of a CRN, each SU does not know any information about other SUs. Therefore, each SU can only perform a blind rendezvous process based on its local information to set up links with other SUs. However, previous research works only focus on designing the channel-hopping sequence so that the two SUs can hop to a common available channel at the same time, while ignore the \textit{send-or-receive problem}, especially when each SU is equipped with multiple cognitive radios. Our goal is to generate a \textit{task allocation list} for each SU during each time slot based on an existing channel hopping sequence so that two SUs can achieve a successful \textit{link  rendezvous} within bounded time slots.
 
-Our proposed basic link rendezvous scheme is to generate a \textit{task allocation list} $\mathbb{A}$ for each SU during each time slot based on an existing channel hopping sequence which can guarantee a successful \textit{channel rendezvous} within bounded time slots. Given a specific channel hopping sequence ( e.g., the jump-stay channel hopping sequence in \cite{zLin11JSBCH}), we denote the channel-hopping sequence for the $j$th radio of the $i$th SU as $\mathbb{S}_{ij}$, and the element in $\mathbb{S}_{ij}$ at time slot $t$ as $\mathbb{S}^{t}_{ij}$. After $\mathbb{S}_{ij}$ is  generated,  for the task allocation list $\mathbb{A}^{t}_{i}$, all the values of $c^{t}_{i1}, c^{t}_{i2}, \dots, c^{t}_{iR}$ are determined as $c^{t}_{i1} = \mathbb{S}^{t}_{i1}, c^{t}_{i2} = \mathbb{S}^{t}_{i2}, \dots, c^{t}_{iR} = \mathbb{S}^{t}_{iR}$. Therefore, the next step is to set the binary values of $0$ or $1$ to $s^{t}_{i1}, s^{t}_{i2}, \dots, s^{t}_{iR}$ to guarantee that $\mathbb{A}^{t}_{i}$ satisfy the constraints explained in Section \ref{sec:pro}.\\
+Our proposed basic link rendezvous scheme is to generate a \textit{task allocation list} $\mathbb{A}$ for each SU during each time slot based on an existing channel hopping sequence which can guarantee a successful \textit{channel rendezvous} within bounded time slots. Given a specific channel hopping sequence ( e.g., the jump-stay channel hopping sequence in \cite{zLin11JSBCH}), we denote the channel-hopping sequence for the $j$th radio of the $i$th SU as $\mathbb{S}_{ij}$, and the element in $\mathbb{S}_{ij}$ at time slot $t$ as $\mathbb{S}^{t}_{ij}$. After $\mathbb{S}_{ij}$ is  generated,  for the task allocation list $\mathbb{A}^{t}_{i}$, all the values of $c^{t}_{i1}, c^{t}_{i2}, \dots, c^{t}_{iR}$ are determined as $c^{t}_{i1} = \mathbb{S}^{t}_{i1}, c^{t}_{i2} = \mathbb{S}^{t}_{i2}, \dots, c^{t}_{iR} = \mathbb{S}^{t}_{iR}$. Therefore, the next step is to set the binary values of $0$ or $1$ to $s^{t}_{i1}, s^{t}_{i2}, \dots, s^{t}_{iR}$ to guarantee that $\mathbb{A}^{t}_{i}$ satisfy the constraints explained in Section \ref{sec_3_2_pro}.\\
 
-\vspace{-0.4cm} For any $c^{t}_{ij}, 1\leq j \leq R$, if $c^{t}_{ij}$ appears more than once among all the $R$ radios, which means that more than one radio will hop on channel $c^{t}_{ij}$ during time slot $t$, the radios allocated to channel $c^{t}_{ij}$ should wait for RTS packets according to the constraints in Section \ref{sec:pro}   Other radios will randomly choose sending or receiving roles to themselves.\\
+\vspace{-0.4cm} For any $c^{t}_{ij}, 1\leq j \leq R$, if $c^{t}_{ij}$ appears more than once among all the $R$ radios, which means that more than one radio will hop on channel $c^{t}_{ij}$ during time slot $t$, the radios allocated to channel $c^{t}_{ij}$ should wait for RTS packets according to the constraints in Section \ref{sec_3_2_pro}   Other radios will randomly choose sending or receiving roles to themselves.\\
 
 \vspace{-0.4cm}Here is an example of the $0-1$ allocation solution. Assume that $R = 5$ and $c^{t}_{i1} = 1, c^{t}_{i2} = 3, c^{t}_{i3} = 3, c^{t}_{i4} = 2, c^{t}_{i5} = 1$. Since channel $3$ appears twice, $s^{t}_{i2} = 0$ and $s^{t}_{i3} = 0$, which means that the second and third radio should wait for RTS packets during the current time slot on channel $3$. Since channel $1$  also appears twice, $s^{t}_{i1} = 0$ and $s^{t}_{i5} = 0$, which means that the first and fifth radio should also wait for RTS packets during the current time slot on channel $1$. For the fourth radio, we can randomly set $s^{t}_{i4} = 1$.  Finally, the generated \textit{task allocation list} for the $i$th SU during time slot $t$ is $\mathbb{A}^{t}_{i} = \{(c^{t}_{i1} = 1, s^{t}_{i1} = 0), (c^{t}_{i2} = 3, s^{t}_{i2} = 0), (c^{t}_{i3} = 3, s^{t}_{i3} = 0), (c^{t}_{i4} = 2, s^{t}_{i4} = 1), (c^{t}_{i5} = 1, s^{t}_{i5} = 0)\}$.\\
 
@@ -1359,10 +1359,10 @@ Our proposed basic link rendezvous scheme is to generate a \textit{task allocati
 Based on \textbf{Algorithm \ref{al:basic}}, we can get  \textbf{Theorem \ref{the:basic}}.
 \begin{theorem}
 \label{the:basic}
-Algorithm \ref{al:basic} can guarantee a successful \textbf{channel} rendezvous, and the generated \textit{task allocation list} $\mathbb{A}^{t}_{i}$ can satisfy the constraints in Section \ref{sec:pro}
+Algorithm \ref{al:basic} can guarantee a successful \textbf{channel} rendezvous, and the generated \textit{task allocation list} $\mathbb{A}^{t}_{i}$ can satisfy the constraints in Section \ref{sec_3_2_pro}
 \end{theorem}
 \begin{proof}
-  Since each cognitive radio of the $i$th SU hops following a pre-defined channel hopping sequence which can guarantee a successful channel rendezvous, our proposed scheme can also guarantee a successful channel rendezvous between two SUs as long as two of their radios achieve a channel rendezvous. Furthermore, according to \textbf{Algorithm \ref{al:basic}}, if multiple radios hop to a same channel,  all of them will wait for RTS packets. Therefore, all the constraints in Section \ref{sec:pro} can be satisfied.
+  Since each cognitive radio of the $i$th SU hops following a pre-defined channel hopping sequence which can guarantee a successful channel rendezvous, our proposed scheme can also guarantee a successful channel rendezvous between two SUs as long as two of their radios achieve a channel rendezvous. Furthermore, according to \textbf{Algorithm \ref{al:basic}}, if multiple radios hop to a same channel,  all of them will wait for RTS packets. Therefore, all the constraints in Section \ref{sec_3_2_pro} can be satisfied.
 \end{proof}
 
 \subsection{The Enhanced Rendezvous Scheme}
@@ -1443,11 +1443,11 @@ Based on \textbf{Lemma \ref{le:equal1}} and \textbf{Algorithm \ref{al:enhanced}}
 \label{th:enhanced}
 The enhanced rendezvous scheme in Algorithm \ref{al:enhanced} can guarantee a successful \textit{\textbf{channel} rendezvous}. The probability that two SUs independently choose the same binary string for the send-or-receive problem, which may fail a \textit{link rendezvous}, is  $\DF{1}{2^{R\eta}}$, where $R$ is the number of cognitive radios each SU is equipped with and $\eta$ is the number of times that two radios of the two SUs hop to a common available channel during a blind rendezvous process.\end{theorem}
 \begin{proof}
-  We define a channel group between two SUs as a valid group if there is a common available channel in it. As long as two SUs have at least one common available channel, there is a valid group between them as they split all the channels into the sam channel groups. Therefore, the two SUs will hop to a valid group as long as they follow the hopping sequence which can guarantee a successful \textit{channel rendezvous} on a common available channel. According to \textbf{Algorithm \ref{al:enhanced}}, two SUs have the same send-or-receive allocations only when they choose the same random integer from the range $[0, 2^{R}-1]$. The probability that two SUs independently choose the same integer from  $[0, 2^{R}-1]$ is $\DF{1}{2^{R}}\times\DF{1}{2^{R}} = \DF{1}{2^{2R}}$. There are totally $2^{R}$ different integers from $[0, 2^{R}-1]$. Therefore, the final probability of a link rendezvous failure is $(\DF{1}{2^{2R}}\times 2^{R})^{\eta} = \DF{1}{2^{R\eta}}$.
+  We define a channel group between two SUs as a valid group if there is a common available channel in it. As long as two SUs have at least one common available channel, there is a valid group between them as they split all the channels into the same channel groups. Therefore, the two SUs will hop to a valid group as long as they follow the hopping sequence which can guarantee a successful \textit{channel rendezvous} on a common available channel. According to \textbf{Algorithm \ref{al:enhanced}}, two SUs have the same send-or-receive allocations only when they choose the same random integer from the range $[0, 2^{R}-1]$. The probability that two SUs independently choose the same integer from  $[0, 2^{R}-1]$ is $\DF{1}{2^{R}}\times\DF{1}{2^{R}} = \DF{1}{2^{2R}}$. There are totally $2^{R}$ different integers from $[0, 2^{R}-1]$. Therefore, the final probability of a link rendezvous failure is $(\DF{1}{2^{2R}}\times 2^{R})^{\eta} = \DF{1}{2^{R\eta}}$.
 \end{proof}
 
 \subsection{Performance Evaluation}
-\label{sec:performance}
+\label{sec_3_2_performance}
 In this part, we evaluate the performance of the proposed blind rendezvous
 schemes. Since to the best of the our knowledge, our proposed schemes are
 the first ones who consider the \textit{send-or-receive} problem, there are
@@ -1466,7 +1466,7 @@ In this simulation, we set $R = 4$, $M$ from $10$ to $50$, and the channel
 available ratio of each SU is $0.5$ which means the number of current available
 channels of a SU to the number of all the channels. 
 
-In Fig. \ref{fig:rend1},  we show the average time to a \textit{link rendezvous} by implementing the
+In Fig. \ref{sec_3_2_fig_rend1},  we show the average time to a \textit{link rendezvous} by implementing the
 basic scheme and the enhanced one. For each result, we perform $10000$ simulations
 to measure the average rendezvous time. The results indicate that the enhanced
 rendezvous scheme is much better than the basic rendezvous scheme considering
@@ -1480,7 +1480,7 @@ between the results from the basic scheme and the enhanced one also increase.
     \begin{center} 
       \includegraphics[width=10cm,height=8cm]{sec_3_2_rend1.eps} 
       \caption{The average rendezvous time as the total number of channel increases.}
-    \label{fig:rend1} 
+    \label{sec_3_2_fig_rend1} 
     \end{center}   
 \end{figure} 
 
@@ -1630,7 +1630,7 @@ that there is not a predetermined sender or receiver for a rendezvous process
 during the initialization phase of cognitive radio networks when SUs are
 equipped with single radio.
 \subsection{System Model and Problem Description}
-\label{sec:pro}
+\label{sec_3_3_pro}
 In this research, we assume that there are totally $N$ SUs and $N_{p}$ PUs coexisting. There are totally $M$ channels that all the SUs and PUs can access. Furthermore, each SU is equipped with a
 half-duplex cognitive radio. Therefore, a cognitive radio cannot send and receive signals simultaneously. There is no CCC in the network through which all SUs can exchange their control information. Before the initialization process of a CRN, each SU does not know any control information about other SUs, which is a very practical assumption. A time-slotted system is deployed among all SUs and PUs  and they do no need to be strictly synchronized.\\
 
@@ -1764,7 +1764,7 @@ Based on \textbf{Algorithm \ref{al:rend1}}, we can get the following theorem:
 
 \addtocounter{theorem}{-2}
 \begin{theorem}
-\label{th:exp_t}
+\label{sec_3_3_theorem_exp_t}
 The expectation of time slots to achieve a link rendezvous for \textbf{Algorithm \ref{al:rend1}}
 is $E[T]=2T_e$, where $T_e$ is the expectation of the channel rendezvous time for a specific given channel hopping sequence.
 \end{theorem}
@@ -1888,16 +1888,16 @@ two lists $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$, each of which has exactly
 $2M$ different numbers, such that for $k=1,2,\dots,2M$, $\mathcal{L}_{2}[k]
 - \mathcal{L}_{1}[k] = k$. Then, we have
         \begin{equation}
-        \label{eq:sum1}
+        \label{sec_3_3_eq_sum1}
         \sum^{2M}_{k=1}\mathcal{L}_{2}[k]-\sum^{2M}_{k=1}\mathcal{L}_{1}[k]=\sum^{2M}_{k=1}k=\DF{2M(2M+1)}{2},
         \end{equation}
         \begin{equation}
-        \label{eq:sum2}
+        \label{sec_3_3_eq_sum2}
         \sum^{2M}_{k=1}\mathcal{L}_{2}[k]+\sum^{2M}_{k=1}\mathcal{L}_{1}[k]=\sum^{4M}_{k=1}k=2M(4M+1).
         \end{equation}
-        Combining \eqref{eq:sum1} and \eqref{eq:sum2}, we can get 
+        Combining \eqref{sec_3_3_eq_sum1} and \eqref{sec_3_3_eq_sum2}, we can get 
         \begin{equation}
-        \label{eq:sum3}
+        \label{sec_3_3_eq_sum3}
         \sum^{2M}_{k=1}\mathcal{L}_{2}[k]=\DF{10M^{2}+3M}{2}.
         \end{equation}
         When $2M\ mod\ 4=2$, $M$ is an odd number that can be represented as $M=2e+1, e\geq 0$, thus
@@ -1910,7 +1910,7 @@ $2M$ different numbers, such that for $k=1,2,\dots,2M$, $\mathcal{L}_{2}[k]
 \end{proof}
      
 \begin{lemma}
-\label{lemma:exist}
+\label{sec_3_3_lemma_exist}
 When $M>1$ and $2M\ mod\ 4=0$, $\mathcal{B}$ exists.
 \end{lemma}
 \begin{proof}
@@ -1920,13 +1920,13 @@ of our desired basic link rendezvous sequence.
 \end{proof}
 
 Based on the proof of \textbf{ Lemma \ref{lemma:noexist}} and \textbf{ Lemma
-\ref{lemma:exist}}, we propose \textbf{Algorithm \ref{al:generate}} to generate
+\ref{sec_3_3_lemma_exist}}, we propose \textbf{Algorithm \ref{sec_3_3_algorithm_generate}} to generate
 our virtual channel sequence $\mathcal{S}$.
 
 \begin{algorithm} 
   \caption{The algorithm for generating the virtual channel hopping sequence}
   \begin{algorithmic}[1] 
-  \label{al:generate}
+  \label{sec_3_3_algorithm_generate}
     \REQUIRE ~~\\
     The number of channels : $M$
     \ENSURE ~~\\
@@ -1971,7 +1971,7 @@ our virtual channel sequence $\mathcal{S}$.
   \end{algorithmic}
 \end{algorithm} 
 
-According to \textbf{Algorithm \ref{al:generate}}, if $M>0$ and $2M\ mod\ 4=2$, the length of $\mathcal{S}$ should be larger than $4M$ in order to
+According to \textbf{Algorithm \ref{sec_3_3_algorithm_generate}}, if $M>0$ and $2M\ mod\ 4=2$, the length of $\mathcal{S}$ should be larger than $4M$ in order to
 guarantee the existence of $\mathcal{S}$. Furthermore, we have the following
 lemma about $\mathcal{S}$ regarding a successful link rendezvous. After getting
 the virtual channel hopping sequence $\mathcal{S}$, we can get the
@@ -1996,13 +1996,13 @@ different virtual channels $c_1$ and $c_2$ such that $|c_1-c_2|=M$.
 \end{proof}
 
 \vspace{-0.1cm}
-An example of Lemma \ref{lemma:guar_rend2} is shown in Fig. \ref{fig:rend1}, where $M = 2$, the virtual channel sequence is $\{1, 3, 4, 2, 3, 4, 2, 1\}$, SU1 starts from the first element, and SU2 starts from the third element. Within $4M = 8$ time slots, two SUs first hop to channel $2$ and $4$ that $4-2 = 2 = M$ during the fourth time slot, and then hop to channel $1$ and $3$ that $3-1 = 2 = M$ during the eighth time slot.\\
+An example of Lemma \ref{lemma:guar_rend2} is shown in Fig. \ref{sec_3_3_fig_rend1}, where $M = 2$, the virtual channel sequence is $\{1, 3, 4, 2, 3, 4, 2, 1\}$, SU1 starts from the first element, and SU2 starts from the third element. Within $4M = 8$ time slots, two SUs first hop to channel $2$ and $4$ that $4-2 = 2 = M$ during the fourth time slot, and then hop to channel $1$ and $3$ that $3-1 = 2 = M$ during the eighth time slot.\\
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=8cm,height=2.2cm]{rend1.jpg} 
         %\vspace{-0.4cm}
         \caption{An example of the virtual channel hopping sequence.} 
-        \label{fig:rend1}
+        \label{sec_3_3_fig_rend1}
     \end{center} 
 \end{figure}
 
@@ -2065,9 +2065,9 @@ is $\DF{4M-1}{4M}p_c$. Finally, the fail probability is $1-\DF{4M-1}{4M}p_c=\DF{
 1-p_c-\DF{p_c}{4M}\approx 1-p_c$
 \end{proof}
 
-Finally, we can get the \textbf{Theorem \ref{th:exp_t}} regarding the average link rendezvous time of the enhanced link rendezvous scheme in \textbf{Algorithm\ref{al:rend2}}.\addtocounter{theorem}{-6}
+Finally, we can get the \textbf{Theorem \ref{sec_3_3_theorem_exp_t_2}} regarding the average link rendezvous time of the enhanced link rendezvous scheme in \textbf{Algorithm\ref{al:rend2}}.\addtocounter{theorem}{-6}
 \begin{theorem}
-\label{th:exp_t}
+\label{sec_3_3_theorem_exp_t_2}
 The expectation of link rendezvous time slots for \textbf{Algorithm\ref{al:rend2}}
 is $E[T]=\DF{4M}{p_c}$, where $M$ is the total number of channels and $p_c$
 is the probability that a channel is a common available channel of the two
@@ -2091,7 +2091,7 @@ are data packets in the queue waiting for transmitting, it just randomly
 chooses a channel from channel $1$ to channel $M$. Otherwise, it just keeps
 silent and waits for the next data packet. We assume that the data packet
 arrival rate of each PU obeys Poisson distribution. The main parameters in
-our simulations are shown in Table \ref{table:parameters}.
+our simulations are shown in Table \ref{sec_3_3_table_parameters}.
 \begin{table}[htb]
 \caption{Simulation Parameters} 
 \centering 
@@ -2118,7 +2118,7 @@ The length of a PU packet & 100 slots\\
 The PU packet arrival rate $\lambda_{p}$ & 5 per second\\ 
 \hline 
 \end{tabular} 
-\label{table:parameters} 
+\label{sec_3_3_table_parameters} 
 \end{table} 
 
 \subsubsection{Average Link Rendezvous Time Under Different Scenarios}
@@ -2139,7 +2139,7 @@ that the proposed scheme outperforms the random scheme when the total number
 of channels increases from $10$ to $50$. We can also notice that the average
 link rendezvous time almost has a linear relation with the total number of
 channels under the proposed scheme, which coincide the analysis in \textbf{Theorem
-\ref{th:exp_t}}.
+\ref{sec_3_3_theorem_exp_t_2}}.
 
 \begin{figure}[hbtp] 
     \begin{center} 
@@ -2304,7 +2304,7 @@ could be more completed since each SU could be equipped with heterogeneous
 directional antenna and it does not know any information about the other
 SUs.
 \subsection{System Model and Problem Description}
-\label{sec:des}
+\label{sec_3_4_description}
 In this research, we consider two SUs, coexisting with several PUs, who want to rendezvous with each other. Each SU can opportunistically access a total of $M$ channels. Each SU is equipped with a directional antenna that can transmit or receive signals on a transmission sector with a certain angle. We assume that the directional antenna of each SU can adjust the angle of a transmission sector. The two considered SUs are located within the transmission range of each other, and they can implement the same channel rendezvous scheme which can guarantee a successful channel rendezvous within a bounded time.\\
 
 \vspace{-0.6cm}
@@ -2514,7 +2514,7 @@ After adjustments, $N_{s}$ and $N_{r}$ should be prime numbers. If $N_{s} = N_{r
 \label{sec:sim}
 In this section, we show simulation results regarding our proposed sector
 rendezvous schemes under a practical CRN. The simulation parameters are shown
-in Table \ref{table:parameters}. 
+in Table \ref{sec_3_4_table_parameters}. 
 \begin{table}[htb]
 \caption{Simulation Parameters} 
 \centering 
@@ -2539,7 +2539,7 @@ The length of a PU packet & 100 slots\\
 The PU packet arrival rate $\lambda_{p}$ & 5 per second\\ 
 \hline 
 \end{tabular} 
-\label{table:parameters} 
+\label{sec_3_4_table_parameters} 
 \end{table}
 \subsubsection{Performance of the Sector Rendezvous Schemes}
 To the best of our knowledge, there are no existing sector rendezvous schemes.
@@ -2660,7 +2660,7 @@ of time slots in a transmission sector increases.}
 In this section, we propose a power control protocol which can maximize the number of
 common available channels between two SUs.
 \subsection{Problem Description} 
-\label{sec:des} 
+\label{sec_3_5_description} 
 \vspace{-0.1cm} Consider two SUs in a CRAHN: one is the sender and the other is the receiver during  
 a transmission. For the SU sender, its transmission on a channel may generate direct  
 interference to the PUs who are using the same channel. Thus, the sensing threshold  
@@ -2753,7 +2753,7 @@ In the next section, we use the SU sensing ranges to estimate the expectation of
 number of common available channels between two SUs and then determine the  
 optimal SU transmission power to maximize the number of common available channels. 
 \subsection{System Model} 
-\label{sec:sys} 
+\label{sec_3_5_sys} 
 \vspace{-0.2cm} We consider two SUs in an area whose size is $S = L \times L$. One SU is the SU  
 sender $SU_{1}$, while the other SU is the SU receiver $SU_{2}$. The set of all  
 channels is $\mathcal{\mathcal{M}}=\{1,2,\dots ,M\}$ which has $M$ channels. 
@@ -2932,7 +2932,7 @@ which means that our approximate optimal solution is valid and applicable.
 \end{figure} 
 
 \subsection{The Proposed Power Control Protocol} 
-\label{sec:pro} 
+\label{sec_3_4_pro} 
 In order to implement the optimization solution, we make the following assumptions.  
 We assume that each SU is equipped with a GPS to get its own coordinates.  
 Moreover, according to our proposed algorithms, the SU pair should know some  
@@ -3046,7 +3046,7 @@ algorithm
 and spectrum handoffs because in our simulation, we focus on the impact of
 the  
 number of common available channels.  All the needed parameters in the simulations
-are listed in Table \ref{table:parameters}. 
+are listed in Table \ref{sec_3_5_table_parameters}. 
 
 \begin{table}[htb]\caption{Simulation Parameters} 
 \centering 
@@ -3083,7 +3083,7 @@ The PU packet arrival rate & 10 per second\\
 The SU packet arrival rate & 10 per second\\ 
 \hline 
 \end{tabular} 
-\label{table:parameters} 
+\label{sec_3_5_table_parameters} 
 \end{table} 
 
 Fig. \ref{fig:num_chan} illustrates the improvement of the number of common
