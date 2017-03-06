@@ -147,7 +147,7 @@ rendezvous without knowing any information of other SUs.
 An example of a successful rendezvous process is shown in Fig. \ref{fig:sys_ren}. We assume there are totally four channels,  channel 1 and 3 are available to SU1, and channel 2 and 3 are available to SU2. The channel hopping sequences are "1,1,4,2,3,2,4,3" and "2,3,2,4,3,1,1,4" for SU1 and SU2, respectively. After five time slots, SU1 and SU2 can successfully rendezvous on the common available channel 3.
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=10cm,height=2.5cm]{rend0.jpg} 
+        \includegraphics[width=8cm,height=2.3cm]{rend0.jpg} 
         \caption{An example of a successful rendezvous process.} 
         \label{1_2_example} 
     \end{center} 
