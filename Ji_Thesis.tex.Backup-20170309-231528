@@ -552,7 +552,7 @@ discussed previously.
 An example of Lemma \ref{lemma:asym_slot1} is shown in Fig. \ref{fig:asys1}.
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=10cm,height=3cm]{sec_3_1-unaligned1.jpg} 
+        \includegraphics[width=7cm,height=2.3cm]{sec_3_1-unaligned1.jpg} 
         \caption{The first scenario regarding a rendezvous considering unaligned
 time slots.} 
         \label{fig:asys1} 
@@ -577,7 +577,7 @@ $\varepsilon$ should be $(\varepsilon-1+2n)$ mod $2n$.
 An example of Lemma \ref{lemma:asym_slot2} is shown in Fig. \ref{fig:asys2}.
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=10cm,height=3cm]{sec_3_1-unaligned2.jpg} 
+        \includegraphics[width=7cm,height=2.3cm]{sec_3_1-unaligned2.jpg} 
         \caption{The second scenario regarding a rendezvous considering unaligned
 time slots.} 
         \label{fig:asys2} 
@@ -599,7 +599,7 @@ exchange. Therefore, this scenario is equivalent to the scenario in Lemma
 An example of Lemma \ref{lemma:asym_slot3} is shown in Fig. \ref{fig:asys3}.
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=10cm,height=3cm]{sec_3_1-unaligned3.jpg} 
+        \includegraphics[width=7cm,height=2.3cm]{sec_3_1-unaligned3.jpg} 
         \caption{The third scenario regarding a rendezvous considering unaligned
 time slots.} 
         \label{fig:asys3} 
@@ -625,7 +625,7 @@ $\varepsilon$ should be $(\varepsilon+1)$ mod $2n$.
 An example of Lemma \ref{lemma:asym_slot4} is shown in Fig. \ref{fig:asys4}.
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=10cm,height=3cm]{sec_3_1-unaligned4.jpg} 
+        \includegraphics[width=7cm,height=2.3cm]{sec_3_1-unaligned4.jpg} 
         \caption{The fourth scenario regarding a rendezvous considering unaligned
 time slots.} 
         \label{fig:asys4} 
@@ -680,7 +680,7 @@ The answer for the first scenario $t^{1}_{t\_min} = max\{2\lambda-t_{s},
 
 \begin{figure}[hbt]
 \begin{center}
-\includegraphics[width=12cm,height=4cm]{sec_3_1-optTimeSlot1.jpg}
+\includegraphics[width=8cm,height=3cm]{sec_3_1-optTimeSlot1.jpg}
 \caption{The first scenario considering unaligned time slots}
 \label{fig:optTimeSlot1}
 \end{center}
@@ -699,7 +699,7 @@ The answer for the second scenario $t^{2}_{t\_min} = max\{2\lambda-t_{s},
 
 \begin{figure}[hbt]
 \begin{center}
-\includegraphics[width=12cm,height=4cm]{sec_3_1-optTimeSlot2.jpg}
+\includegraphics[width=8cm,height=3cm]{sec_3_1-optTimeSlot2.jpg}
 \caption{The second scenario considering unaligned time slots}
 \label{fig:optTimeSlot2}
 \end{center}
@@ -1315,17 +1315,17 @@ during the initialization phase of cognitive radio networks when SUs are equippe
 \section{System Model and Problem Description}
 \label{sec_3_2_pro}
 In this research, we assume that there are totally $N$ SUs and $N_{p}$ PUs coexisting. There are totally $M$ channels that all the SUs and PUs can access.  Each SU is equipped with a GPS  which can get its location coordinates. Furthermore, each SU is equipped with exactly $R$  homogeneous
-half-duplex cognitive radios. Therefore, a cognitive radio cannot send and receive signals simultaneously. We assume that for a SU, all its cognitive radios use the same transmission power and have the same interference range.
+half-duplex cognitive radios. Therefore, a cognitive radio cannot send and receive signals simultaneously. We assume that for a SU, all its cognitive radios use the same transmission power and have the same interference range.\\
 
-There is no CCC in the network through which all SUs can exchange their control information. Before the initialization process of a CRN, each SU does not know any information about other SUs, which is a very practical assumption. A time-slotted system is deployed among all SUs and they do no need to be strictly synchronized.
+There is no CCC in the network through which all SUs can exchange their control information. Before the initialization process of a CRN, each SU does not know any information about other SUs, which is a very practical assumption. A time-slotted system is deployed among all SUs and they do no need to be strictly synchronized.\\
 
-A channel hopping scheme is adopted for the rendezvous process. During a rendezvous process, each cognitive radio of an SU hops to a  channel chosen from its available channel set, senses the current availability of the channel, and sends an RTS packet or waits for an RTS packet from another SU. Therefore, each time slot includes the sensing phase and the sending or receiving phase during the rendezvous process. According to existing rendezvous schemes, a successful rendezvous occurs when  two SUs hop to a common available channel at the same time slot, but the process of sending an RTS packet and receiving a CTS reply is not considered. In this research, we define this kind of rendezvous as  \textit{channel rendezvous}. This may not be a problem when one SU is always the sender while the other is the receiver, which means that there is an explicit send-or-receive relationship between the two SUs. Under this scenario, after one SU sends an RTS packet,  if the other SU receives the RTS packet and replies a CTS packet, the rendezvous succeeds.
+A channel hopping scheme is adopted for the rendezvous process. During a rendezvous process, each cognitive radio of an SU hops to a  channel chosen from its available channel set, senses the current availability of the channel, and sends an RTS packet or waits for an RTS packet from another SU. Therefore, each time slot includes the sensing phase and the sending or receiving phase during the rendezvous process. According to existing rendezvous schemes, a successful rendezvous occurs when  two SUs hop to a common available channel at the same time slot, but the process of sending an RTS packet and receiving a CTS reply is not considered. In this research, we define this kind of rendezvous as  \textit{channel rendezvous}. This may not be a problem when one SU is always the sender while the other is the receiver, which means that there is an explicit send-or-receive relationship between the two SUs. Under this scenario, after one SU sends an RTS packet,  if the other SU receives the RTS packet and replies a CTS packet, the rendezvous succeeds. \\
 
-However, during the initialization phase of a CRN, each SU may want to rendezvous with other SUs to exchange control information. There is no explicit role for a SU, since it cannot know if other SUs are senders or receivers currently. If two SUs hop to a common available channel and they both have their transceivers on, none of them can receive the RTS packets, which can fail a successful rendezvous. Furthermore, each SU does not know if its target SU is on the current common available channel and is sending or receiving  in the current time slot. Practically, only when the two SUs hop to a common available channel and when one SU is sending  while the other is trying to receive on that channel, a successful rendezvous can finally happen. In this research, we denote this kind of rendezvous as  \textit{link rendezvous}. Therefore, when an SU is equipped with multiple cognitive radios, during a rendezvous process, the SU should not only consider which available channel each cognitive radio should tune to but also determine that each radio should be in the sending or receiving mode. We call this problem as the \textit{send-or-receive problem} in a rendezvous scheme.
+However, during the initialization phase of a CRN, each SU may want to rendezvous with other SUs to exchange control information. There is no explicit role for a SU, since it cannot know if other SUs are senders or receivers currently. If two SUs hop to a common available channel and they both have their transceivers on, none of them can receive the RTS packets, which can fail a successful rendezvous. Furthermore, each SU does not know if its target SU is on the current common available channel and is sending or receiving  in the current time slot. Practically, only when the two SUs hop to a common available channel and when one SU is sending  while the other is trying to receive on that channel, a successful rendezvous can finally happen. In this research, we denote this kind of rendezvous as  \textit{link rendezvous}. Therefore, when an SU is equipped with multiple cognitive radios, during a rendezvous process, the SU should not only consider which available channel each cognitive radio should tune to but also determine that each radio should be in the sending or receiving mode. We call this problem as the \textit{send-or-receive problem} in a rendezvous scheme.\\
 
-For the $i$th SU with $R$ cognitive radios, during time slot $t$ of a rendezvous process, it generates a \textit{task allocation list} $\mathbb{A}^{t}_{i} = {(c^{t}_{i1}, s^{t}_{i1}), (c^{t}_{i2}, s^{t}_{i2}), \dots, (c^{t}_{iR}, s^{t}_{iR})}$, where $1\leq c^{t}_{iu} \leq M$, $s^{t}_{iu} = 1$ (send) or $s^{t}_{iu} = 0$ (receive), and $(c^{t}_{iu}, s^{t}_{iu})$ is called a \textit{task pair} for the $u$th cognitive radio of the $i$th SU during time slot $t$. We also denote $C_{i}^{t}$ as the available channel set of the $i$th SU during  time slot $t$. We define  \textit{link rendezvous} as follows.
+For the $i$th SU with $R$ cognitive radios, during time slot $t$ of a rendezvous process, it generates a \textit{task allocation list} $\mathbb{A}^{t}_{i} = {(c^{t}_{i1}, s^{t}_{i1}), (c^{t}_{i2}, s^{t}_{i2}), \dots, (c^{t}_{iR}, s^{t}_{iR})}$, where $1\leq c^{t}_{iu} \leq M$, $s^{t}_{iu} = 1$ (send) or $s^{t}_{iu} = 0$ (receive), and $(c^{t}_{iu}, s^{t}_{iu})$ is called a \textit{task pair} for the $u$th cognitive radio of the $i$th SU during time slot $t$. We also denote $C_{i}^{t}$ as the available channel set of the $i$th SU during  time slot $t$. We define  \textit{link rendezvous} as follows.\\
 
-\textit{Link Rendezvous}: A successful link rendezvous between the $i$th SU and the $j$th SU during time slot $t$ requires that there exists a task pair $(c^{t}_{iu}, s^{t}_{iu})$ for the $u$th cognitive radio of the $i$th SU and a task pair $(c^{t}_{jv}, s^{t}_{jv})$ for the $v$th cognitive radio of the $j$th SU such that $c^{t}_{iu} \in C^{t}_{i}$, $c^{t}_{jv} \in C^{t}_{j}, c^{t}_{iu} = c^{t}_{jv}$, and $s^{t}_{iu}\ \mbox{XOR}\ s^{t}_{jv} = 1$.
+\textit{Link Rendezvous}: A successful link rendezvous between the $i$th SU and the $j$th SU during time slot $t$ requires that there exists a task pair $(c^{t}_{iu}, s^{t}_{iu})$ for the $u$th cognitive radio of the $i$th SU and a task pair $(c^{t}_{jv}, s^{t}_{jv})$ for the $v$th cognitive radio of the $j$th SU such that $c^{t}_{iu} \in C^{t}_{i}$, $c^{t}_{jv} \in C^{t}_{j}, c^{t}_{iu} = c^{t}_{jv}$, and $s^{t}_{iu}\ \mbox{XOR}\ s^{t}_{jv} = 1$.\\
 
 Moreover,  we can notice that $\mathbb{A}^{t}_{i}$ should satisfy the following constraints:
 \begin{enumerate}
@@ -1338,13 +1338,13 @@ Therefore, the problem is how to generate a \textit{task allocation list} $\math
 \section{The Basic Rendezvous Scheme}
 In this section, we discuss the blind rendezvous problem between two SUs when considering multiple cognitive radios and the \textit{send-or-receive problem}. At the beginning of the initialization phase of a CRN, each SU does not know any information about other SUs. Therefore, each SU can only perform a blind rendezvous process based on its local information to set up links with other SUs. However, previous research works only focus on designing the channel-hopping sequence so that the two SUs can hop to a common available channel at the same time, while ignore the \textit{send-or-receive problem}, especially when each SU is equipped with multiple cognitive radios. Our goal is to generate a \textit{task allocation list} for each SU during each time slot based on an existing channel hopping sequence so that two SUs can achieve a successful \textit{link  rendezvous} within bounded time slots.
 
-Our proposed basic link rendezvous scheme is to generate a \textit{task allocation list} $\mathbb{A}$ for each SU during each time slot based on an existing channel hopping sequence which can guarantee a successful \textit{channel rendezvous} within bounded time slots. Given a specific channel hopping sequence ( e.g., the jump-stay channel hopping sequence in \cite{zLin11JSBCH}), we denote the channel-hopping sequence for the $j$th radio of the $i$th SU as $\mathbb{S}_{ij}$, and the element in $\mathbb{S}_{ij}$ at time slot $t$ as $\mathbb{S}^{t}_{ij}$. After $\mathbb{S}_{ij}$ is  generated,  for the task allocation list $\mathbb{A}^{t}_{i}$, all the values of $c^{t}_{i1}, c^{t}_{i2}, \dots, c^{t}_{iR}$ are determined as $c^{t}_{i1} = \mathbb{S}^{t}_{i1}, c^{t}_{i2} = \mathbb{S}^{t}_{i2}, \dots, c^{t}_{iR} = \mathbb{S}^{t}_{iR}$. Therefore, the next step is to set the binary values of $0$ or $1$ to $s^{t}_{i1}, s^{t}_{i2}, \dots, s^{t}_{iR}$ to guarantee that $\mathbb{A}^{t}_{i}$ satisfy the constraints explained in Section \ref{sec_3_2_pro}.
+Our proposed basic link rendezvous scheme is to generate a \textit{task allocation list} $\mathbb{A}$ for each SU during each time slot based on an existing channel hopping sequence which can guarantee a successful \textit{channel rendezvous} within bounded time slots. Given a specific channel hopping sequence ( e.g., the jump-stay channel hopping sequence in \cite{zLin11JSBCH}), we denote the channel-hopping sequence for the $j$th radio of the $i$th SU as $\mathbb{S}_{ij}$, and the element in $\mathbb{S}_{ij}$ at time slot $t$ as $\mathbb{S}^{t}_{ij}$. After $\mathbb{S}_{ij}$ is  generated,  for the task allocation list $\mathbb{A}^{t}_{i}$, all the values of $c^{t}_{i1}, c^{t}_{i2}, \dots, c^{t}_{iR}$ are determined as $c^{t}_{i1} = \mathbb{S}^{t}_{i1}, c^{t}_{i2} = \mathbb{S}^{t}_{i2}, \dots, c^{t}_{iR} = \mathbb{S}^{t}_{iR}$. Therefore, the next step is to set the binary values of $0$ or $1$ to $s^{t}_{i1}, s^{t}_{i2}, \dots, s^{t}_{iR}$ to guarantee that $\mathbb{A}^{t}_{i}$ satisfy the constraints explained in Section \ref{sec_3_2_pro}.\\
 
-For any $c^{t}_{ij}, 1\leq j \leq R$, if $c^{t}_{ij}$ appears more than once among all the $R$ radios, which means that more than one radio will hop on channel $c^{t}_{ij}$ during time slot $t$, the radios allocated to channel $c^{t}_{ij}$ should wait for RTS packets according to the constraints in Section \ref{sec_3_2_pro}   Other radios will randomly choose sending or receiving roles to themselves.
+For any $c^{t}_{ij}, 1\leq j \leq R$, if $c^{t}_{ij}$ appears more than once among all the $R$ radios, which means that more than one radio will hop on channel $c^{t}_{ij}$ during time slot $t$, the radios allocated to channel $c^{t}_{ij}$ should wait for RTS packets according to the constraints in Section \ref{sec_3_2_pro}   Other radios will randomly choose sending or receiving roles to themselves.\\
 
-Here is an example of the $0-1$ allocation solution. Assume that $R = 5$ and $c^{t}_{i1} = 1, c^{t}_{i2} = 3, c^{t}_{i3} = 3, c^{t}_{i4} = 2, c^{t}_{i5} = 1$. Since channel $3$ appears twice, $s^{t}_{i2} = 0$ and $s^{t}_{i3} = 0$, which means that the second and third radio should wait for RTS packets during the current time slot on channel $3$. Since channel $1$  also appears twice, $s^{t}_{i1} = 0$ and $s^{t}_{i5} = 0$, which means that the first and fifth radio should also wait for RTS packets during the current time slot on channel $1$. For the fourth radio, we can randomly set $s^{t}_{i4} = 1$.  Finally, the generated \textit{task allocation list} for the $i$th SU during time slot $t$ is $\mathbb{A}^{t}_{i} = \{(c^{t}_{i1} = 1, s^{t}_{i1} = 0), (c^{t}_{i2} = 3, s^{t}_{i2} = 0), (c^{t}_{i3} = 3, s^{t}_{i3} = 0), (c^{t}_{i4} = 2, s^{t}_{i4} = 1), (c^{t}_{i5} = 1, s^{t}_{i5} = 0)\}$.
+Here is an example of the $0-1$ allocation solution. Assume that $R = 5$ and $c^{t}_{i1} = 1, c^{t}_{i2} = 3, c^{t}_{i3} = 3, c^{t}_{i4} = 2, c^{t}_{i5} = 1$. Since channel $3$ appears twice, $s^{t}_{i2} = 0$ and $s^{t}_{i3} = 0$, which means that the second and third radio should wait for RTS packets during the current time slot on channel $3$. Since channel $1$  also appears twice, $s^{t}_{i1} = 0$ and $s^{t}_{i5} = 0$, which means that the first and fifth radio should also wait for RTS packets during the current time slot on channel $1$. For the fourth radio, we can randomly set $s^{t}_{i4} = 1$.  Finally, the generated \textit{task allocation list} for the $i$th SU during time slot $t$ is $\mathbb{A}^{t}_{i} = \{(c^{t}_{i1} = 1, s^{t}_{i1} = 0), (c^{t}_{i2} = 3, s^{t}_{i2} = 0), (c^{t}_{i3} = 3, s^{t}_{i3} = 0), (c^{t}_{i4} = 2, s^{t}_{i4} = 1), (c^{t}_{i5} = 1, s^{t}_{i5} = 0)\}$.\\
 
-The details of our proposed rendezvous scheme for the $i$th SU is shown in \textbf{Algorithm \ref{al:basic}}.
+The details of our proposed rendezvous scheme for the $i$th SU is shown in \textbf{Algorithm \ref{al:basic}}.\\
 
 \begin{algorithm} 
   \caption{The basic rendezvous algorithm considering the send-or-receive problem}
@@ -1384,9 +1384,9 @@ Algorithm \ref{al:basic} can guarantee a successful \textbf{channel} rendezvous,
 \end{proof}
 
 \section{The Enhanced Rendezvous Scheme}
-One problem of the basic rendezvous scheme is that multiple radios may all use   one same channel to receive RTS packets, if they all hop to the same channel simultaneously. Therefore, the cognitive radios of an SU are not well utilized. For example, when each SU is equipped with $4$ cognitive radios, if $3$ of them hop to channel $1$ and the last radio hops to channel $2$ at the same time, under the basic scheme it is equivalent to just using two radios during the current time slot. In this section, we propose an enhanced rendezvous scheme, considering multiple cognitive radios and the \textit{send-or-receive problem}, which can well utilize all the radios of an SU during each time slot to achieve a fast \textit{link rendezvous}.
+One problem of the basic rendezvous scheme is that multiple radios may all use   one same channel to receive RTS packets, if they all hop to the same channel simultaneously. Therefore, the cognitive radios of an SU are not well utilized. For example, when each SU is equipped with $4$ cognitive radios, if $3$ of them hop to channel $1$ and the last radio hops to channel $2$ at the same time, under the basic scheme it is equivalent to just using two radios during the current time slot. In this section, we propose an enhanced rendezvous scheme, considering multiple cognitive radios and the \textit{send-or-receive problem}, which can well utilize all the radios of an SU during each time slot to achieve a fast \textit{link rendezvous}.\\
 
-The basic idea of our proposed enhanced rendezvous scheme is to split the total $M$ channels into several continuous groups. Each group has exactly $R$ consecutive channels, where $R$ is the number of cognitive radios of a SU. If $M$ mod $R \neq 0$, then sequentially add channel $1$, $2$, \dots, $R-1$ to the last group until the number of channels is $R$. There is an example in Fig. \ref{fig:group} when $M = 10$, $R = 4$, the generated $\lceil\DF{10}{4}\rceil = 3$ channel groups are $\{1,2,3,4\}$, $\{5,6,7,8\}$, and $\{9,10,1,2\}$.
+The basic idea of our proposed enhanced rendezvous scheme is to split the total $M$ channels into several continuous groups. Each group has exactly $R$ consecutive channels, where $R$ is the number of cognitive radios of a SU. If $M$ mod $R \neq 0$, then sequentially add channel $1$, $2$, \dots, $R-1$ to the last group until the number of channels is $R$. There is an example in Fig. \ref{fig:group} when $M = 10$, $R = 4$, the generated $\lceil\DF{10}{4}\rceil = 3$ channel groups are $\{1,2,3,4\}$, $\{5,6,7,8\}$, and $\{9,10,1,2\}$.\\
 \begin{figure}[hbtp] 
     \begin{center} 
       \includegraphics[width=8cm,height=3cm]{sec_3_2_group.eps} 
@@ -1395,11 +1395,11 @@ The basic idea of our proposed enhanced rendezvous scheme is to split the total 
     \end{center}   
 \end{figure} 
 
-We denote $M_{s} = \lceil\DF{M}{R}\rceil$ as the total number of channel groups,  $\mathcal{G} = \{G_{1}, G_{2}, \dots, G_{M_{s}}\}$ as the set of all the channel groups, and $G_{i} = \{g_{i1}, g_{i2}, \dots, g_{iR}\}$ as the channels in the $i$th channel group. As all SUs are equipped with exactly $R$ cognitive radios and can access totally $M$ channels, they can generate the same $\mathcal{G}$ independently. For a SU, it applies $M_{s}$ rather than the number of all channels $M$ to generate a hopping sequence, based on an existing channel hopping sequence generating algorithm. We denote this sequence as the \textit{channel-group hopping sequence} (CGHS).
+We denote $M_{s} = \lceil\DF{M}{R}\rceil$ as the total number of channel groups,  $\mathcal{G} = \{G_{1}, G_{2}, \dots, G_{M_{s}}\}$ as the set of all the channel groups, and $G_{i} = \{g_{i1}, g_{i2}, \dots, g_{iR}\}$ as the channels in the $i$th channel group. As all SUs are equipped with exactly $R$ cognitive radios and can access totally $M$ channels, they can generate the same $\mathcal{G}$ independently. For a SU, it applies $M_{s}$ rather than the number of all channels $M$ to generate a hopping sequence, based on an existing channel hopping sequence generating algorithm. We denote this sequence as the \textit{channel-group hopping sequence} (CGHS).\\
 
-Our basic idea is to assign each cognitive radio with a different current available channel during each time slot. During time slot $t$, if the $i$th SU hops to the $j$th channel group, it allocates current available channels  in $G_{j}$ sequentially to its $R$ cognitive radios. If some channels become unavailable during the current slot which makes the total available channels in $G_{j}$ are not enough for all $R$ radios, the SU also allocates the available channels in the next channel groups until each of the $R$ radios is allocated with a different current available channel. If the number of available channels among the total $M$ channels is less than $R$, then allocate each of them to a radio and let the rest radios keep silent during the current time slot. Here is an example when $M = 10$, $R = 3$, and the available channels in each channel group are $\{2,3\}$, $\{5\}$, $\{7,9\}$,  and $\{10,2\}$. Assume that an SU hops to the second channel group during the current time slot according to the CGHS. The $3$ allocated available channels are channel $5$ from the second channel group and channel $7,9$ from the third channel group.
+Our basic idea is to assign each cognitive radio with a different current available channel during each time slot. During time slot $t$, if the $i$th SU hops to the $j$th channel group, it allocates current available channels  in $G_{j}$ sequentially to its $R$ cognitive radios. If some channels become unavailable during the current slot which makes the total available channels in $G_{j}$ are not enough for all $R$ radios, the SU also allocates the available channels in the next channel groups until each of the $R$ radios is allocated with a different current available channel. If the number of available channels among the total $M$ channels is less than $R$, then allocate each of them to a radio and let the rest radios keep silent during the current time slot. Here is an example when $M = 10$, $R = 3$, and the available channels in each channel group are $\{2,3\}$, $\{5\}$, $\{7,9\}$,  and $\{10,2\}$. Assume that an SU hops to the second channel group during the current time slot according to the CGHS. The $3$ allocated available channels are channel $5$ from the second channel group and channel $7,9$ from the third channel group.\\
 
-The last step is to solve the \textit{send-or-receive problem}. Note that this problem is equivalent to design a binary string of length $R$ containing only  $0$ or $1$. We define such a string of length $R$ as $\beta_{R}$. Therefore, during time slot $t$, solving the \textit{send-or-receive problem} for the $i$th SU is equivalent to designing a binary string $\beta^{t}_{iR}$. We derive the following lemmas regarding a successful \textit{link rendezvous} between the $i$th and $j$th SU based on $\beta^{t}_{iR}$ and $\beta^{t}_{jR}$.
+The last step is to solve the \textit{send-or-receive problem}. Note that this problem is equivalent to design a binary string of length $R$ containing only  $0$ or $1$. We define such a string of length $R$ as $\beta_{R}$. Therefore, during time slot $t$, solving the \textit{send-or-receive problem} for the $i$th SU is equivalent to designing a binary string $\beta^{t}_{iR}$. We derive the following lemmas regarding a successful \textit{link rendezvous} between the $i$th and $j$th SU based on $\beta^{t}_{iR}$ and $\beta^{t}_{jR}$.\\
 
 \addtocounter{theorem}{-1}
 \begin{lemma}
@@ -1409,7 +1409,7 @@ A necessary condition of a successful \textbf{link} rendezvous between the $i$th
 \begin{proof}
 If $\beta^{t}_{iR}\ \mbox{XOR}\ \beta^{t}_{jR} = 0$, i.e., every bit of the two binary strings is the same, there does not exist a send-and-receive pair between the two SUs which can  guarantee successfully sending and receiving RTS packets. However, if $\beta^{t}_{iR}\ \mbox{XOR}\ \beta^{t}_{jR} > 0$, there are at least two corresponding bits that are different and they can make one radio of an SU send and one radio of the other SU  receive.\end{proof}
 
-The challenge of designing $\beta^{t}_{iR}$ is that the two SUs do not know any information about each other before a successful rendezvous. Our goal is to find a good distributed scheme to generate $\beta$ so that $\beta^{t}_{iR}\ \mbox{XOR}\ \beta^{t}_{jR} = 0$ happens as less as possible. The following lemma can help us design a well performed $\beta_{R}$.
+The challenge of designing $\beta^{t}_{iR}$ is that the two SUs do not know any information about each other before a successful rendezvous. Our goal is to find a good distributed scheme to generate $\beta$ so that $\beta^{t}_{iR}\ \mbox{XOR}\ \beta^{t}_{jR} = 0$ happens as less as possible. The following lemma can help us design a well performed $\beta_{R}$.\\
 \begin{lemma}
 \label{le:equal1}
 Two different binary strings $\beta_{iR}$ and $\beta_{jR}$, always satisfy $\beta_{iR}\ \mbox{XOR}\ \beta_{jR} > 0$, as long as they are the binary representations of two different integers from the range $[0, 2^{R}-1]$.
@@ -1418,7 +1418,7 @@ Two different binary strings $\beta_{iR}$ and $\beta_{jR}$, always satisfy $\bet
 If $\beta_{iR}\ \mbox{XOR}\ \beta_{jR} = 0$, the decimal representations of the two binary strings should be the same, as each bit of the two strings is the same, which contradicts the fact that they represent two different numbers.
 \end{proof}
 
-The details of our proposed enhanced rendezvous scheme for the $i$th SU is shown in \textbf{Algorithm  \ref{al:enhanced}}.
+The details of our proposed enhanced rendezvous scheme for the $i$th SU is shown in \textbf{Algorithm  \ref{al:enhanced}}.\\
 
 \begin{algorithm} 
   \caption{The enhanced blind rendezvous algorithm considering the send-or-receive problem}
@@ -1454,7 +1454,7 @@ The details of our proposed enhanced rendezvous scheme for the $i$th SU is shown
   \end{algorithmic} 
 \end{algorithm}
 
-Based on \textbf{Lemma \ref{le:equal1}} and \textbf{Algorithm \ref{al:enhanced}}, we can get \textbf{Theorem \ref{th:enhanced}}.
+Based on \textbf{Lemma \ref{le:equal1}} and \textbf{Algorithm \ref{al:enhanced}}, we can get \textbf{Theorem \ref{th:enhanced}}.\\
 
 \addtocounter{theorem}{-1}
 \begin{theorem}
@@ -1955,7 +1955,7 @@ A channel hopping scheme is adopted for the  rendezvous process between two SUs.
 
 However, during the initialization phase of a CRN, each SU may try to rendezvous with other SUs to exchange control information. There is no explicit role for an SU, since it cannot know if other SUs are senders or receivers currently. If two SUs hop to a common available channel and their transceivers are both tuning to the sending mode , none of them can receive the RTS packets, which can fail a successful rendezvous. Furthermore, each SU does not know if its target SU is on the current common available channel and is  in the sending or receiving mode  during the current time slot. Practically, only when the two SUs hop to a common available channel and when one SU is sending  while the other is trying to receive on that channel, a successful rendezvous can finally happen. In this research, we denote this kind of rendezvous as  \textit{link rendezvous}. Therefore, in a \textit{link rendezvous} process without the explicit sender or receiver , an SU  should not only determine the channel it should hop to but also whether tuning its half-duplex radio to the sending or receiving mode during a time slot. We call this problem as the \textit{send-or-receive problem} in a \textit{link rendezvous} scheme.
 
-For the $i$th SU, during time slot $t$ of a link rendezvous process, it generates a \textit{task allocation} $\mathbb{A}^{t}_{i} = (c^{t}_{i}, s^{t}_{i})$, where $1\leq c^{t}_{i} \leq M$, $s^{t}_{i} = 1$ (send) or $s^{t}_{i} = 0$ (receive).  We also denote $C_{i}^{t}$ as the available channel set of the $i$th SU during  time slot $t$. We define  \textit{link rendezvous} as follows.
+For the $i$th SU, during time slot $t$ of a link rendezvous process, it generates a \textit{task allocation} $\mathbb{A}^{t}_{i} = (c^{t}_{i}, s^{t}_{i})$, where $1\leq c^{t}_{i} \leq M$, $s^{t}_{i} = 1$ (send) or $s^{t}_{i} = 0$ (receive).  We also denote $C_{i}^{t}$ as the available channel set of the $i$th SU during  time slot $t$. We define  \textit{link rendezvous} as follows.\\
 
 \textit{Link Rendezvous}: A successful link rendezvous between the $i$th SU and the $j$th SU during time slot $t$ requires that $(c^{t}_{i}, s^{t}_{i})$ and $(c^{t}_{j}, s^{t}_{j})$ satisfy $c^{t}_{i} \in C^{t}_{i}$, $c^{t}_{j} \in C^{t}_{j}, c^{t}_{i} = c^{t}_{j}$, and $s^{t}_{i}\ \mbox{XOR}\ s^{t}_{j} = 1$.
 
@@ -2003,7 +2003,8 @@ $k$ times circularly left shifts. A larger $\overline{N_v}$ means that there are
 basic transmission sequence $S_b$ for a given length $L$, which can finally result in 
 the largest average valid number $\overline{N_v}$.
 
-To get the optimal basic transmission sequence $S_b$ with length $L$, we first derive the following lemma:
+To get the optimal basic transmission sequence $S_b$ with length $L$, we first
+derive the following lemma:
 \begin{lemma}
 \label{le:valid1}
 For a basic transmission sequence with length $L$, if there are $n$ $1$ elements
@@ -2061,7 +2062,8 @@ and send RTS packets;         \ENDIF
 Here is an example of the basic link rendezvous scheme in Fig. \ref{fig:rend-basic}, where $M = 4$, the transmission sequence of SU1 is $\{1,0,0,1\}$, the transmission sequence of SU2 is $\{1,1,0,0\}$, each SU hops according to its own channel hopping sequence, and the common available channels for them are channel $3$ and $2$. The two SUs first hop to the common available channel $3$. However, they do not achieve a successful link rendezvous since they are all tuning to the sending mode during that time slot. Therefore, they just continue the channel hopping process until they all hop to the common available channel $2$. Finally, they achieve a successful link rendezvous on channel $2$ since SU1 is tuning to the sending mode and SU2 is tuning to the receiving mode.
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=12cm,height=4cm]{sec_3_3_rend-basic.eps}
+        \includegraphics[width=9cm,height=3.5cm]{sec_3_3_rend-basic.eps} 
+        %\vspace{-0.4cm}
         \caption{An example of the basic link rendezvous scheme.} 
         \label{fig:rend-basic}
     \end{center} 
@@ -2097,7 +2099,8 @@ are also available to the SU.
 
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=8cm,height=4cm]{sec_3_4_virtual.eps} 
+        \includegraphics[width=6cm,height=3cm]{sec_3_4_virtual.eps} 
+        %\vspace{-0.4cm}
         \caption{An example of generating virtual channels.} 
         \label{fig:virtual}
     \end{center} 
@@ -2156,7 +2159,7 @@ Here is an example in Fig.\ref{fig:rend0}. In the example, we assume that $M=2$,
 
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=12cm,height=3cm]{sec_3_3_rend0.jpg} 
+        \includegraphics[width=8cm,height=2cm]{sec_3_3_rend0.jpg} 
         %\vspace{-0.4cm}
         \caption{An example of the basic virtual channel hopping sequence.} 
         \label{fig:rend0}
@@ -2172,7 +2175,8 @@ could be $\{1,1,4,2,3,2,4,3\}$, after the replacements, the final channel
 hopping sequence $\mathcal{S}$ should be $\{1,3,4,2,3,4,2,1\}$.
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=12cm,height=3cm]{sec_3_3_replace.eps} 
+        \includegraphics[width=8cm,height=2cm]{sec_3_3_replace.eps} 
+        %\vspace{-0.4cm}
         \caption{An example of the replacement manipulations.} 
         \label{fig:replace}
     \end{center} 
@@ -2302,7 +2306,7 @@ An example of Lemma \ref{lemma:guar_rend2} is shown in Fig. \ref{sec_3_3_fig_ren
 
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=12cm,height=3cm]{sec_3_3_rend1.jpg} 
+        \includegraphics[width=8cm,height=2.2cm]{sec_3_3_rend1.jpg} 
         %\vspace{-0.4cm}
         \caption{An example of the virtual channel hopping sequence.} 
         \label{sec_3_3_fig_rend1}
@@ -2658,7 +2662,7 @@ Under this scenario, we denote the number of sectors for the SU sender and SU re
 In our proposed scheme, the SU receiver always hops circularly according to the sector hopping sequence which is a circularly left shift of the sequence $1, 2, \dots, N$. The shift is based on the starting index. The SU receiver can start sector hopping from any sector index. For instance, when $N = 5$, the sector hopping sequence is $3, 4, 5, 1, 2, 3, 4, 5, 1, 2, \dots$ if it starts from sector $3$ based on its indexing method.  The SU sender performs the same way as the SU receiver but increasing the starting index by $1$ after each round. For example, when $N = 5$, the sector hopping sequence for the SU sender will be $4, 5, 1, 2, 3, 5, 1, 2, 3, 4, \dots$, if it starts from sector $4$ based on the SU sender's indexing method. If the rendezvous pair is $(1, 4)$, two SUs can achieve a sector rendezvous after $6$ times of sector hopping. Fig. \ref{fig:example1} shows an example of a successful sector rendezvous under the same sector number. The distributed algorithms for the SU receiver and SU sender to generate the sector hopping sequence are shown in \textbf{Algorithm \ref{al:seq_rev}} and \textbf{Algorithm \ref{al:seq_send}}, respectively.
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=12cm,height=3cm]{sec_3_4_seq1.eps} 
+        \includegraphics[width=8cm,height=2cm]{sec_3_4_seq1.eps} 
         \caption{An example of a sector rendezvous under the same sector number.} 
         \label{fig:example1}
     \end{center} 
@@ -2735,7 +2739,7 @@ The basic idea of our proposed rendezvous scheme is to let each SU adjust the nu
 When $N_{s} \neq N_{r}$, both the SU sender and receiver execute \textbf{Algorithm \ref{al:seq_rev}} to generate their sector hopping sequence. For example, when $N_{s} = 5$ and $N_{r} = 3$, the sector hopping sequences for the SU sender and receiver could be $3,4,5,1,2,3,4,5,\dots $ and $1,2,3,1,2,3,1,2,3,\dots$, respectively. If the rendezvous pair is $(4,1)$, two SUs can achieve a successful sector rendezvous after $7$ sector hops. The example is shown in Fig. \ref{fig:example2}. Based on \textbf{Lemma \ref{le:guarantee2}}, in \textbf{Theorem \ref{th:guarantee2}} shown below, we can prove that when $N_{s} \neq N_{r}$, two SUs can always achieve a successful sector rendezvous by following the sector hopping sequences generated from \textbf{Algorithm \ref{al:seq_rev}}.
 \begin{figure}[hbtp] 
     \begin{center} 
-        \includegraphics[width=12cm,height=3cm]{sec_3_4_seq2.eps}
+        \includegraphics[width=8cm,height=2cm]{sec_3_4_seq2.eps}
         \caption{An example of a rendezvous process under different sector numbers.} 
         \label{fig:example2}
     \end{center} 
@@ -3214,7 +3218,7 @@ which means that our approximate optimal solution is valid and applicable.
 \begin{figure}[hbtp] 
 \setlength{\abovecaptionskip}{-0.1cm}
     \begin{center} 
-        \includegraphics[width=10cm,height=8cm]{sec_3_5_opt_val.eps} 
+        \includegraphics[width=8cm,height=7cm]{sec_3_5_opt_val.eps} 
         \caption{The real minimum values and our approximate values.} 
         \label{fig:opt_val} 
     \end{center} 
