@@ -216,6 +216,7 @@ Last, we propose a power control protocol which can maximize the number of commo
 
 \chapter{RELATED WORK}
 \label{char:RW}
+\section{Existing Protocols for Information Exchange in CRNs}
 The initialization of a CRN is critical, because each SU may not know any
 information about other SUs in the same network before information exchange.
 However, due to the dynamic characteristics of CRNs, obtaining the basic
@@ -233,16 +234,28 @@ some schemes are proposed to form several SU clusters in a network and choose
 a common available  channel as the CCC in each cluster \cite{mKim09DCPFC,lLazos09SOBCC}.
 However, in order to form a cluster, each SU has to know certain information
 about its neighboring SUs, which is also not practical for a CRN without
-any control information exchange before the initialization.
+any control information exchange before the initialization. Rather than deploying a CCC which is not practical for a CRN, single rendezvous coordination schemes and multiple rendezvous coordination schemes were proposed to realize imformation exchange between SUs in \cite{ySong10CHBPS, ySong12APSHF, jMo08COMMP, hSoMcMAC}. However, for single rendezvous coordination schemes, all the SUs should follow the same channel hopping sequence which requires strict synchronization between SUs; for  multiple rendezvous coordination schemes, each SU should know the channel hopping sequence of its communicating peer which is also not practical considering distributed scenarios. Moreover, all those protocols did not consider the wide-band scenario, which may cause serious delay during the information exchange process. Another promising technology for information exchange is to implement practical broadcasting protocols in CRNs. In \cite{yKon08SBiMCRN, arachchige2011minimal, ySong11AQBPF, ySong12ADBPI} several broadcasting protocols are proposed. However, in \cite{yKon08SBiMCRN, arachchige2011minimal}, some critical information like the channel availability and network topology are assumed to known for all the SUs, which is not practical considering distributed scenarios. A CCC is required in \cite{ySong11AQBPF} to achieve a Quality-of-Service (QoS) based protocol. In addition, a broadcast protocol under blind information is proposed in \cite{ySong12ADBPI}. However, the rendezvous scheme in this protocol cannot guarantee a successful rendezvous and it also did not consider the wide-band scenario.
+
+\section{Existing Distributed Channel Hopping Schemes}
+Another more practical method for setting up a link between a SU pair is
+to implement a distributed channel hopping scheme. In this scheme, a time-slotted system
+is deployed, and during each time slot, each SU hops to a channel based on
+a designed channel hopping sequence. Once two SUs hop to the same channel
+which is available to both of them simultaneously, they could set up a link
+on this channel through an RTS/CTS (Request-to-Send / Clear-to-Send) exchange.
+This is called the \textit{blind rendezvous} process for a CRN during which
+the two SUs do not have any information about each other before a successful
+rendezvous. Past works on blind rendezvous mainly focus on designing well
+performed channel hopping sequences and channel hopping schemes which can
+guarantee a successful rendezvous within a bounded time.
 
 In \cite{hLiu10RWBCH, cXin11PAOAC, zLin11JSBCH, yZhang11ETCH, ySong12ADBPI, rGandhi12FRFMC, romaszko2012quorum, jShin10ACRSF, ySong14AQBBP, hLiu12JSRAF, ySong15BRACER, zG13NOABR, xLiu14APSARP, sWu14RFHSD, tWu14CACH}, several rendezvous schemes for CRNs are proposed. However, these schemes only focus on the rendezvous problem itself or designing efficient channel hopping sequences, while ignoring the following practical communication scenarios in wide-band CRNs. First, they do not consider the wide-band scenario. All of them just consider that there are only a small number of channels (at most tens of channels) in the network and SUs will utilize all the channels to design the channel hopping sequence and perform channel hopping, while there may be hundreds of channels for a CRN.  As the number of channels increases, the time to sense all the channels to get available channels and to rendezvous  will increase significantly, according to the results shown in \cite{bian2009quorum, hLiu12TACOR, nTheis11RFCR}. Second, the process of sending or receiving RTS or CTS packets  is not considered. Past rendezvous schemes implicitly require a sender-and-receiver relation between the two rendezvous SUs, i.e.,  an SU sender always sends an RTS packet on each of its hopped channels during each time slot, while the other SU always listens on each of its hopped channels. If the other SU receives an RTS packet, it replies a CTS packet to set up a link with the SU sender. However, during the initialization phase of a CRN, every SU tries to rendezvous with other SUs to exchange their control information. There is no explicit sender or receiver role such that an SU is always a sender or receiver, since it cannot know if other SUs are sending or waiting for RTS packets. Third, they cannot directly apply to the rendezvous problem considering directional antennas since they do not consider the indexing problem and assume that each SU can access the same number of channels. 
 
-
+\section{Existing Schemes Considering Common Available Channels and Power Control}
 Many existing papers in CRNs have proposed different algorithms for rendezvous, broadcast, and spectrum handoff by directly using the common available channels of SUs. A random  channel selection scheme is proposed in \cite{cXin11PAOAC} to make sure two users can  rendezvous on the same available channel.  Rendezvous among multiple SUs in \cite{ySong12APSHF} is realized by generating the same channel hopping sequence.  Blind rendezvous schemes based on common available channels and channel hopping are proposed in \cite{hLiu10RWBCH, cXin11PAOAC,  zLin11JSBCH, yZhang11ETCH, lJiao09ASRBC, jJia13RPBOM, zLin13EJSRA, rPaul14MRISCR, lYu13MREFR}. In addition, distributed algorithms are proposed in \cite{ySong10CHBPS, ySong12APSHF} to avoid collisions  during a spectrum handoff based on the common available channels between two SUs. An optimal channel selection sequence for the two SUs after each spectrum handoff process  is designed in 
 \cite{lWang12OTCSD, lWang12MAAFS}. Moreover, multiple distributed broadcast schemes based on the common available
 channels  between two users are proposed in 
 \cite{ySong12ADBPI, ySong11AQBPF, ySong14AQBBP, ySong15BRACER}. However, all these papers just directly utilize the common available channels while ignoring how to maximize the number of common available channels. 
-
 
 \chapter{Communication Framework for Wide-band Cognitive Radio Networks}
 \label{chapter_wide_band}
