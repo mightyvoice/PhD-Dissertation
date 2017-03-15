@@ -9,32 +9,7 @@
 \usepackage{graphicx}
 \usepackage{nomencl}
 
-
-%===================Package Area========================% 
-\usepackage{latexsym} 
-\usepackage{amssymb} 
-\usepackage{amsmath} 
-\usepackage{amsthm} 
-\usepackage{graphicx} 
-\usepackage{algorithm} 
-\usepackage{algorithmic} 
-\usepackage{cite} 
-\usepackage{fancyhdr} 
-\usepackage{lastpage} 
-\usepackage{layout} 
-\usepackage{subfigure}
-\usepackage{hyperref} %for page number
-%===============End Package Area========================% 
-%===============New command Area=========================% 
-\newcommand{\DF}[2]{{\displaystyle\frac{#1}{#2}}}% 
-\newtheorem{theorem}{Theorem} 
-\newtheorem{lemma}[theorem]{Lemma} 
-\newtheorem{corollary}{Corollary}
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}%Use Input in the format of Algorithm 
-\renewcommand{\algorithmicensure}{\textbf{Output:}}%Use Output in the format of Algorithm 
-%===============End New command Area=====================% 
-%
-% the following is useful when we have the old nomencl.sty package
+%%%%%% the following is useful when we have the old nomencl.sty package
 \providecommand{\printnomenclature}{\printglossary}
 \providecommand{\makenomenclature}{\makeglossary}
 \makenomenclature
@@ -50,16 +25,41 @@
 \usepackage{subfig}
 \makeatother
 
-\begin{document}
+%%%%%%%%%%%%%%%%%Own Include part%%%%%%%%%%%%%%%
+%%%%%%%%%%===================Ji's Package Area========================% 
+\usepackage{latexsym} 
+\usepackage{amssymb} 
+\usepackage{amsmath} 
+\usepackage{amsthm} 
+\usepackage{graphicx} 
+\usepackage{algorithm} 
+\usepackage{algorithmic} 
+\usepackage{cite} 
+\usepackage{fancyhdr} 
+\usepackage{lastpage} 
+\usepackage{layout} 
+%\usepackage{subfigure}
+\usepackage{hyperref} %for page number
+%===============End Package Area========================% 
+%===============Ji 's New command Area=========================% 
+\newcommand{\DF}[2]{{\displaystyle\frac{#1}{#2}}}% 
+\newtheorem{theorem}{Theorem} 
+\newtheorem{lemma}[theorem]{Lemma} 
+\newtheorem{corollary}{Corollary}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}%Use Input in the format of Algorithm 
+\renewcommand{\algorithmicensure}{\textbf{Output:}}%Use Output in the format of Algorithm 
+%%%%%%%%%%%===============End New command Area=====================% 
+%%%%%%%%%%%%%%%%%Own Include part%%%%%%%%%%%%%%%
 
+
+\begin{document}
 \pagenumbering{roman}
 \fbmatterchapterformat
 % Doctype should be either dissertation proposal, dissertation, or thesis.
 % If you're getting a master's, specify "thesis" below.  
 % If you're getting a PhD, specify "dissertation" below.
 % 
-%\doctype{dissertation}
-\doctype{dissertation proposal}
+\doctype{dissertation}
 %%%%%%%%%%%%%%%%     IMPORTANT! IMPORTANT! IMPORTANT! %%%%%%%%%%%%%%%%
 % The rules below MUST be followed for the abstract page and chapter titles
 % to be correctly formatted.
@@ -72,7 +72,7 @@
 \author{Ji Li}
 \degree{Doctor of Philosophy}
 \major{Electrical Engineering}
-%\publicationyear{2015}
+\publicationyear{2017}
 
 \advisor{Dr. Jiang (Linda) Xie}
 
@@ -85,10 +85,7 @@
 \committeeMember{Dr. Keejae Hong}
 
 \maketitlepage
-%\makecopyright
-
-\tableofcontents
-\newpage
+\makecopyright
 
 \begin{abstract}
 Cognitive radio emerges as a technology to realize the dynamic spectrum access by dynamically configuring its transmission parameters. With cognitive radios, unlicensed users can opportunistically access their available channels, which can improve the spectrum utilization. In a cognitive radio network (CRN), there are two types of users: primary users (PUs) and secondary users (SUs). PUs are the licensed users or the traditional wireless users who can access a specific licensed spectrum band. SUs are the unlicensed users equipped with cognitive radios which can opportunistically use currently unoccupied channels to transmit, but have to vacate channels for the returning PUs and then switch to other available channels for continuous transmissions.  When two SUs want to establish a link, they have to meet on the same channel which must be available for both of them simultaneously. This process is called \textit{rendezvous}.
@@ -96,7 +93,55 @@ Cognitive radio emerges as a technology to realize the dynamic spectrum access b
 Past research works on rendezvous only focused on designing the channel hopping sequence for the rendezvous process while ignoring some practical problems like rendezvous in wide-band CRNs, rendezvous without a predetermined sender and receiver, rendezvous considering directional antennas, and how to maximize the number of common available channels. In this research, we propose five schemes to realize efficient rendezvous and spectrum management considering these practical problems under different scenarios. We first propose a rendezvous and communication framework for wide-band CRNs. Furthermore, we propose two efficient rendezvous schemes without  predetermined sender and receiver. Moreover, we propose a rendezvous scheme specifically for SUs equipped with directional antennas. Last, we propose a power control protocol to maximize the number of common available channels. All of the proposed schemes can realize efficient rendezvous and  or spectrum management with practical assumptions under different scenarios.
 \end{abstract}
 
+\begin{acknowledgements}
+If you decide to have a acknowledgements page, your acknowledgement
+text would go here.
+
+The Acknowledgement page should be brief, simple, and free of sentimentality
+or trivia. It is customary to recognize the role of the advisor, the
+other members of the advisory committee, and only those organizations
+or individuals who actually aided in the project. Further, you should
+acknowledge any outside source of financial assistance, such as GASP
+grants, contracts, or fellowships.
+\end{acknowledgements}
+
+\begin{dedication}
+If you decide to have a dedication page, your dedication text would
+go here. The Dedication page, if used, pays a special tribute to a person(s)
+who has given extraordinary encouragement or support to one's academic
+career.
+\end{dedication}
+
+\tableofcontents{}
+
+\listoffigures
+
+
+\listoftables
+
+
+\newpage
+\renewcommand{\nomname}{LIST OF ABBREVIATIONS}
+% uncomment line below to title your nomenclature list as LIST OF SYMBOLS
+%\renewcommand{\nomname}{LIST OF SYMBOLS}
+% NOTE: IF YOU USE A LIST OF ABBREVIATIONS / LIST OF SYMBOLS and are using command-line LaTeX (not LyX)
+% YOU MUST COMPILE THE NOMENCLATURE INDEX
+% example:
+% bash$> pdflatex phdthesis.tex
+% bash$> makeindex phdthesis.nlo -s nomencl.ist -o phdthesis.nls
+% bash$> pdflatex phdthesis.tex
+\addcontentsline{toc}{chapter}{\nomname}\settowidth{\nomlabelwidth}{ECE}
+\printnomenclature{}
+
+\nomenclature{ECE}{An acronym for Electrical and Computer Engineering.}
+
+\newpage
+\setcounter{page}{1}
 \pagenumbering{arabic}
+% 2 inch top spacing for new chapters
+\bodychapterformat
+
+%%%%%\pagenumbering{arabic}
 \chapter{INTRODUCTION}
 \section{Background of Cognitive Radio Networks}
 With the rapid development of mobile Internet, the number of mobile devices increases exponentially during recent few years, which also increases the demand for  the wireless spectrum. In addition, according to the Federal Communications Commission (FCC), almost all the radio spectrum for wireless communications has been allocated. However, according to FCC, up to $85\%$ of the spectrum  allocated to existing wireless communications is not fully utilized \cite{FCC03NOPRM}. 
@@ -591,6 +636,7 @@ by one under this scenario. Considering the circular property of $\varepsilon$,
 $\varepsilon$ should be $(\varepsilon-1+2n)$ mod $2n$.
 \end{proof}
 An example of Lemma \ref{lemma:asym_slot2} is shown in Fig. \ref{fig:asys2}.
+
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=10cm,height=3cm]{sec_3_1-unaligned2.jpg} 
