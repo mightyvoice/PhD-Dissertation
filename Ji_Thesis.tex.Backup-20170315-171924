@@ -53,7 +53,6 @@
 
 
 \begin{document}
-
 \pagenumbering{roman}
 \fbmatterchapterformat
 % Doctype should be either dissertation proposal, dissertation, or thesis.
@@ -69,7 +68,7 @@
 %    title to appear as required by the graduate school on the Abstract page.
 % 2. Write chapter titles in ALL CAPS.
 %
-\title{Efficient distributed rendezvous schemes and spectrum management for cognitive radio networks}
+\title{Efficient Distributed Rendezvous Schemes and Spectrum Management for Cognitive Radio Networks}
 \author{Ji Li}
 \degree{Doctor of Philosophy}
 \major{Electrical Engineering}
@@ -91,25 +90,27 @@
 \begin{abstract}
 Cognitive radio emerges as a technology to realize the dynamic spectrum access by dynamically configuring its transmission parameters. In a cognitive radio network (CRN), there are two types of users: primary users (PUs) and secondary users (SUs). PUs are the licensed users or the traditional wireless users who can access a specific licensed spectrum band. SUs are the unlicensed users equipped with cognitive radios which can opportunistically use currently unoccupied channels to transmit, but have to vacate channels for the returning PUs and then switch to other available channels for continuous transmissions.  When two SUs want to establish a link, they have to meet on the same channel which must be available for both of them simultaneously. This process is called \textit{rendezvous}.
 
-Past research works on rendezvous only focused on designing the channel hopping sequence for the rendezvous process while ignoring some practical problems like rendezvous in wide-band CRNs, rendezvous without a predetermined sender and receiver, rendezvous considering directional antennas, and how to maximize the number of common available channels. In this thesis, we propose five schemes to realize efficient rendezvous and spectrum management considering these practical problems under different scenarios. We first propose a rendezvous and communication framework for wide-band CRNs. Furthermore, we propose two efficient rendezvous schemes without  predetermined sender and receiver. Moreover, we propose a rendezvous scheme specifically for SUs equipped with directional antennas. Last, we propose a power control protocol to maximize the number of common available channels. All of the proposed schemes can realize efficient rendezvous and  or spectrum management with practical assumptions under different scenarios.
+Past research works on rendezvous only focused on designing the channel hopping sequence for the rendezvous process while ignoring some practical problems like rendezvous in wide-band CRNs, rendezvous without a predetermined sender and receiver, rendezvous considering directional antennas, and how to maximize the number of common available channels. In this research, we propose five schemes to realize efficient rendezvous and spectrum management considering these practical problems under different scenarios. We first propose a rendezvous and communication framework for wide-band CRNs. Furthermore, we propose two efficient rendezvous schemes without  predetermined sender and receiver. Moreover, we propose a rendezvous scheme specifically for SUs equipped with directional antennas. Last, we propose a power control protocol to maximize the number of common available channels. All of the proposed schemes can realize efficient rendezvous and  or spectrum management with practical assumptions under different scenarios.
 \end{abstract}
 
 \begin{acknowledgements}
-Firstly, I would like to express my sincere gratitude to my PhD advisor, Dr. Jiang (Linda) Xie, for giving me this opportunity to work in her research group at UNC-Charlotte, for her continuous support of my Ph.D study and research, and for her immense knowledge, patient guidance, and motivation. In the last years, her guidance helped me conquer all the hardship in study, work, and daily life, which finally makes me finish my Ph.D study and this thesis. Besides the guidance in study and research, Dr. Xie gave me the insights of how to be hard working, independent thinking, and integrity, which could be the most precious treasure for the rest of my life.
+If you decide to have a acknowledgements page, your acknowledgement
+text would go here.
 
-I would  like to thank my thesis committee members, Dr. Tao Han, Dr. Yu Wang, and Dr. Keejae Hong, for their insightful comments  and great help.
-
-I would like to thank my colleagues and friends: Xingya Liu, Nasrin Wahida, Rajib Md., Zhiguang Cui, Yuanye Liu, Xiongwei Xie, Weidong Zheng, Qinyue He, and many others, for their help in the last years.
-
-A special thanks to my parents and grandparents, who have supported and encouraged me for all the past years with their best wishes.
-
-Finally, I would like to specially thank my beloved wife, Juan Chen. I could not finish my Ph.D and this thesis without her patience, support, and encouragement.
-
-
- 
-
-
+The Acknowledgement page should be brief, simple, and free of sentimentality
+or trivia. It is customary to recognize the role of the advisor, the
+other members of the advisory committee, and only those organizations
+or individuals who actually aided in the project. Further, you should
+acknowledge any outside source of financial assistance, such as GASP
+grants, contracts, or fellowships.
 \end{acknowledgements}
+
+\begin{dedication}
+If you decide to have a dedication page, your dedication text would
+go here. The Dedication page, if used, pays a special tribute to a person(s)
+who has given extraordinary encouragement or support to one's academic
+career.
+\end{dedication}
 
 \tableofcontents{}
 
@@ -143,7 +144,7 @@ Finally, I would like to specially thank my beloved wife, Juan Chen. I could not
 %%%%%\pagenumbering{arabic}
 \chapter{INTRODUCTION}
 \section{Background of Cognitive Radio Networks}
-With a rapid development of the mobile Internet, the number of mobile devices increases exponentially during recent few years, which also increases the demand for  the wireless spectrum. In addition, according to the Federal Communications Commission (FCC), almost all the radio spectrum for wireless communications has been allocated. However, according to FCC, up to $85\%$ of the spectrum  allocated to existing wireless communications is not fully utilized \cite{FCC03NOPRM}. 
+With the rapid development of mobile Internet, the number of mobile devices increases exponentially during recent few years, which also increases the demand for  the wireless spectrum. In addition, according to the Federal Communications Commission (FCC), almost all the radio spectrum for wireless communications has been allocated. However, according to FCC, up to $85\%$ of the spectrum  allocated to existing wireless communications is not fully utilized \cite{FCC03NOPRM}. 
 
 Cognitive radio is a promising technology which can realize the dynamic spectrum access to improve the utilization of the allocated spectrum \cite{jMitola00CRAIA}. In a cognitive radio  network (CRN), unlicensed users, called secondary users (SUs), coexist with licensed users, called primary users (PUs).  SUs are equipped with one or multiple cognitive radios which can opportunistically access the currently available channels, but have to vacate the channels for the returning PUs \cite{iAkyildiz06NGDSA}\cite{iAkyildiz09CRAHN}. In order to support the dynamical spectrum access function of SUs, new functionalities should be deployed in CRNs. There are four main functionalities for CRNs \cite{iAkyildiz06NGDSA}:
 \begin{enumerate}
@@ -152,23 +153,23 @@ In order to get current available channels, an SU should perform spectrum sensin
 energy detection, and cyclostationary feature detection\cite{iAkyildiz06NGDSA}.
 Among these three, energy detection is the easiest one to implement. 
 For energy detection, an SU calculates the energy of the signal received
-from a channel.  If the energy is higher than a sensing threshold, the SU thinks that this channel is busy  
+froma channel.  If the energy is higher than a sensing threshold, the SU thinks that this channel is busy  
 or unavailable \cite{hUrkowitz67EDOUD,fDigham03OTEDO}. In addition, the sensing
 range of an SU is the range within  
 which the SU can sense the channels occupied by PUs. Thus, the sensing range
  determines the available channels of a SU. The larger the sensing range,
 the more unavailable channels that could be sensed by a SU.
 \item \textbf{Spectrum Management}:
-After getting current available channels, a SU have to choose one or more channels for current communications which should meet the Quality-of-Service (QoS) requirements. Therefore, spectrum management functions are required for SUs. There are two kinds of spectrum management: spectrum analysis and spectrum decision. 
+After getting current available channels, a SU have to choose one of more channels for current communications which should meet the Quality-of-Service (QoS) requirements. Therefore, spectrum management functions are required for SUs. There are two kinds of spectrum management: spectrum analysis and spectrum decision. 
 \item \textbf{Spectrum Mobility}: 
-SUs may change their current occupied channels according to the channel availability, which gives rise to a process called \textit{spectrum handoff}.
+SUs may change their current occupied channels according to the channel availability which gives rise to a process called \textit{spectrum handoff}.
 In a CRN, two SUs should only communicate through a channel which is available
 to both simultaneously to avoid the interference to PUs. We call this kind
 of channel the \textit{common available channel}. A communicating SU pair could have
 several  common available channels at a specific time.  If the current occupied
 common available channel suddenly becomes unavailable for one or both of
-the SU pair, in order to finish the current transmission,  two SUs should
-hop to the next common available channel simultaneously to continue their communication. The process of vacating the currently
+the two SUs, in order to finish the current transmission, the two SUs should
+hop to the next common available channel. The process of vacating the currently
 using channel and then switching to a new available channel is called \textit{spectrum
 handoff}.
 \item \textbf{Spectrum Sharing}:
@@ -203,7 +204,7 @@ a rendezvous scheme, three performance metrics are defined  \cite{hLiu12TACOR}:
 time to rendezvous from the moment the channel hopping starts until the moment
 two SUs meet on a common available channel, \textit{MTTR} is the maximum
 possible time required to have a successful rendezvous, and \textit{ETTR}
-is the expectation of the time to have a successful rendezvous.
+is the expectation of the time to a successful rendezvous.
   
 \section{Wide-band Cognitive Radio Networks}
 The original purpose of cognitive radio is to improve the utilization of the spectrum which has been allocated. However, according to the FCC, the allocated spectrum, ranging from $3$KHz to $300$GHz, is very wide. Though we cannot expect cognitive radio to work in that wide spectrum, the number of channels a cognitive radio can access may be hundreds or thousands.  For instance, according to \cite{cCordeiro05IEEE80222P}, the TV band which can be utilized by SUs is from $54$MHz to $862$MHz and the bandwidth of each channel is $6$MHz. This corresponds to a total of $134$ channels. With the increase of the number of channels in a CRN, the time for an SU to sense the whole band and the energy consumed in the sensing process will increase. In \cite{aGiannoulis13MAOWS}, the importance of considering the wide-band scenario is explored and a scheme for mobile access of wide-band networks is proposed. However, to the best of our knowledge, there are no existing papers which can efficiently solve the communication problems in CRNs coming from the wide-band spectrum without a (common control channel) CCC.  Therefore, addressing the communication problems stemming from the wide-band spectrum is necessary.
@@ -278,7 +279,7 @@ some schemes are proposed to form several SU clusters in a network and choose
 a common available  channel as the CCC in each cluster \cite{mKim09DCPFC,lLazos09SOBCC}.
 However, in order to form a cluster, each SU has to know certain information
 about its neighboring SUs, which is also not practical for a CRN without
-any control information exchange before the initialization. Rather than deploying a CCC which is not practical for a CRN, single rendezvous coordination schemes and multiple rendezvous coordination schemes were proposed to realize information exchange between SUs in \cite{ySong10CHBPS, ySong12APSHF, jMo08COMMP, hSoMcMAC}. However, for single rendezvous coordination schemes, all the SUs should follow the same channel hopping sequence which requires strict synchronization between SUs; for  multiple rendezvous coordination schemes, each SU should know the channel hopping sequence of its communicating peer which is also not practical considering distributed scenarios. Moreover, all those protocols did not consider the wide-band scenario, which may cause serious delay during the information exchange process. Another promising technology for information exchange is to implement practical broadcasting protocols in CRNs. In \cite{yKon08SBiMCRN, arachchige2011minimal, ySong11AQBPF, ySong12ADBPI} several broadcasting protocols are proposed. However, in \cite{yKon08SBiMCRN, arachchige2011minimal}, some critical information like the channel availability and network topology are assumed to known for all the SUs, which is not practical considering distributed scenarios. A CCC is required in \cite{ySong11AQBPF} to achieve a Quality-of-Service (QoS) based protocol. In addition, a broadcast protocol under blind information is proposed in \cite{ySong12ADBPI}. However, the rendezvous scheme in this protocol cannot guarantee a successful rendezvous and it also did not consider the wide-band scenario.
+any control information exchange before the initialization. Rather than deploying a CCC which is not practical for a CRN, single rendezvous coordination schemes and multiple rendezvous coordination schemes were proposed to realize imformation exchange between SUs in \cite{ySong10CHBPS, ySong12APSHF, jMo08COMMP, hSoMcMAC}. However, for single rendezvous coordination schemes, all the SUs should follow the same channel hopping sequence which requires strict synchronization between SUs; for  multiple rendezvous coordination schemes, each SU should know the channel hopping sequence of its communicating peer which is also not practical considering distributed scenarios. Moreover, all those protocols did not consider the wide-band scenario, which may cause serious delay during the information exchange process. Another promising technology for information exchange is to implement practical broadcasting protocols in CRNs. In \cite{yKon08SBiMCRN, arachchige2011minimal, ySong11AQBPF, ySong12ADBPI} several broadcasting protocols are proposed. However, in \cite{yKon08SBiMCRN, arachchige2011minimal}, some critical information like the channel availability and network topology are assumed to known for all the SUs, which is not practical considering distributed scenarios. A CCC is required in \cite{ySong11AQBPF} to achieve a Quality-of-Service (QoS) based protocol. In addition, a broadcast protocol under blind information is proposed in \cite{ySong12ADBPI}. However, the rendezvous scheme in this protocol cannot guarantee a successful rendezvous and it also did not consider the wide-band scenario.
 
 \section{Existing Distributed Channel Hopping Schemes}
 Another more practical method for setting up a link between a SU pair is
@@ -3581,44 +3582,21 @@ rate is not very low.
     \end{center} 
 \end{figure}
 
-\chapter{CONCLUSION}
+\chapter{CONCLUSION AND FUTURE WORK}
 \label{char:conclusion}
 \section{Conclusion of Completed Work}
-In this proposal, we proposed five schemes to realize efficient rendezvous and spectrum management considering practical scenarios. We first proposed a rendezvous and communication framework for wide-band CRNs \cite{jLi14ANCFF, jLi16SSACH}. Furthermore, we proposed two efficient rendezvous schemes without  predetermined sender and receiver \cite{jLi15PFMRB,jLi16RSWAPS}. Moreover, we proposed a rendezvous scheme specifically for SUs equipped with directional antennas \cite{jLi15DABDB}. Last, we proposed a power control protocol to maximize the number of common available channels \cite{jLi13APCPTM}. All of the proposed schemes can realize efficient rendezvous and  or spectrum management with practical assumptions under different scenarios.
-
- In order to address the communication problem for a wide-band CRN,  a novel communication framework for wide-band
-spectrum CRNs. To the best of our knowledge, this is the first work which
-addresses practical communication issues in wide-band spectrum CRNs. The idea of spectrum splitting is applied for the whole framework. The whole spectrum is split into several spectrum segments and each SU should belong to a specific spectrum segment. Next, two fast rendezvous schemes are proposed to enable a fast rendezvous between two SUs under symmetrical and asymmetrical models. In addition, unaligned time slot and optimal time slot length are addressed to make the proposed framework more adaptable. Finally, a spectrum splitting scheme is proposed for constructing the basic of the framework. Simulation
-results show that our proposed framework can make two SUs rendezvous on a
-common available channel efficiently and achieve a very high average normalized throughput in a wide-band CRN.
-
-In the proposed rendezvous scheme for SUs with multiple cognitive radios, we first propose the \textit{send-or-receive} problem and the
-\textit{channel-allocation} problem regarding the practical rendezvous process
-in multiple-radio CRNs. To solve these problems, we first propose a basic rendezvous scheme and an enhanced one considering the \textit{send-or-receive} problem. Both of the two rendezvous schemes can work on any existing channel  hopping sequence. Next, we propose a distributed
-algorithm to optimally solve the \textit{channel-allocation} problem in a rendezvous process considering the interference between SUs. Simulation
-results show that our schemes can efficiently solve the two proposed problems
-and can also achieve a fast  \textit{link rendezvous} under various network
-conditions.
-
-In the proposed rendezvous scheme for SUs with a single cognitive radio, we first propose the \textit{send-or-receive} problem and the \textit{link
-rendezvous} problem which are not addressed by existing papers considering
-the rendezvous process. To solve the two problems, we first propose a basic rendezvous scheme using random strategies to generate the additional send-or-receive sequence. Next, we propose an enhanced rendezvous scheme based on the \textit{virtual channel}, a well designed channel hopping sequence, and a strategy to replace channels in a channel hopping sequence. Simulation results
-show that our schemes can efficiently solve the two proposed problems and
-achieve a fast \textit{link rendezvous} under various network conditions.
-
-In order to address the rendezvous problem considering directional antenna, we first address sector problem and index problem that are unique for the SUs equipped with direction antennas. To solve this problem, the \textit{sector rendezvous} problem for SUs equipped with directional antennas in CRNs for the first time. Next, we propose a sector rendezvous scheme considering that each SU has the same number of transmission sectors. Furthermore, we propose a fully distributed  sector rendezvous schemes for the SU sender and SU receiver considering general scenarios. We prove that our proposed scheme can guarantee a successful sector rendezvous within a bounded time. Simulation results show that our proposed schemes can effectively achieve a successful sector rendezvous.
-
-In order to optimize the number of common available channels between two SUs by using power control, we first analyze the difference between the sensing range of an SU sender and SU receiver. Based on the analysis of the sensing range, we get a expression to estimate the number of common available channels based on the transmission parameters of the SU send and SU receiver. Next,  we propose an approximate solution to find the maximum number of common available channels. Finally, we  proposed an power control protocol between an SU sender and SU receiver to maximize the number of common available channels based on the analysis. To the best of our knowledge, this is the first work that considers improving SU performance via maximizing the number of common available channels. Our proposed algorithms reveal the relationship among the sensing threshold, sensing  range, transmission power, and common available channels. Simulation results
-show that our proposed protocol can significantly improve the SU throughput under
-different scenarios.
-
+In this proposal, we proposed five schemes to realize efficient rendezvous and spectrum management considering practical scenarios. We first proposed a rendezvous and communication framework for wide-band CRNs. Furthermore, we proposed two efficient rendezvous schemes without  predetermined sender and receiver. Moreover, we proposed a rendezvous scheme specifically for SUs equipped with directional antennas. Last, we proposed a power control protocol to maximize the number of common available channels. All of the proposed schemes can realize efficient rendezvous and  or spectrum management with practical assumptions under different scenarios.
 \section{Future Work}
+The work listed below will be studied in the following months.
 \begin{itemize}
+\item Evaluate the performance of all the proposed schemes through simulations.
+\item In the proposed rendezvous framework  for wide-band CRNs, we assume that the time slots of two SUs are aligned. However, in practical scenarios, two SUs could not be perfectly synchronized. We should consider this   scenario and propose
+related rendezvous schemes to solve this problem in the following months.
 \item For the rendezvous schemes without predetermined sender, receiver, and considering multiple radios, if some radios have already rendezvoused with some other SUs and obtained some control information, for the rest radios if they try to perform rendezvous, how to use the obtained control information to avoid collisions and improve the rendezvous performance should be investigated.
 \item For the rendezvous scheme considering directional antennas, currently we need two hopping sequences, one is the sector hopping sequence, and the other is the channel hopping sequence. We can design just one channel hopping sequence to improve the performance by using the idea of virtual channel as we addressed in the rendezvous scheme without predetermined sender and receiver.
 \end{itemize}
 
-\section{Published and Submitted Work}
+\section{Publications}
 \begin{itemize}
 \item 
 J. Li and J. Xie, "Spectrum Splitting and Channel Hopping Based Communication Framework for Wide-band Cognitive Radio Networks", submitted to IEEE Trans. Mobile Computing, 2016.
