@@ -91,7 +91,7 @@
 \begin{abstract}
 Cognitive radio emerges as a technology to realize the dynamic spectrum access by dynamically configuring its transmission parameters. In a cognitive radio network (CRN), there are two types of users: primary users (PUs) and secondary users (SUs). PUs are the licensed users or the traditional wireless users who can access a specific licensed spectrum band. SUs are the unlicensed users equipped with cognitive radios that can opportunistically use currently unoccupied channels to transmit, but have to vacate channels for the returning PUs, and then switch to other available channels for continuous transmissions.  When two SUs want to establish a link, they have to meet on the same channel that must be available for both of them simultaneously. This process is called \textit{rendezvous}.
 
-Past research works on rendezvous only focused on designing the channel hopping sequence for the rendezvous process while ignoring some practical problems like rendezvous in wide-band CRNs, rendezvous without a predetermined sender and receiver, rendezvous considering directional antennas, and how to maximize the number of common available channels. In this dissertation, we propose five schemes to realize efficient rendezvous and spectrum management considering these practical problems under different scenarios. We first propose a rendezvous and communication framework for wide-band CRNs. Furthermore, we propose two efficient rendezvous schemes without  predetermined sender and receiver. Moreover, we propose a rendezvous scheme specifically for SUs equipped with directional antennas. Last, we propose a power control protocol to maximize the number of common available channels. All of the proposed schemes can realize both efficient rendezvous and spectrum management with practical assumptions under different scenarios.
+Past research works on rendezvous only focused on designing the channel hopping sequence for the rendezvous process while ignoring some practical problems like rendezvous in wide-band CRNs, rendezvous without a predetermined sender and receiver, rendezvous considering directional antennas, and how to maximize the number of common available channels. In this thesis, we propose five schemes to realize efficient rendezvous and spectrum management considering these practical problems under different scenarios. We first propose a rendezvous and communication framework for wide-band CRNs. Furthermore, we propose two efficient rendezvous schemes without  predetermined sender and receiver. Moreover, we propose a rendezvous scheme specifically for SUs equipped with directional antennas. Last, we propose a power control protocol to maximize the number of common available channels. All of the proposed schemes can realize efficient rendezvous and  or spectrum management with practical assumptions under different scenarios.
 \end{abstract}
 
 \begin{acknowledgements}
@@ -100,17 +100,17 @@ Dr. Jiang (Linda) Xie, for giving me this opportunity to work in her research
 group at UNC-Charlotte, for her continuous support of my Ph.D. study and research,
 and for her immense knowledge, patient guidance, and encouragement. In the last
 years, her guidance helped me conquer all the hardship in study, work, and
-daily life, which finally makes me finish my Ph.D. study and this dissertation.
+daily life, which finally makes me finish my Ph.D. study and this thesis.
 Besides the guidance in study and research, Dr. Xie taught me how to be hard working, independent thinking, and integrity, which could be a precious treasure for the rest of my life.
 
-I would like to thank my dissertation committee members, Dr. Tao Han, Dr. Yu Wang, and Dr. Keejae Hong, for their insightful comments and great help.
+I would like to thank my thesis committee members, Dr. Tao Han, Dr. Yu Wang, and Dr. Keejae Hong, for their insightful comments and great help.
 
 I would like to thank my colleagues and friends: Xingya Liu, Nasrin Wahida,
 Rajib Md., Zhiguang Cui, Yuanye Liu, Xiongwei Xie, Weidong Zheng, Qinyue He, and many others, for their help in the last years.
 
 Thanks to my parents and grandparents, who have supported and encouraged me for all the past years with their best wishes.
 
-Finally, I would like to specially thank my beloved wife, Juan Chen. I could not finish my Ph.D. and this dissertation without her patience, support, and encouragement.
+Finally, I would like to specially thank my beloved wife, Juan Chen. I could not finish my Ph.D. and this thesis without her patience, support, and encouragement.
 \end{acknowledgements}
 
 \tableofcontents{}
@@ -190,7 +190,7 @@ channel and the rendezvous succeeds. Since no information exchange is needed
 challenging to design an efficient rendezvous algorithm that can guarantee
 rendezvous without knowing any information of other SUs.
 
-An example of a successful rendezvous process is shown in Figure \ref{fig:1_2_example}. We assume there are totally four channels,  channel 1 and 3 are available to SU1, and channel 2 and 3 are available to SU2. The channel hopping sequences are "1,1,4,2,3,2,4,3" and "2,3,2,4,3,1,1,4" for SU1 and SU2, respectively. After five time slots, SU1 and SU2 can successfully rendezvous on the common available channel 3.
+An example of a successful rendezvous process is shown in Fig. \ref{fig:1_2_example}. We assume there are totally four channels,  channel 1 and 3 are available to SU1, and channel 2 and 3 are available to SU2. The channel hopping sequences are "1,1,4,2,3,2,4,3" and "2,3,2,4,3,1,1,4" for SU1 and SU2, respectively. After five time slots, SU1 and SU2 can successfully rendezvous on the common available channel 3.
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=10cm,height=2.5cm]{sec_1_2_rend0.jpg} 
@@ -240,7 +240,7 @@ channels, especially the common available channels between two SUs in CRNs.
 In this research, we first illustrate the relationship among the number of common available  channels, SU transmission power, sensing threshold, and sensing range of an SU sender and  receiver. Then, we propose a power control protocol to maximize the number of common  available channels between two SUs in CRNs. Our proposed protocol is practical and  easy to implement.
 
 \section{Overview of the Proposed Rendezvous Schemes and Spectrum Management for CRNs}
-Figure \ref{fig:research_overview} shows the overview of our proposed research.
+Fig. \ref{fig:research_overview} shows the overview of our proposed research.
 In order to achieve efficient rendezvous and spectrum management in CRNs, we first propose a rendezvous framework for wide-band cognitive radio networks considering hundreds of channels. In this framework, we first propose a spectrum split scheme to split the wide-band spectrum into several spectrum segments and map each SU to a specific spectrum segment. Next, we propose an efficient rendezvous scheme specific for this framework considering spectrum splitting which enables two SUs to reach a fast and successful rendezvous. In the designed framework, we assume that a CCC is not required, there is not a central controller or base station for information exchange, and each SU does not know any information about the other SU before they achieve a successful rendezvous. All these assumptions are very practical concerning the characteristics and limitations of cognitive radio networks.
 \begin{figure}[hbtp] 
     \begin{center} 
@@ -267,9 +267,7 @@ The initialization of a CRN is critical, because each SU cannot know any
 information about other SUs in the same network before information exchange.
 However, due to the dynamic characteristics of CRNs, obtaining the basic
 but time-varying control information, such as the available channel sets
-and locations of SUs, is very challenging. 
-
-For simplicity, many existing
+and locations of SUs, is very challenging. For simplicity, many existing
 papers address this challenge by assuming the existence of a common control
 channel (CCC) in the network and using the CCC for all control information
 exchange \cite{cCordeiro05IEEE80222P, jJia08HCMAC, vBrik05DSAP}. However,
@@ -282,9 +280,7 @@ some schemes are proposed to form several SU clusters in a network and choose
 a common available  channel as the CCC in each cluster \cite{mKim09DCPFC,lLazos09SOBCC}.
 However, in order to form a cluster, each SU has to know certain information
 about its neighboring SUs, which is also not practical for a CRN without
-any control information exchange before the initialization. 
-
-Rather than deploying a CCC that is not practical for a CRN, the single rendezvous coordination scheme and the multiple rendezvous coordination scheme were proposed to realize information exchange between SUs in \cite{ySong10CHBPS, ySong12APSHF, jMo08COMMP, hSoMcMAC}. However, for the single rendezvous coordination scheme, all the SUs should follow the same channel hopping sequence that requires strict synchronization between SUs; for  the multiple rendezvous coordination scheme, each SU should know the channel hopping sequence of its communicating peer, which is also not practical considering distributed scenarios. Moreover, all those protocols did not consider the wide-band scenario, which can cause severe delay during the information exchange process. Another promising technology for information exchange is to implement  broadcasting protocols in CRNs. In \cite{yKon08SBiMCRN, arachchige2011minimal, ySong11AQBPF, ySong12ADBPI} several broadcasting protocols are proposed. However, in \cite{yKon08SBiMCRN, arachchige2011minimal}, some critical information like the channel availability and network topology are assumed to be known for all the SUs, which is not practical considering distributed scenarios. A CCC is required in \cite{ySong11AQBPF} to achieve a Quality-of-Service (QoS) based protocol. In addition, a broadcast protocol under blind information is proposed in \cite{ySong12ADBPI}. However, the rendezvous scheme in this protocol cannot guarantee a successful rendezvous and it also did not consider the wide-band scenario for broadcasting.
+any control information exchange before the initialization. Rather than deploying a CCC that is not practical for a CRN, the single rendezvous coordination scheme and the multiple rendezvous coordination scheme were proposed to realize information exchange between SUs in \cite{ySong10CHBPS, ySong12APSHF, jMo08COMMP, hSoMcMAC}. However, for the single rendezvous coordination scheme, all the SUs should follow the same channel hopping sequence that requires strict synchronization between SUs; for  the multiple rendezvous coordination scheme, each SU should know the channel hopping sequence of its communicating peer, which is also not practical considering distributed scenarios. Moreover, all those protocols did not consider the wide-band scenario, which can cause severe delay during the information exchange process. Another promising technology for information exchange is to implement  broadcasting protocols in CRNs. In \cite{yKon08SBiMCRN, arachchige2011minimal, ySong11AQBPF, ySong12ADBPI} several broadcasting protocols are proposed. However, in \cite{yKon08SBiMCRN, arachchige2011minimal}, some critical information like the channel availability and network topology are assumed to known for all the SUs, which is not practical considering distributed scenarios. A CCC is required in \cite{ySong11AQBPF} to achieve a Quality-of-Service (QoS) based protocol. In addition, a broadcast protocol under blind information is proposed in \cite{ySong12ADBPI}. However, the rendezvous scheme in this protocol cannot guarantee a successful rendezvous and it also did not consider the wide-band scenario for broadcasting.
 
 \section{Existing Distributed Channel Hopping Schemes}
 Another more practical method for setting up a link between an SU pair is
@@ -330,7 +326,7 @@ In the rest of the section, we consider the following two scenarios concerning t
 %Add a new paragraph to define asym/sym model and MTTR ETTR .
 \section{The Proposed Framework}
 \label{sec:framework}
-The goal of our proposed framework is to design efficient distributed schemes for each SU to guarantee that it can communicate with other SUs successfully in a wide-band CRN. The framework mainly contains three parts: the initialization process, the process to get control information from neighboring SUs, and the process to send packets to a specific SU. Moreover, the framework does not require a common control channel (CCC) for information exchange. The flow charts of these three parts are shown in Figure \ref{fig:frame}.
+The goal of our proposed framework is to design efficient distributed schemes for each SU to guarantee that it can communicate with other SUs successfully in a wide-band CRN. The framework mainly contains three parts: the initialization process, the process to get control information from neighboring SUs, and the process to send packets to a specific SU. Moreover, the framework does not require a common control channel (CCC) for information exchange. The flow charts of these three parts are shown in Fig. \ref{fig:frame}.
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=10cm,height=10cm]{sec_3_1_frame.jpg} 
@@ -339,7 +335,7 @@ The goal of our proposed framework is to design efficient distributed schemes fo
     \end{center}  
 \end{figure} 
 
-During the initialization process, each SU first divides the whole wide-band spectrum into several virtual spectrum segments (SS). Based on \textbf{Algorithm \ref{al:spl}} (which is explained in Section \ref{sec:split}), each SU can get a unique list containing the number of channels in each SS. We call it the spectrum splitting list (SSL). Using the unique SSL, an SU can obtain the channel index of the start and end channel in each SS (shown in \textbf{Algorithm \ref{al:id}}). Then, each SU  uses its ID (based on \textbf{Algorithm \ref{al:id}}) to determine its home spectrum segment (HS). \textbf{Algorithm \ref{al:id}} is based on mapping all the SUs evenly to the whole spectrum, where we assume that the IDs of SUs are evenly distributed within a certain range. An SU  hops from a channel to another according to the designed channel hopping sequence (based on \textbf{Algorithm \ref{sec_3_1_algorithm_generate}} which is explained in Section \ref{sec:seq}) within its HS. Since  SUs are not synchronized, they may be at different positions of the same hopping sequence even they locate in the same HS. This is the initialization process of an SU who just starts in a CRN, as shown in the left of Figure \ref{fig:frame}.
+During the initialization process, each SU first divides the whole wide-band spectrum into several virtual spectrum segments (SS). Based on \textbf{Algorithm \ref{al:spl}} (which is explained in Section \ref{sec:split}), each SU can get a unique list containing the number of channels in each SS. We call it the spectrum splitting list (SSL). Using the unique SSL, an SU can obtain the channel index of the start and end channel in each SS (shown in \textbf{Algorithm \ref{al:id}}). Then, each SU  uses its ID (based on \textbf{Algorithm \ref{al:id}}) to determine its home spectrum segment (HS). \textbf{Algorithm \ref{al:id}} is based on mapping all the SUs evenly to the whole spectrum, where we assume that the IDs of SUs are evenly distributed within a certain range. An SU  hops from a channel to another according to the designed channel hopping sequence (based on \textbf{Algorithm \ref{sec_3_1_algorithm_generate}} which is explained in Section \ref{sec:seq}) within its HS. Since  SUs are not synchronized, they may be at different positions of the same hopping sequence even they locate in the same HS. This is the initialization process of an SU who just starts in a CRN, as shown in the left of Fig. \ref{fig:frame}.
 \begin{algorithm} 
   \caption{The algorithm to determine an SU's home spectrum's index}
   \begin{algorithmic}[1] 
@@ -360,9 +356,9 @@ During the initialization process, each SU first divides the whole wide-band spe
   \end{algorithmic} 
 \end{algorithm}
 
-After the initialization process, an SU  tries to get the control information of all its neighboring SUs which are hopping in the same or different spectrum segments (SSs). We assume that when an SU is not transmitting data packets, it first performs \textbf{Algorithm \ref{al:sym}} or \textbf{Algorithm \ref{al:asym}} (which is explained in Section \ref{sec:seq}) to rendezvous with an SU in its home spectrum segment (HS) and exchange all their known control information about themselves and others. Through this process, each SU can get all the other SUs' information within the same SS and exchange all of their known information. Therefore, after rendezvous and exchange control information with one existing SU in a SS, an SU can get the control information of all the other SUs in that SS, and all the existing SUs in the SS can also get the information of this SU and all its known information about other SUs. Then, the SU can sequentially hop to each SS, rendezvous with one SU in that SS, and exchange all the  known control information about other SUs by executing \textbf{Algorithm \ref{al:sym}} or \textbf{Algorithm \ref{al:asym}}.  The SU will hop to a next SS only when it has rendezvoused with an SU in the current SS or the time spent in the current SS has already been more than the MTTR of the applied rendezvous scheme (there are no SUs in current SS) . Finally, the  SU will obtain  and update the control information of all other  SUs in the network. An SU can perform the above process periodically to update the control information about other SUs and inform its own change due to the dynamic characteristics of CRNs. The process of getting  the control information of all the neighboring SUs is shown in the middle of Figure \ref{fig:frame}. 
+After the initialization process, an SU  tries to get the control information of all its neighboring SUs which are hopping in the same or different spectrum segments (SSs). We assume that when an SU is not transmitting data packets, it first performs \textbf{Algorithm \ref{al:sym}} or \textbf{Algorithm \ref{al:asym}} (which is explained in Section \ref{sec:seq}) to rendezvous with an SU in its home spectrum segment (HS) and exchange all their known control information about themselves and others. Through this process, each SU can get all the other SUs' information within the same SS and exchange all of their known information. Therefore, after rendezvous and exchange control information with one existing SU in a SS, an SU can get the control information of all the other SUs in that SS, and all the existing SUs in the SS can also get the information of this SU and all its known information about other SUs. Then, the SU can sequentially hop to each SS, rendezvous with one SU in that SS, and exchange all the  known control information about other SUs by executing \textbf{Algorithm \ref{al:sym}} or \textbf{Algorithm \ref{al:asym}}.  The SU will hop to a next SS only when it has rendezvoused with an SU in the current SS or the time spent in the current SS has already been more than the MTTR of the applied rendezvous scheme (there are no SUs in current SS) . Finally, the  SU will obtain  and update the control information of all other  SUs in the network. An SU can perform the above process periodically to update the control information about other SUs and inform its own change due to the dynamic characteristics of CRNs. The process of getting  the control information of all the neighboring SUs is shown in the middle of Fig. \ref{fig:frame}. 
 
-After the above process of control information exchange, an SU will get some information about other SUs such as their IDs. When an SU wants to send packets to a specific SU, it first uses the receiver's ID  to determine the receiver's home spectrum segment (HS)  (based on \textbf{Algorithm 1}). Then, the SU sender  executes \textbf{Algorithm \ref{al:sym}} or \textbf{Algorithm \ref{al:asym}} to realize rendezvous with the SU receiver in the SU receiver's HS for communications. The flow charts of  communicating with a specific SU is shown in the right of  Figure \ref{fig:frame}. Because of the spectrum splitting design, the time to obtain control information and to set up communications can be significantly reduced since an SU pair only needs to rendezvous within a specific spectrum segment (SS). In addition, the probability that multiple pairs of SUs rendezvous on the same channel is also reduced since different pairs of SUs may rendezvous in different spectrum segments (SSs). In the following sections, we will give the details of the proposed algorithms in our framework.
+After the above process of control information exchange, an SU will get some information about other SUs such as their IDs. When an SU wants to send packets to a specific SU, it first uses the receiver's ID  to determine the receiver's home spectrum segment (HS)  (based on \textbf{Algorithm 1}). Then, the SU sender  executes \textbf{Algorithm \ref{al:sym}} or \textbf{Algorithm \ref{al:asym}} to realize rendezvous with the SU receiver in the SU receiver's HS for communications. The flow charts of  communicating with a specific SU is shown in the right of  Fig. \ref{fig:frame}. Because of the spectrum splitting design, the time to obtain control information and to set up communications can be significantly reduced since an SU pair only needs to rendezvous within a specific spectrum segment (SS). In addition, the probability that multiple pairs of SUs rendezvous on the same channel is also reduced since different pairs of SUs may rendezvous in different spectrum segments (SSs). In the following sections, we will give the details of the proposed algorithms in our framework.
 
 \section{Proposed Rendezvous Schemes Under the Symmetrical Model}
 \label{sec:seq}
@@ -489,7 +485,7 @@ Based on the proof of \textbf{ Lemma \ref{lemma:no_exist}} and \textbf{ Lemma \r
   \end{algorithmic} 
 \end{algorithm}
 
-We define a round of  channel hopping as  the length of the $2n$ time slots an SU hops sequentially and circularly  according to the channel hopping sequence. An example of rendezvous in one channel hopping round under the symmetrical model is shown in Figure \ref{fig:sys_ren}. We assume that the number of available channels of an SU pair is $4$. We label each available channel using the index from $1$ to $4$.  Based on \textbf{Algorithm \ref{sec_3_1_algorithm_generate}}, their channel hopping sequence is $"1,1,4,2,3,2,4,3"$. Assume that the SU sender starts hopping from the channel  whose index is $s_{1}=1$ and the SU receiver currently stays on the channel whose index is $s_{3}=4$. Then, the SU sender and receiver will rendezvous on the channel whose index is $s_{4}=2$ after $3$ time slots.
+We define a round of  channel hopping as  the length of the $2n$ time slots an SU hops sequentially and circularly  according to the channel hopping sequence. An example of rendezvous in one channel hopping round under the symmetrical model is shown in Fig. \ref{fig:sys_ren}. We assume that the number of available channels of an SU pair is $4$. We label each available channel using the index from $1$ to $4$.  Based on \textbf{Algorithm \ref{sec_3_1_algorithm_generate}}, their channel hopping sequence is $"1,1,4,2,3,2,4,3"$. Assume that the SU sender starts hopping from the channel  whose index is $s_{1}=1$ and the SU receiver currently stays on the channel whose index is $s_{3}=4$. Then, the SU sender and receiver will rendezvous on the channel whose index is $s_{4}=2$ after $3$ time slots.
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=12cm,height=4cm]{sec_3_1_sys.jpg} 
@@ -544,7 +540,7 @@ As an SU pair may have different available channel sets, each SU's channel hoppi
   \end{algorithmic} 
 \end{algorithm}
 
-An example of rendezvous under the asymmetric model is shown in Figure \ref{fig:asys_ren}. Assume that the available channels of the SU sender are $\{1,2\}$ and the available channels of the SU receiver are $\{1,3\}$. Assume that $n=4$, so the base channel hopping sequence is $"1,1,4,2,3,2,4,3"$. The SU sender starts from channel $s_{1}=1$ and we assume that the SU receiver is on channel $s_{3}=4$. 
+An example of rendezvous under the asymmetric model is shown in Fig. \ref{fig:asys_ren}. Assume that the available channels of the SU sender are $\{1,2\}$ and the available channels of the SU receiver are $\{1,3\}$. Assume that $n=4$, so the base channel hopping sequence is $"1,1,4,2,3,2,4,3"$. The SU sender starts from channel $s_{1}=1$ and we assume that the SU receiver is on channel $s_{3}=4$. 
 During the first round of channel hopping, after the random replacement process, the channel hopping sequences for the SU sender and SU receiver are $"1,1,2,2,1,2,2,2"$ and $"3,3,3,1,3,3,1,1"$, respectively. According to the channel hopping sequences, the SU sender and receiver do not rendezvous on the same channel for the first  round. Then, the SU sender continues the second round of rendezvous by starting from channel $s_{2}=1$ and the base channel hopping sequence will be $"1,4,2,3,2,4,3,1"$. However, the SU receiver will keep using the base rendezvous sequence $"1,1,4,2,3,2,4,3"$ during the second round. Then, during the second round, after the random replacement process, the channel hopping sequences for the SU sender and SU receiver are $"1,1,2,2,2,1,2,1"$ and $"3,3,3,3,1,3,1,1"$, respectively. Finally, the SU sender and receiver rendezvous on channel $1$ which is available for both of them at the end of the second round after $15$ time slots.
 
 \begin{figure}[hbtp] 
@@ -596,7 +592,7 @@ positions of the channels the SU pair are on in the hopping sequence when
 the SU sender starts a rendezvous process.  We assume that $\lambda \leq
 \delta/2$. Otherwise, two SUs may never rendezvous under certain scenarios
 because of insufficient time to exchange RTS-CTS packets. For example, in
-Figure \ref{fig:asys1}, if $\Delta < \lambda$ and $\delta - \Delta < \lambda$,
+Fig. \ref{fig:asys1}, if $\Delta < \lambda$ and $\delta - \Delta < \lambda$,
 the overlap of two time slots is not long enough to complete a RTS-CTS exchange.
 We will address this problem in the next subsection by designing an optimal
 length of a time slot which can guarantee a successful rendezvous.
@@ -615,7 +611,7 @@ part of the time slots of an SU pair is long enough for a RTS and CTS packet
 exchange. Therefore, this scenario is equivalent to the original rendezvous
 discussed previously. 
 \end{proof}
-An example of Lemma \ref{lemma:asym_slot1} is shown in Figure \ref{fig:asys1}.
+An example of Lemma \ref{lemma:asym_slot1} is shown in Fig. \ref{fig:asys1}.
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=10cm,height=3cm]{sec_3_1-unaligned1.jpg} 
@@ -640,7 +636,7 @@ where $\Delta > \delta/2 \geq \lambda$. Therefore, $\varepsilon$ is decreased
 by one under this scenario. Considering the circular property of $\varepsilon$,
 $\varepsilon$ should be $(\varepsilon-1+2n)$ mod $2n$.
 \end{proof}
-An example of Lemma \ref{lemma:asym_slot2} is shown in Figure \ref{fig:asys2}.
+An example of Lemma \ref{lemma:asym_slot2} is shown in Fig. \ref{fig:asys2}.
 
 \begin{figure}[hbtp] 
     \begin{center} 
@@ -663,7 +659,7 @@ exchange. Therefore, this scenario is equivalent to the scenario in Lemma
 \ref{lemma:asym_slot1}.
 \end{proof}
 
-An example of Lemma \ref{lemma:asym_slot3} is shown in Figure \ref{fig:asys3}.
+An example of Lemma \ref{lemma:asym_slot3} is shown in Fig. \ref{fig:asys3}.
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=10cm,height=3cm]{sec_3_1-unaligned3.jpg} 
@@ -689,7 +685,7 @@ one under this scenario. Considering the circular property of $\varepsilon$,
 $\varepsilon$ should be $(\varepsilon+1)$ mod $2n$.
 \end{proof}
 
-An example of Lemma \ref{lemma:asym_slot4} is shown in Figure \ref{fig:asys4}.
+An example of Lemma \ref{lemma:asym_slot4} is shown in Fig. \ref{fig:asys4}.
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=10cm,height=3cm]{sec_3_1-unaligned4.jpg} 
@@ -733,7 +729,7 @@ energy consumption and are not necessary. Assume that a successful RTS-CTS
 packet exchange requires at least $\lambda$ seconds.  Considering the duality,
 there are only two scenarios regarding the overlapping time.
 
-For the first scenario shown in Figure \ref{fig:optTimeSlot1}, the shadow area
+For the first scenario shown in Fig. \ref{fig:optTimeSlot1}, the shadow area
 represents an overlap of the RTS-CTS exchanging period. We have 
 \begin{align*}
 Minimize \ \ \  &t_{t};\\
@@ -753,7 +749,7 @@ The answer for the first scenario $t^{1}_{t\_min} = max\{2\lambda-t_{s},
 \end{center}
 \end{figure}
 
-For the second scenario shown in Figure \ref{fig:optTimeSlot2}, we have
+For the second scenario shown in Fig. \ref{fig:optTimeSlot2}, we have
 \begin{align*}
 Minimize \ \ \  &t_{t};\\
 s.t. \ \ \  &\delta = t_{s} + t_{t};\\
@@ -873,7 +869,7 @@ a scenario that there are two SUs:  one is the SU sender and the other is
 the SU receiver. The SU sender tries to rendezvous with the SU receiver by
 using our proposed scheme and the jump-stay scheme.
 
-Figure \ref{fig:rend_sym1} shows the \textit{ETTR} of our proposed scheme and
+Fig. \ref{fig:rend_sym1} shows the \textit{ETTR} of our proposed scheme and
 the jump-stay scheme when the SU sender tries to rendezvous with an SU receiver
 whose HS has $10$ to $50$ channels.  In this simulation, we assume that the
 ratio of the  number of available channels for the SU pair to the total number
@@ -893,7 +889,7 @@ spectrum is considered.
 \end{center}
 \end{figure}
 
-Figure \ref{fig:rend_sym2} shows the \textit{ETTR} of our proposed scheme and
+Fig. \ref{fig:rend_sym2} shows the \textit{ETTR} of our proposed scheme and
 the jump-stay scheme in a wide-band scenario with the total number of channels
 changing from $50$ to $300$. In this simulation, we assume that the ratio
 of the  number of available channels for the SU pair to the total number
@@ -902,7 +898,10 @@ splitting scheme. The figure shows that our proposed rendezvous algorithm
 can always achieve a much lower \textit{ETTR} as compared to the jump-stay
 scheme in a wide-band scenario. This is because that the channel hopping
 of the jump-stay scheme includes all the channels of the whole spectrum,
-while our scheme can perform rendezvous in a smaller SS because of the proposed spectrum splitting scheme. Furthermore, due to the spectrum splitting without changing $\theta$, the performance of our scheme does not change much even when the total number of channels increases.
+while our scheme can perform rendezvous in a smaller SS because of the proposed
+spectrum splitting scheme. Furthermore, due to the spectrum splitting without
+changing $\theta$, the performance of our scheme does not change much even
+when the total number of channels increases.
 
 \begin{figure}[hbt]
 \begin{center}
@@ -933,7 +932,7 @@ and enhanced jump-stay scheme \cite{zLin13EJSRA} under the asymmetrical model
 which is more practical (the enhanced jump-stay scheme only considers the
 asymmetrical model).
 
-Figure \ref{fig:rend_asym1} shows the \textit{ETTR} of our proposed scheme,
+Fig. \ref{fig:rend_asym1} shows the \textit{ETTR} of our proposed scheme,
 the jump-stay scheme, and the enhanced jump-stay scheme, when the SU sender
 tries to rendezvous with the SU receiver whose HS has $10$ to $50$ channels.
 In this simulation, we assume that the ratio of the number of available channels
@@ -952,7 +951,7 @@ SS.
 \end{center}
 \end{figure}
 
-Figure \ref{fig:rend_asym2} shows the \textit{ETTR} of our proposed scheme,
+Fig. \ref{fig:rend_asym2} shows the \textit{ETTR} of our proposed scheme,
 the jump-stay scheme, and the enhanced jump-stay scheme in a wide-band scenario
 with the total number of channels changing from $50$ to $300$. In this simulation,
 we assume that $\theta=20$ in the spectrum splitting scheme, the ratio of
@@ -987,7 +986,7 @@ model.}
 %        \caption{The \textit{ETTR}  under the asymmetrical model.}
 %\end{figure}
 
- Figure \ref{fig:com_avai_fac} shows the \textit{ETTR} of our proposed scheme,
+ Fig. \ref{fig:com_avai_fac} shows the \textit{ETTR} of our proposed scheme,
 the jump-stay scheme, and the enhanced jump-stay scheme within a SS with
 a total of $40$ channels when the ratio (defined as the common available
 ratio) of the number of common available channels between two SUs to the
@@ -1028,7 +1027,7 @@ the current SS or it has stayed in that SS for more than MTTR time slots,
 where MTTR is the maximum time to guarantee a rendezvous for the applied
 rendezvous algorithm.
 
-Figure \ref{fig:oneSuSs1} shows the time for an SU to finish hopping within
+Fig. \ref{fig:oneSuSs1} shows the time for an SU to finish hopping within
 all the SSs under the three rendezvous schemes, when the total number of
 channels $M$ changes from $50$ to $150$ and the number of SUs $N$ is $20$.
 Our proposed scheme has the same good performance as the enhanced jump-stay
@@ -1048,7 +1047,7 @@ process as $M$ increases.}
     \end{center}   
 \end{figure} 
 
-Figure \ref{fig:oneSuSs2} shows the time to finish the whole information exchange
+Fig. \ref{fig:oneSuSs2} shows the time to finish the whole information exchange
 process when the number of SUs $N$ changes from $10$ to $50$ and the total
 number of channels $M$ is $100$. Our proposed scheme has the same good performance
 as the enhanced jump-stay scheme when $N=10,40,50$ and always outperforms
@@ -1086,7 +1085,7 @@ within all the SSs, assuming that all the SUs start this process simultaneously.
 This simulates the scenario that several SUs start to form a CRN and try
 to get other SUs' control information. 
 
-Figure \ref{fig:allSuSs1} shows the
+Fig. \ref{fig:allSuSs1} shows the
 time for all SUs to finish the whole process , when $N=20$ and $M$ changes
 from $50$ to $300$. In this figure, our proposed scheme outperforms both
 jump-stay schemes because of faster rendezvous and smaller MTTR. The time
@@ -1101,7 +1100,7 @@ process as $M$ increases.}
     \end{center}   
 \end{figure} 
 
-Figure \ref{fig:allSuSs2} shows the time for all SUs to finish the whole process,
+Fig. \ref{fig:allSuSs2} shows the time for all SUs to finish the whole process,
 when $M=100$ and $N$ changes from $10$ to $50$. Our scheme still outperforms
 the other two jump-stay schemes. The time to finish the whole process decreases
 as $N$ increases. This is because that more SUs in the whole network results
@@ -1151,7 +1150,7 @@ the total number of channels in the wide-band CRN changes from $50$ to $300$,
 and the ratio of the number of available channels for the SU pair to the
 total number of channels in the whole wide-band spectrum is $0.8$.
 
- Figure \ref{fig:thru_sym1} shows the average normalized throughput of our
+ Fig. \ref{fig:thru_sym1} shows the average normalized throughput of our
 proposed scheme   and the jump-stay scheme under the symmetrical model when
 the total number of channels within a wide-band spectrum changes from $50$
 to $300$. The result shows that our proposed scheme can maintain a very high
@@ -1169,7 +1168,7 @@ model as the number of total channels increases.}
     \end{center}   
 \end{figure} 
  
-Figure \ref{fig:thru_sym2} shows the average normalized throughput of our proposed
+Fig. \ref{fig:thru_sym2} shows the average normalized throughput of our proposed
 scheme and the jump-stay scheme under the symmetrical model when the SU packet
 arrival rate changes from $1$ to $20$. We consider a wide-band spectrum with
 $200$ channels here. The result shows that our proposed scheme can maintain
@@ -1203,7 +1202,7 @@ model as the SU packet arrival rate increases.}
 %model.}
 %\end{figure}
 
-Figure \ref{fig:thru_asym1} shows the average normalized throughput of our
+Fig. \ref{fig:thru_asym1} shows the average normalized throughput of our
 proposed scheme, the jump-stay scheme, and the enhanced jump-stay scheme
 under the asymmetrical model when the total number of channels varies from
 $50$ to $300$. The result shows that the average normalized throughput of
@@ -1223,7 +1222,7 @@ model as  the number of total channels increases.}
     \end{center}   
 \end{figure} 
 
- Figure \ref{fig:thru_asym2} shows the average normalized throughput of our
+ Fig. \ref{fig:thru_asym2} shows the average normalized throughput of our
 proposed scheme, the jump-stay scheme, and the enhanced jump-stay scheme
 under the asymmetrical model when the SU packet arrival rate changes from
 $1$ to $20$. We consider a wide-band spectrum with $200$ channels. The result
@@ -1269,7 +1268,7 @@ last subsection, except the total number of channels and $\theta$. We set
 the total number of channels to be $100$ and change the value of $\theta$
 from $10$ to $50$.
 
-Figure \ref{fig:theta_sym1} shows the effect of $\theta$ under the symmetrical
+Fig. \ref{fig:theta_sym1} shows the effect of $\theta$ under the symmetrical
 model on the average normalized throughput. When $\theta$ increases, the
 number of channels in each SS increases. This may result in a longer time
 to rendezvous in our proposed scheme. Thus, the average normalized throughput
@@ -1283,12 +1282,12 @@ decreases.
     \end{center}   
 \end{figure} 
 
-Figure \ref{fig:theta_sym2} shows the effect of $\theta$ on the
+Fig. \ref{fig:theta_sym2} shows the effect of $\theta$ on the
 average collision ratio under the symmetrical model. When $\theta$ increases,
 the average collision ratio decreases. This is reasonable since when $\theta$
 increases, an SU pair can rendezvous on more channels in a SS. Thus, the probability
 that multiple SUs rendezvous on the same channel is reduced. By observing
-Figure \ref{fig:theta_sym1} and Figure \ref{fig:theta_sym2} together, we can
+Fig. \ref{fig:theta_sym1} and Fig. \ref{fig:theta_sym2} together, we can
 notice that when the collision ratio increases, the average normalized throughput
 increases also. This indicates that the rendezvous collisions under the symmetrical
 model may not affect the throughput.
@@ -1315,7 +1314,7 @@ model may not affect the throughput.
 %        \caption{The effect of $\theta$ under the symmetrical model.}
 %\end{figure}
 
-Figure \ref{fig:theta_asym1} shows the effect of $\theta$ under the asymmetrical
+Fig. \ref{fig:theta_asym1} shows the effect of $\theta$ under the asymmetrical
 model on the average normalized throughput. When $\theta$ increases, the
 average normalized throughput  first increases and then decreases. The reason
 is that under the asymmetrical model, each SU will use all the channels in
@@ -1338,10 +1337,10 @@ get the maximum average normalized throughput.
 \end{figure} 
 
 
-Figure \ref{fig:theta_asym2}
+Fig. \ref{fig:theta_asym2}
 shows the effect of $\theta$ on the average collision ratio under the asymmetrical
 model. When $\theta$ increases, the collision ratio decreases. By observing
-Figure \ref{fig:theta_asym1} and Figure \ref{fig:theta_asym2} together, we can
+Fig. \ref{fig:theta_asym1} and Fig. \ref{fig:theta_asym2} together, we can
 notice that when the collision ratio decreases, the throughput fluctuates.
 This indicates that the rendezvous collision under the asymmetrical model
 is a factor which can affect the throughput.
@@ -1450,7 +1449,7 @@ Algorithm \ref{al:basic} can guarantee a successful \textbf{channel} rendezvous,
 \section{The Enhanced Rendezvous Scheme}
 One problem of the basic rendezvous scheme is that multiple radios may all use   one same channel to receive RTS packets, if they all hop to the same channel simultaneously. Therefore, the cognitive radios of an SU are not well utilized. For example, when each SU is equipped with $4$ cognitive radios, if $3$ of them hop to channel $1$ and the last radio hops to channel $2$ at the same time, under the basic scheme it is equivalent to just using two radios during the current time slot. In this section, we propose an enhanced rendezvous scheme, considering multiple cognitive radios and the \textit{send-or-receive problem}, which can well utilize all the radios of an SU during each time slot to achieve a fast \textit{link rendezvous}.
 
-The basic idea of our proposed enhanced rendezvous scheme is to split the total $M$ channels into several continuous groups. Each group has exactly $R$ consecutive channels, where $R$ is the number of cognitive radios of an SU. If $M$ mod $R \neq 0$, then sequentially add channel $1$, $2$, \dots, $R-1$ to the last group until the number of channels is $R$. There is an example in Figure \ref{fig:group} when $M = 10$, $R = 4$, the generated $\lceil\DF{10}{4}\rceil = 3$ channel groups are $\{1,2,3,4\}$, $\{5,6,7,8\}$, and $\{9,10,1,2\}$.
+The basic idea of our proposed enhanced rendezvous scheme is to split the total $M$ channels into several continuous groups. Each group has exactly $R$ consecutive channels, where $R$ is the number of cognitive radios of an SU. If $M$ mod $R \neq 0$, then sequentially add channel $1$, $2$, \dots, $R-1$ to the last group until the number of channels is $R$. There is an example in Fig. \ref{fig:group} when $M = 10$, $R = 4$, the generated $\lceil\DF{10}{4}\rceil = 3$ channel groups are $\{1,2,3,4\}$, $\{5,6,7,8\}$, and $\{9,10,1,2\}$.
 \begin{figure}[hbtp] 
     \begin{center} 
       \includegraphics[width=8cm,height=3cm]{sec_3_2_group.eps} 
@@ -1549,7 +1548,7 @@ allocating channels to their free radios, they should attempt to reduce invalid
 channel allocations. We call this as the \textit{channel allocation problem}
 during a rendezvous process when considering multiple cognitive radios.
 
-An example is shown in Figure \ref{fig:exampleAlloc}.  During
+An example is shown in Fig. \ref{fig:exampleAlloc}.  During
 the current time slot, SU \textit{A} has rendezvoused with SU \textit{B}
 on their commonly available channel $1$ and SU \textit{C} has rendezvoused
 with SU \textit{B} on their commonly available channel $2$. We assume that
@@ -1619,7 +1618,7 @@ for SU \textit{A}, \textit{B}, \textit{C}, and \textit{D} simultaneously.
 SU \textit{A} and SU \textit{D} are located within the interference range
 of each other. SU \textit{B} and SU \textit{C} are located within the interference
 range of each other. Therefore, according to the proof of \textbf{Lemma \ref{le:clique}},
-the established graph for this example is shown in Figure \ref{fig:exampleClique}.
+the established graph for this example is shown in Fig. \ref{fig:exampleClique}.
 An edge between two SUs means that they can use channel $i$ simultaneously
 since they are out of the interference range of each other. The maximum clique
 of this  graph is very straightforward that $\mu_{i} = 2$ and $\mathbb{B}_{i}$
@@ -1776,7 +1775,7 @@ In this simulation, we set $R = 4$, $M$ from $10$ to $50$, and the channel
 available ratio of each SU is $0.5$ which means the number of current available
 channels of an SU to the number of all the channels. 
 
-In Figure \ref{sec_3_2_fig_rend1},  we show the average time to a \textit{link rendezvous} by implementing the
+In Fig. \ref{sec_3_2_fig_rend1},  we show the average time to a \textit{link rendezvous} by implementing the
 basic scheme and the enhanced one. For each result, we perform $10000$ simulations
 to measure the average rendezvous time. The results indicate that the enhanced
 rendezvous scheme is much better than the basic rendezvous scheme considering
@@ -1794,7 +1793,7 @@ between the results from the basic scheme and the enhanced one also increase.
     \end{center}   
 \end{figure} 
 
-In Figure \ref{fig:rend11}, we shows the successful ratios of
+In Fig. \ref{fig:rend11}, we shows the successful ratios of
 the rendezvous of both the basic and enhanced rendezvous schemes. The successful
 ratio is defined as the number of successful rendezvous to the total number
 of performed rendezvous. According to the \textit{send-or-receive problem},
@@ -1802,7 +1801,7 @@ two SUs cannot achieve a successful rendezvous even when they hop the same
 channel, if during that time slot they applied the same send-or-receive allocations,
 which may cause collisions between RTS packets. Therefore, the successful
 ratio of rendezvous is an important metric to evaluate a rendezvous scheme
-considering the \textit{send-or-receive problem}. In Figure \ref{fig:rend11},
+considering the \textit{send-or-receive problem}. In Fig. \ref{fig:rend11},
 the successful ratio of both scheme are very close to $100\%$, which means
 they are very useful for practical implementations.
 
@@ -1833,7 +1832,7 @@ is defined as the number of available channels of an SU to the total number
 of channel. In the simulations,  we set $R = 4$, $M = 30$, and the channel
 available ratio from $0.3$ to $0.9$. 
 
-In Figure \ref{fig:rend2}, we can notice
+In Fig. \ref{fig:rend2}, we can notice
 that both schemes result in lower rendezvous time as the channel available
 ratio increases. This is because, with a higher channel available ratio,
 the two schemes can utilize more channels to perform channel hopping and
@@ -1853,7 +1852,7 @@ can well utilize all the cognitive radios and the available channels.
     \end{center}   
 \end{figure} 
 
-Figure \ref{fig:rend22} shows the successful rendezvous ratio of the two schemes
+Fig. \ref{fig:rend22} shows the successful rendezvous ratio of the two schemes
 as the channel available ratio increases. We can notice that only when the
 channel available ratio is $0.3$, the successful rendezvous ratio is a little
 bit lower than $100\%$, while always $100\%$ when the value is higher than
@@ -1887,7 +1886,7 @@ cognitive radio networks with different channel availability.
 In this part, we evaluate the impact of the number of cognitive radios on
 the average rendezvous time and the  successful rendezvous ratio. 
 
-Figure \ref{fig:rend3}
+Fig. \ref{fig:rend3}
 indicates that the enhanced scheme always outperforms the basic one when
 the number of cognitive radios increases. However, the difference between
 the results of the two schemes decreases as the number of cognitive radios
@@ -1904,7 +1903,7 @@ difference between the two schemes is not very obvious.
 \end{figure} 
 
 
-Figure \ref{fig:rend33} shows the rendezvous successful ratio
+Fig. \ref{fig:rend33} shows the rendezvous successful ratio
 of the proposed schemes as the number of cognitive radios of each SU increases.
 We can notice that both proposed schemes can achieve $100\%$ successful ratio
 as the number of cognitive radios of each SU changes from $2$ to $8$. The
@@ -1950,7 +1949,7 @@ we compare our proposed scheme with the random channel allocation scheme
 in which an SU randomly chooses available channels for the rest free cognitive
 radios.
 
-Figure \ref{fig:alloc1} shows the total number of valid allocations under the
+Fig. \ref{fig:alloc1} shows the total number of valid allocations under the
 two schemes when the total number of channels changes from $10$ to $50$.
 In the simulations, we set $N_{c} = 8$, available channel  ratio as $0.5$,
 and the number of cognitive radios $R = 8$. We can notice that our proposed
@@ -1968,7 +1967,7 @@ number of channels increases.}
     \end{center}  
 \end{figure}
 
-Figure \ref{fig:alloc2} shows the results when the  available channel ratio
+Fig. \ref{fig:alloc2} shows the results when the  available channel ratio
 changes from $0.3$ to $0.9$. We also set $N_{c} = 8$, the total number of
 channels as $30$, and the number of cognitive radios $R = 8$. The results
 show that our scheme always outperforms the random allocation scheme when
@@ -1985,7 +1984,7 @@ channel ratio increases.}
     \end{center}   
 \end{figure} 
 
-In Figure \ref{fig:alloc3}, we show the simulation results as $N_{c}$ changes
+In Fig. \ref{fig:alloc3}, we show the simulation results as $N_{c}$ changes
 from $3$ to $8$. Since $N_{c}$ changes in each simulation, we evaluate the
 average number of valid allocations rather than the total number of valid
 allocations. The results indicate that our proposed scheme outperforms the
@@ -2121,7 +2120,7 @@ and send RTS packets;         \ENDIF
   \end{algorithmic}
 \end{algorithm} 
 
-Here is an example of the basic link rendezvous scheme in Figure \ref{fig:rend-basic}, where $M = 4$, the transmission sequence of SU1 is $\{1,0,0,1\}$, the transmission sequence of SU2 is $\{1,1,0,0\}$, each SU hops according to its own channel hopping sequence, and the common available channels for them are channel $3$ and $2$. The two SUs first hop to the common available channel $3$. However, they do not achieve a successful link rendezvous since they are all tuning to the sending mode during that time slot. Therefore, they just continue the channel hopping process until they all hop to the common available channel $2$. Finally, they achieve a successful link rendezvous on channel $2$ since SU1 is tuning to the sending mode and SU2 is tuning to the receiving mode.
+Here is an example of the basic link rendezvous scheme in Fig. \ref{fig:rend-basic}, where $M = 4$, the transmission sequence of SU1 is $\{1,0,0,1\}$, the transmission sequence of SU2 is $\{1,1,0,0\}$, each SU hops according to its own channel hopping sequence, and the common available channels for them are channel $3$ and $2$. The two SUs first hop to the common available channel $3$. However, they do not achieve a successful link rendezvous since they are all tuning to the sending mode during that time slot. Therefore, they just continue the channel hopping process until they all hop to the common available channel $2$. Finally, they achieve a successful link rendezvous on channel $2$ since SU1 is tuning to the sending mode and SU2 is tuning to the receiving mode.
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=12cm,height=4cm]{sec_3_3_rend-basic.eps}
@@ -2149,7 +2148,7 @@ According to the design of the transmission sequence of each SU, the probability
 In the basic link rendezvous scheme, each SU should follow two sequences, the channel hopping sequence and the transmission sequence. In this section,  we propose an enhanced link rendezvous scheme that each SU can just follow a \textit{virtual channel hopping sequence} so each SU does not need to implement an existing channel hopping sequence and a transmission sequence simultaneously.
 
 Our basic idea is to combine the channel hopping sequence with the transmission sequence. Therefore, we expand the total $M$ practical channels to $2M$ \textit{virtual channels}.
-For real channel $i$, we map it to two virtual channels $i$ and $i+M$. An example of generating the virtual channels when $M$ equals $4$ is shown in Figure \ref{fig:virtual}. Therefore,
+For real channel $i$, we map it to two virtual channels $i$ and $i+M$. An example of generating the virtual channels when $M$ equals $4$ is shown in Fig. \ref{fig:virtual}. Therefore,
 after this mapping process, for each SU, there are total $2M$ virtual channels.
 Each SU hops according to a \textit{virtual channel hopping sequence} generated from the total $2M$ virtual channels. When an SU hops to the virtual channel $i$ that $i \leq M$, it should tune
 its transceiver to the sending mode and hop to real channel $i$. On the other
@@ -2215,7 +2214,7 @@ Therefore, according to the definition of $\mathcal{B}$, there are two elements
 in the sequence $\mathcal{B}[u]=\mathcal{B}[v]=4M-k, v > u$, and $|v-u|=4M-k$.
 \end{proof}
 
-Here is an example in Figure\ref{fig:rend0}. In the example, we assume that $M=2$, SU1 starts from the first channel in $\mathcal{B}$, and  SU2 starts from the fourth channel in $\mathcal{B}$, during the fifth time slot, both SUs   hop to channel $3$.
+Here is an example in Fig.\ref{fig:rend0}. In the example, we assume that $M=2$, SU1 starts from the first channel in $\mathcal{B}$, and  SU2 starts from the fourth channel in $\mathcal{B}$, during the fifth time slot, both SUs   hop to channel $3$.
 
 \begin{figure}[hbtp] 
     \begin{center} 
@@ -2230,7 +2229,7 @@ To get the final virtual channel hopping sequence $\mathcal{S}$, The second step
 is to replace some elements in $\mathcal{B}$
 according to the following manipulations: for each number $k$ that $\mathcal{B}[i]=\mathcal{B}[j]=k,
 1\leq i<j\leq 4M$, if $k \leq M$, reset $\mathcal{B}[j] = k+M$, otherwise
-reset $\mathcal{B}[j] = k-M$. An example is shown in Figure \ref{fig:replace}, where $M=2$ and the basic sequence $\mathcal{B}$
+reset $\mathcal{B}[j] = k-M$. An example is shown in Fig. \ref{fig:replace}, where $M=2$ and the basic sequence $\mathcal{B}$
 could be $\{1,1,4,2,3,2,4,3\}$, after the replacements, the final channel
 hopping sequence $\mathcal{S}$ should be $\{1,3,4,2,3,4,2,1\}$.
 \begin{figure}[hbtp] 
@@ -2361,7 +2360,7 @@ $|c_1-c_2|=M$. Therefore, within $4M$ time slots,  two SUs can hop to two
 different virtual channels $c_1$ and $c_2$ such that $|c_1-c_2|=M$.
 \end{proof}
 
-An example of Lemma \ref{lemma:guar_rend2} is shown in Figure \ref{sec_3_3_fig_rend1}, where $M = 2$, the virtual channel sequence is $\{1, 3, 4, 2, 3, 4, 2, 1\}$, SU1 starts from the first element, and SU2 starts from the third element. Within $4M = 8$ time slots, two SUs first hop to channel $2$ and $4$ that $4-2 = 2 = M$ during the fourth time slot, and then hop to channel $1$ and $3$ that $3-1 = 2 = M$ during the eighth time slot.
+An example of Lemma \ref{lemma:guar_rend2} is shown in Fig. \ref{sec_3_3_fig_rend1}, where $M = 2$, the virtual channel sequence is $\{1, 3, 4, 2, 3, 4, 2, 1\}$, SU1 starts from the first element, and SU2 starts from the third element. Within $4M = 8$ time slots, two SUs first hop to channel $2$ and $4$ that $4-2 = 2 = M$ during the fourth time slot, and then hop to channel $1$ and $3$ that $3-1 = 2 = M$ during the eighth time slot.
 
 \begin{figure}[hbtp] 
     \begin{center} 
@@ -2459,7 +2458,7 @@ silent and waits for the next data packet. We assume that the data packet
 arrival rate of each PU obeys Poisson distribution. The main parameters in
 our simulations are shown in Table \ref{sec_3_3_table_parameters}.
 \begin{table}[htb]
-\caption{Simulation Parameters for the Rendezvous Schemes without a Sender and Receiver} 
+\caption{Simulation Parameters} 
 \centering 
 \begin{tabular}{|l|c|} 
 \hline 
@@ -2497,7 +2496,7 @@ we apply the channel hopping sequence in \cite{jLi14ANCFF} which has similar
 features with the virtual channel hopping sequence we propose in the enhanced
 link rendezvous scheme.
 
-Figure \ref{fig:t_M} shows the average link rendezvous time of the random scheme
+Fig. \ref{fig:t_M} shows the average link rendezvous time of the random scheme
 and the proposed scheme when the total number of channels $M$ increases from
 $10$ to $50$. In the simulations, we set the number of PUs as $20$ and the
 average packet of each PU as $1$ packet per second. The results indicate
@@ -2515,7 +2514,7 @@ channels under the proposed scheme, which coincide the analysis in \textbf{Theor
     \end{center}   
 \end{figure} 
 
-Figure \ref{fig:t_pu} shows the average link rendezvous time of the random
+Fig. \ref{fig:t_pu} shows the average link rendezvous time of the random
 scheme
 and the proposed scheme when the total number of PUs increases from
 $10$ to $50$. In the simulations, we set the total number of channels as
@@ -2563,7 +2562,7 @@ to measure an upper bound of the link rendezvous time. We choose $4M$ since
 one round of the proposed link rendezvous scheme is $4M$ which is a lower
 bound for the link rendezvous time.
 
-Figure \ref{fig:r0_M} shows the successful link rendezvous  ratios of the random
+Fig. \ref{fig:r0_M} shows the successful link rendezvous  ratios of the random
 scheme
 and the proposed scheme within $M^2$ time slots, when the total number of
 channels $M$ increases from $10$ to $50$ and the number of PU is $20$. We
@@ -2581,7 +2580,7 @@ channels increases.}
     \end{center}   
 \end{figure} 
 
-Figure \ref{fig:r1_M}  shows the successful link
+Fig. \ref{fig:r1_M}  shows the successful link
 rendezvous ratios within $4M$ time slots. We can notice that  as $M$ increases,
 the results of both  schemes increase. This is because that when $N_p$ keeps
 the same while $M$ increases, there are more available channels for each
@@ -2612,7 +2611,7 @@ channels increases.}
 %channels increases.}
 %\end{figure}
 
-Figure \ref{fig:r0_pu} shows the successful link rendezvous  ratios
+Fig. \ref{fig:r0_pu} shows the successful link rendezvous  ratios
 of the random
 scheme
 and the proposed scheme within $M^2$ time slots, when the total number of
@@ -2630,7 +2629,7 @@ schemes achieve very high successful link rendezvous ratios.
     \end{center}   
 \end{figure} 
 
- Figure \ref{fig:r1_pu}
+ Fig. \ref{fig:r1_pu}
  shows the successful link rendezvous ratios of the two  link rendezvous
 schemes within $4M$ time slots. We can
 notice that  as $N_p$ increases, the results of both proposed schemes decrease.
@@ -2674,7 +2673,7 @@ SUs.
 \label{sec_3_4_description}
 In this research, we consider two SUs, coexisting with several PUs, who want to rendezvous with each other. Each SU can opportunistically access a total of $M$ channels. Each SU is equipped with a directional antenna that can transmit or receive signals on a transmission sector with a certain angle. We assume that the directional antenna of each SU can adjust the angle of a transmission sector. The two considered SUs are located within the transmission range of each other, and they can implement the same channel rendezvous scheme which can guarantee a successful channel rendezvous within a bounded time.
 
-The transmission area of an SU is evenly divided into $N$ sectors without overlaps. We assume that during each time slot, an SU can only transmit in one sector and on one channel. The index of each transmission sector does not change after the initialization.  When two SUs with directional antennas try to set up a communication link between them, they should tune their antennas to specific directions so that their current transmission sectors can cover each other, which is called a successful \textit{sector rendezvous}. If the SU receiver is located in the $p$th transmission sector of the SU sender and the SU sender is located in the $q$th transmission sector of the SU sender, we denote $(p,q)$ as a \textit{sector rendezvous pair}. We get the following theorem about the sector rendezvous and sector rendezvous pair.% in Figure 2 show one is they covered each other, one is not
+The transmission area of an SU is evenly divided into $N$ sectors without overlaps. We assume that during each time slot, an SU can only transmit in one sector and on one channel. The index of each transmission sector does not change after the initialization.  When two SUs with directional antennas try to set up a communication link between them, they should tune their antennas to specific directions so that their current transmission sectors can cover each other, which is called a successful \textit{sector rendezvous}. If the SU receiver is located in the $p$th transmission sector of the SU sender and the SU sender is located in the $q$th transmission sector of the SU sender, we denote $(p,q)$ as a \textit{sector rendezvous pair}. We get the following theorem about the sector rendezvous and sector rendezvous pair.% in Fig. 2 show one is they covered each other, one is not
 \begin{theorem}
 \label{th:exist}
 There always exists a sector rendezvous between two SUs and the rendezvous pair is unique, regardless of the number of transmission sectors of each SU.
@@ -2686,7 +2685,7 @@ We assume that the SU receiver is covered by the $p$th transmission sector of th
 
 After tuning its directional antenna to each transmission sector, an SU performs a predetermined channel rendezvous scheme which can guarantee a successful channel rendezvous within the maximum time to rendezvous (\textit{MTTR}). If the SU does not rendezvous with another SU within \textit{MTTR} time slots in the current transmission sector, it hops to the next transmission sector and repeats the channel rendezvous process. Therefore, in this research, we only consider how to let two SUs achieve a successful sector rendezvous, given  a specific channel rendezvous scheme that can guarantee a successful channel rendezvous.
 
-We define the process that an SU hops to a transmission sector as the \textit{sector hopping process}. If we denote the index of the sector an SU is on at time slot $t$ as $S_{t}$, the sequence $S_{0}, S_{1}, \dots, S_{t}, \dots$ is called a \textit{sector hopping sequence}. An example in Figure \ref{fig:necessary} shows why both SUs should perform the sector hopping process by following a sector hopping sequence. If the SU receiver just stays within a sector waiting for the RTS packet, it may never hear the SU sender since their transmission sectors may never cover each other like the scenario in Figure \ref{fig:necessary}. Since an SU does not know others' location before a successful blind rendezvous, both SUs should perform the sector hopping process to achieve a successful sector rendezvous.
+We define the process that an SU hops to a transmission sector as the \textit{sector hopping process}. If we denote the index of the sector an SU is on at time slot $t$ as $S_{t}$, the sequence $S_{0}, S_{1}, \dots, S_{t}, \dots$ is called a \textit{sector hopping sequence}. An example in Fig. \ref{fig:necessary} shows why both SUs should perform the sector hopping process by following a sector hopping sequence. If the SU receiver just stays within a sector waiting for the RTS packet, it may never hear the SU sender since their transmission sectors may never cover each other like the scenario in Fig. \ref{fig:necessary}. Since an SU does not know others' location before a successful blind rendezvous, both SUs should perform the sector hopping process to achieve a successful sector rendezvous.
 
  \begin{figure}[hbtp] 
     \begin{center} 
@@ -2698,7 +2697,7 @@ We define the process that an SU hops to a transmission sector as the \textit{se
  
 The \textit{sector rendezvous problem} is defined as follows. We denote the sector hopping sequences of the SU sender and receiver as $S_{t_{0}}^{s}, S_{t_{1}}^{s}, \dots , S_{t_{t}}^{s}$ and $S_{t_{0}}^{r}, S_{t_{1}}^{r}, \dots , S_{t_{t}}^{r}$, respectively, where $t_{0}$ is the time the SU sender starts the rendezvous process by sending a RTS packet. Two SUs may not start the sector rendezvous process simultaneously under the blind information scenario.  We assume that the rendezvous pair of the two SUs is $(p,q)$ and they achieve sector rendezvous at time $t_{t}$ if  $S_{t_{t}}^{s} = p,  S_{t_{t}}^{r} = q$. Our goal is to design a distributed sector hopping sequence for each SU that can guarantee a successful sector rendezvous and the time for the rendezvous $t_{t}-t_{0}$ is bounded.
 
-The first problem about the sector rendezvous problem is the \textit{indexing problem}. As two SUs do not know any information about each other before a successful channel rendezvous, the way they index their sectors may be quit different and unknown to each other, which may lead to $p\neq q$ for a rendezvous pair. Figure \ref{fig:index} shows an example of the indexing problem, in which the rendezvous pair is $(2, 4)$. We denote the number of the sectors of the SU sender and SU receiver as $N_{s}$ and $N_{r}$, respectively. We can notice that the indexes of all the sectors of an SU form a permutation of the numbers from $1$ to $N_{s}$ or $N_{r}$. Our goal is to design a distributed sector hopping sequence for each SU which can guarantee a successful sector rendezvous within a bounded time considering the indexing problem.
+The first problem about the sector rendezvous problem is the \textit{indexing problem}. As two SUs do not know any information about each other before a successful channel rendezvous, the way they index their sectors may be quit different and unknown to each other, which may lead to $p\neq q$ for a rendezvous pair. Fig. \ref{fig:index} shows an example of the indexing problem, in which the rendezvous pair is $(2, 4)$. We denote the number of the sectors of the SU sender and SU receiver as $N_{s}$ and $N_{r}$, respectively. We can notice that the indexes of all the sectors of an SU form a permutation of the numbers from $1$ to $N_{s}$ or $N_{r}$. Our goal is to design a distributed sector hopping sequence for each SU which can guarantee a successful sector rendezvous within a bounded time considering the indexing problem.
 
 \begin{figure}[hbtp] 
     \begin{center} 
@@ -2708,7 +2707,7 @@ The first problem about the sector rendezvous problem is the \textit{indexing pr
     \end{center} 
 \end{figure}
 
-The second problem is called the \textit{different sector number problem} which means that the number of sectors of each SU may be different and each SU does not know the number of sectors of the other SU before exchanging information. This is a very practical issue when two SUs' transmission parameters are different due to hardware constrains or surrounding environments. Therefore, the optimal transmission angle of each SU's  directional antenna may be different. Especially, when two SUs do not know any information about each other during a blind rendezvous process, how can they configure the same transmission parameters for their antennas? An example is shown in Figure \ref{fig:index}, where $N_{s} = 4$ and $N_{r} = 5$. Under this scenario, our goal is to design a distributed sector hopping sequence for each SU which can guarantee a successful sector rendezvous within a bounded time, regardless of different sector indexes and different total number of sectors.
+The second problem is called the \textit{different sector number problem} which means that the number of sectors of each SU may be different and each SU does not know the number of sectors of the other SU before exchanging information. This is a very practical issue when two SUs' transmission parameters are different due to hardware constrains or surrounding environments. Therefore, the optimal transmission angle of each SU's  directional antenna may be different. Especially, when two SUs do not know any information about each other during a blind rendezvous process, how can they configure the same transmission parameters for their antennas? An example is shown in Fig. \ref{fig:index}, where $N_{s} = 4$ and $N_{r} = 5$. Under this scenario, our goal is to design a distributed sector hopping sequence for each SU which can guarantee a successful sector rendezvous within a bounded time, regardless of different sector indexes and different total number of sectors.
 
 In the following sections, we propose distributed schemes that can guarantee a successful sector rendezvous considering both the indexing problem and different sector number problem.
 
@@ -2718,7 +2717,7 @@ We first propose a sector rendezvous scheme considering the same number of secto
 
 Under this scenario, we denote the number of sectors for the SU sender and SU receiver as $N_{s} = N_{r} = N$ and the rendezvous sector pair is $(p, q)$, where $1\leq p,q \leq N$. According to the indexing problem, $(p, q)$ could be any element from $\{1, 2, \dots, N\} \times \{1, 2, \dots, N\}$, where $\times$ is the Cartesian product of the two sets. Our goal is to design a sector rendezvous scheme which can guarantee a successful sector rendezvous under this scenario.
 
-In our proposed scheme, the SU receiver always hops circularly according to the sector hopping sequence which is a circularly left shift of the sequence $1, 2, \dots, N$. The shift is based on the starting index. The SU receiver can start sector hopping from any sector index. For instance, when $N = 5$, the sector hopping sequence is $3, 4, 5, 1, 2, 3, 4, 5, 1, 2, \dots$ if it starts from sector $3$ based on its indexing method.  The SU sender performs the same way as the SU receiver but increasing the starting index by $1$ after each round. For example, when $N = 5$, the sector hopping sequence for the SU sender will be $4, 5, 1, 2, 3, 5, 1, 2, 3, 4, \dots$, if it starts from sector $4$ based on the SU sender's indexing method. If the rendezvous pair is $(1, 4)$, two SUs can achieve a sector rendezvous after $6$ times of sector hopping. Figure \ref{fig:example1} shows an example of a successful sector rendezvous under the same sector number. The distributed algorithms for the SU receiver and SU sender to generate the sector hopping sequence are shown in \textbf{Algorithm \ref{al:seq_rev}} and \textbf{Algorithm \ref{al:seq_send}}, respectively.
+In our proposed scheme, the SU receiver always hops circularly according to the sector hopping sequence which is a circularly left shift of the sequence $1, 2, \dots, N$. The shift is based on the starting index. The SU receiver can start sector hopping from any sector index. For instance, when $N = 5$, the sector hopping sequence is $3, 4, 5, 1, 2, 3, 4, 5, 1, 2, \dots$ if it starts from sector $3$ based on its indexing method.  The SU sender performs the same way as the SU receiver but increasing the starting index by $1$ after each round. For example, when $N = 5$, the sector hopping sequence for the SU sender will be $4, 5, 1, 2, 3, 5, 1, 2, 3, 4, \dots$, if it starts from sector $4$ based on the SU sender's indexing method. If the rendezvous pair is $(1, 4)$, two SUs can achieve a sector rendezvous after $6$ times of sector hopping. Fig. \ref{fig:example1} shows an example of a successful sector rendezvous under the same sector number. The distributed algorithms for the SU receiver and SU sender to generate the sector hopping sequence are shown in \textbf{Algorithm \ref{al:seq_rev}} and \textbf{Algorithm \ref{al:seq_send}}, respectively.
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=12cm,height=3cm]{sec_3_4_seq1.eps} 
@@ -2795,7 +2794,7 @@ In the last section, we consider that each SU has the same number of transmissio
 
 The basic idea of our proposed rendezvous scheme is to let each SU adjust the number of its sectors individually to be the smallest prime number larger than current one. After this adjustment, both $N_{s}$ and $N_{r}$ are prime numbers.
 
-When $N_{s} \neq N_{r}$, both the SU sender and receiver execute \textbf{Algorithm \ref{al:seq_rev}} to generate their sector hopping sequence. For example, when $N_{s} = 5$ and $N_{r} = 3$, the sector hopping sequences for the SU sender and receiver could be $3,4,5,1,2,3,4,5,\dots $ and $1,2,3,1,2,3,1,2,3,\dots$, respectively. If the rendezvous pair is $(4,1)$, two SUs can achieve a successful sector rendezvous after $7$ sector hops. The example is shown in Figure \ref{fig:example2}. Based on \textbf{Lemma \ref{le:guarantee2}}, in \textbf{Theorem \ref{th:guarantee2}} shown below, we can prove that when $N_{s} \neq N_{r}$, two SUs can always achieve a successful sector rendezvous by following the sector hopping sequences generated from \textbf{Algorithm \ref{al:seq_rev}}.
+When $N_{s} \neq N_{r}$, both the SU sender and receiver execute \textbf{Algorithm \ref{al:seq_rev}} to generate their sector hopping sequence. For example, when $N_{s} = 5$ and $N_{r} = 3$, the sector hopping sequences for the SU sender and receiver could be $3,4,5,1,2,3,4,5,\dots $ and $1,2,3,1,2,3,1,2,3,\dots$, respectively. If the rendezvous pair is $(4,1)$, two SUs can achieve a successful sector rendezvous after $7$ sector hops. The example is shown in Fig. \ref{fig:example2}. Based on \textbf{Lemma \ref{le:guarantee2}}, in \textbf{Theorem \ref{th:guarantee2}} shown below, we can prove that when $N_{s} \neq N_{r}$, two SUs can always achieve a successful sector rendezvous by following the sector hopping sequences generated from \textbf{Algorithm \ref{al:seq_rev}}.
 \begin{figure}[hbtp] 
     \begin{center} 
         \includegraphics[width=12cm,height=3cm]{sec_3_4_seq2.eps}
@@ -2872,7 +2871,7 @@ In this section, we show simulation results regarding our proposed sector
 rendezvous schemes under a practical CRN. The simulation parameters are shown
 in Table \ref{sec_3_4_table_parameters}. 
 \begin{table}[htb]
-\caption{Simulation Parameters for the Rendezvous Schemes Considering Directional Antennas} 
+\caption{Simulation Parameters} 
 \centering 
 \begin{tabular}{|l|c|} 
 \hline 
@@ -2904,7 +2903,7 @@ with the random sector rendezvous scheme. Under the random sector rendezvous
 scheme, each SU randomly chooses a transmission sector during each sector
 hop based on its own sector indexes.
 
-Figure \ref{fig:sec_rend1} shows the average number of sector
+Fig. \ref{fig:sec_rend1} shows the average number of sector
 hops before a successful sector rendezvous of our proposed scheme and the
 random sector rendezvous scheme. In this simulation, the number of transmission
 sectors for the SU sender $N_{s}$ is a prime number in the range $[3,13]$,
@@ -2924,7 +2923,7 @@ rendezvous.}
     \end{center} 
 \end{figure}
 
-Figure \ref{fig:sec_rend2} shows the successful sector rendezvous
+Fig. \ref{fig:sec_rend2} shows the successful sector rendezvous
 ratios of our proposed schemes and the random scheme within a bounded time,
 when $N_{r}=7$ and $N_{s}$ is a prime number from the range $[3,13]$. According
 to \textbf{Theorem \ref{th:guarantee3}}, the bounded time we choose is $N_{s}^{2}+N_{s}N_{r}$,
@@ -2953,7 +2952,7 @@ scheme called the enhanced jump-stay scheme \cite{zLin13EJSRA} with our proposed
 sector rendezvous scheme. We also apply the enhanced jump-stay scheme with
 the random sector rendezvous scheme.
 
-Figure \ref{fig:chan_rend_sec_num} shows the average number
+Fig. \ref{fig:chan_rend_sec_num} shows the average number
 of time slots for setting up a communication link when $N_{r} = 7$ and $N_{s}$
 are different prime numbers from $[3,13]$. The number of time slots an SU
 stays in a transmission sector for channel rendezvous after a sector rendezvous
@@ -2971,7 +2970,7 @@ than the random scheme.
     \end{center} 
 \end{figure}
 
-Figure \ref{fig:chan_rend_pu_num} shows the impact of the number
+Fig. \ref{fig:chan_rend_pu_num} shows the impact of the number
 of PUs on the average time to set up a link. We can notice that our proposed
 schemes always outperform the random scheme as the number of PUs increases.
 Moreover, as the number of PUs increases, the results of both our proposed
@@ -2989,7 +2988,7 @@ of PUs increases.}
     \end{center} 
 \end{figure}
 
-In Figure \ref{fig:chan_rend_mttr}, we show the average time
+In Fig. \ref{fig:chan_rend_mttr}, we show the average time
 to set up a link as the number of time slots an SU stays in a transmission
 sector increases. Our proposed schemes always outperform the random scheme
 as the number of time slots in a transmission sector increases. Moreover,
@@ -3119,7 +3118,7 @@ active probability is $\beta$.  Each PU randomly chooses a channel to transmit,
 and its traffic follows the exponential distribution. 
 
 \section{The Expectation of the Number of Common Available Channels} 
- In Figure \ref{fig:sen_ranges}, the two circles represent the sensing range of $SU_{1}$ or $SU_{2}$.  
+ In Fig. 1, the two circles represent the sensing range of $SU_{1}$ or $SU_{2}$.  
 The combined area of their sensing ranges $A_{0}$ has three parts: $A_{1}$, $A_{2}$,  
 and $A_{3}$, and their sizes are $S_{0}$, $S_{1}$, $S_{2}$, and $S_{3}$, respectively. 
 \begin{figure}[hbtp] 
@@ -3268,7 +3267,7 @@ P_{su\_opt} = \sqrt{\DF{P_{pu\_min}P_{pu}SIR_{su\_min}d_{su}^{\alpha}\kappa_{3}}
 {\kappa_{2}\kappa_{4}}}. \label{eq:su_t_opt} 
 \end{equation} 
 
-Figure \ref{fig:opt_val} shows the minimum values of $E[|\mathcal{M}_{used}|]$ when the real 
+Fig. \ref{fig:opt_val} shows the minimum values of $E[|\mathcal{M}_{used}|]$ when the real 
 optimal $P_{su}$ is used (which is obtained by the numerical method)  
 and the results using our approximate optimal $P_{su}$ solution, when the distance between two SUs 
 changes from $5m$ to $15m$. We can see that  the two results coincide very well, 
@@ -3395,10 +3394,11 @@ In our simulation, the two SUs perform rendezvous using the common hopping
 algorithm   
 \cite{ySong10CHBPS}. Furthermore, we ignore the time spent in channel rendezvous 
 and spectrum handoffs because in our simulation, we focus on the impact of
-the number of common available channels.  All the needed parameters in the simulationsare listed in Table \ref{sec_3_5_table_parameters}. 
+the  
+number of common available channels.  All the needed parameters in the simulations
+are listed in Table \ref{sec_3_5_table_parameters}. 
 
-\begin{table}[htb]
-\caption{Simulation Parameters for the Proposed Power Control Protocol} 
+\begin{table}[htb]\caption{Simulation Parameters} 
 \centering 
 \begin{tabular}{|l|c|} 
 \hline 
@@ -3436,7 +3436,7 @@ The SU packet arrival rate & 10 per second\\
 \label{sec_3_5_table_parameters} 
 \end{table} 
 
-Figure \ref{fig:num_chan} illustrates the improvement of the number of common
+Fig. \ref{fig:num_chan} illustrates the improvement of the number of common
 available  
 channels using our proposed optimization. 
 The solid line represents the number of common available channels of the
@@ -3459,7 +3459,7 @@ power $20.65mw$ that comes from our mathematical model is reasonable.
     \end{center}   
 \end{figure}
 
-Figure \ref{fig:pck_ratio} shows the comparison of the packet successful delivery 
+Fig. \ref{fig:pck_ratio} shows the comparison of the packet successful delivery 
 ratio (the number of successfully received packets/the total number of transmitted
 packets) among the schemes using different channel selection algorithms in
 spectrum handoffs with and without our proposed optimization. In this figure, the
@@ -3488,7 +3488,7 @@ by the channel selection scheme during spectrum handoffs.
     \end{center}   
 \end{figure}
 
-Figure \ref{fig:sen_period} shows the impact of the sensing period on our optimization. 
+Fig. \ref{fig:sen_period} shows the impact of the sensing period on our optimization. 
 In order to get its available channels, an SU has to sense all the channels.
 This process  
 is usually time-consuming. Therefore, an SU usually only conducts full-spectrum
@@ -3522,7 +3522,7 @@ that our optimization can perform well under different sensing period.
     \end{center}  
 \end{figure} 
 
-Figure \ref{fig:su_traffic} shows the impact of the SU packet arrival rate.
+Fig. \ref{fig:su_traffic} shows the impact of the SU packet arrival rate.
 In the simulation,  
 we set the PU packet arrival rate as 10 per second and let the SU packet
 arrival rate change  
@@ -3551,7 +3551,7 @@ is the same.
     \end{center}   
 \end{figure} 
 
-Figure \ref{fig:pu_traffic} shows the impact of the PU packet arrival rate.
+Fig. \ref{fig:pu_traffic} shows the impact of the PU packet arrival rate.
 In the simulation,  
 we let the SU packet arrival rate be 10 per second and the PU packet arrival
 rate change  
@@ -3585,7 +3585,7 @@ rate is not very low.
 \chapter{CONCLUSION}
 \label{char:conclusion}
 \section{Conclusion of Completed Work}
-In this proposal, we proposed five schemes to realize efficient rendezvous and spectrum management considering practical scenarios. We first proposed a rendezvous and communication framework for wide-band CRNs \cite{jLi14ANCFF, jLi16SSACH}. Furthermore, we proposed two efficient rendezvous schemes without  predetermined sender and receiver \cite{jLi15PFMRB,jLi16RSWAPS}. Moreover, we proposed a rendezvous scheme specifically for SUs equipped with directional antennas \cite{jLi15DABDB}. Last, we proposed a power control protocol to maximize the number of common available channels \cite{jLi13APCPTM}. All of the proposed schemes can realize both efficient rendezvous and spectrum management with practical assumptions under different scenarios.
+In this proposal, we proposed five schemes to realize efficient rendezvous and spectrum management considering practical scenarios. We first proposed a rendezvous and communication framework for wide-band CRNs \cite{jLi14ANCFF, jLi16SSACH}. Furthermore, we proposed two efficient rendezvous schemes without  predetermined sender and receiver \cite{jLi15PFMRB,jLi16RSWAPS}. Moreover, we proposed a rendezvous scheme specifically for SUs equipped with directional antennas \cite{jLi15DABDB}. Last, we proposed a power control protocol to maximize the number of common available channels \cite{jLi13APCPTM}. All of the proposed schemes can realize efficient rendezvous and  or spectrum management with practical assumptions under different scenarios.
 
  In order to address the communication problem for a wide-band CRN,  a novel communication framework for wide-band
 spectrum CRNs is proposed. To the best of our knowledge, this is the first work that
@@ -3609,7 +3609,7 @@ achieve a fast \textit{link rendezvous} under various network conditions.
 
 In order to address the rendezvous problem considering directional antenna, we first address sector problem and index problem that are unique for the SUs equipped with direction antennas. To solve this problem, the \textit{sector rendezvous} problem for SUs equipped with directional antennas in CRNs for the first time. Next, we propose a sector rendezvous scheme considering that each SU has the same number of transmission sectors. Furthermore, we propose a fully distributed  sector rendezvous schemes for the SU sender and SU receiver considering general scenarios. We prove that our proposed scheme can guarantee a successful sector rendezvous within a bounded time. Simulation results show that our proposed schemes can effectively achieve a successful sector rendezvous.
 
-In order to optimize the number of common available channels between two SUs by using power control, we first analyze the difference between the sensing range of an SU sender and SU receiver. Based on the analysis of the sensing range, we get a expression to estimate the number of common available channels based on the transmission parameters of the SU send and SU receiver. Next,  we propose an approximate solution to find the maximum number of common available channels. Finally, we  proposed a power control protocol between an SU sender and SU receiver to maximize the number of common available channels based on the analysis. To the best of our knowledge, this is the first work that considers improving SU performance via maximizing the number of common available channels. Our proposed algorithms reveal the relationship among the sensing threshold, sensing range, transmission power, and common available channels. Simulation results
+In order to optimize the number of common available channels between two SUs by using power control, we first analyze the difference between the sensing range of an SU sender and SU receiver. Based on the analysis of the sensing range, we get a expression to estimate the number of common available channels based on the transmission parameters of the SU send and SU receiver. Next,  we propose an approximate solution to find the maximum number of common available channels. Finally, we  proposed a power control protocol between an SU sender and SU receiver to maximize the number of common available channels based on the analysis. To the best of our knowledge, this is the first work that considers improving SU performance via maximizing the number of common available channels. Our proposed algorithms reveal the relationship among the sensing threshold, sensing  range, transmission power, and common available channels. Simulation results
 show that our proposed protocol can significantly improve the SU throughput under
 different scenarios.
 
@@ -3621,12 +3621,6 @@ different scenarios.
 
 \section{Published and Submitted Work}
 \begin{itemize}
-\item 
-J. Li and J. Xie, "Efficient Rendezvous Schemes without Predetermined Sender and Receiver in Cognitive Radio Networks", in Preparation to Submit for Journal Publication.
-
-\item 
-J. Li and J. Xie, "Efficient Rendezvous Schemes Considering Directional Antennas in Cognitive Radio Networks", in Preparation to Submit for Journal Publication.
-
 \item 
 J. Li and J. Xie, "Spectrum Splitting and Channel Hopping Based Communication Framework for Wide-band Cognitive Radio Networks", submitted to IEEE Trans. Mobile Computing, 2016.
 
