@@ -39,7 +39,9 @@
 \usepackage{lastpage} 
 \usepackage{layout} 
 %\usepackage{subfigure}
-\usepackage{hyperref} %for page number
+%%%%for delete bookmark in pdf view
+\PassOptionsToPackage{bookmarks=false}{hyperref}
+%%%\makeindex %%%%%%for makeindex command not from template
 %===============End Package Area========================% 
 %===============Ji 's New command Area=========================% 
 \newcommand{\DF}[2]{{\displaystyle\frac{#1}{#2}}}% 
@@ -50,6 +52,7 @@
 \renewcommand{\algorithmicensure}{\textbf{Output:}}%Use Output in the format of Algorithm 
 %%%%%%%%%%%===============End New command Area=====================% 
 %%%%%%%%%%%%%%%%%Own Include part%%%%%%%%%%%%%%%
+
 
 
 \begin{document}
@@ -120,12 +123,12 @@ Finally, I would like to specially thank my beloved wife, Juan Chen. I could not
 
 \listoftables
 
-
 \newpage
+
 \renewcommand{\nomname}{LIST OF ABBREVIATIONS}
-% uncomment line below to title your nomenclature list as LIST OF SYMBOLS
-%\renewcommand{\nomname}{LIST OF SYMBOLS}
-% NOTE: IF YOU USE A LIST OF ABBREVIATIONS / LIST OF SYMBOLS and are using command-line LaTeX (not LyX)
+%%%%%%uncomment line below to title your nomenclature list as LIST OF SYMBOLS
+%%%%%%\renewcommand{\nomname}{LIST OF SYMBOLS}
+%%%%%% NOTE: IF YOU USE A LIST OF ABBREVIATIONS / LIST OF SYMBOLS and are using command-line LaTeX (not LyX)
 % YOU MUST COMPILE THE NOMENCLATURE INDEX
 % example:
 % bash$> pdflatex phdthesis.tex
@@ -134,7 +137,24 @@ Finally, I would like to specially thank my beloved wife, Juan Chen. I could not
 \addcontentsline{toc}{chapter}{\nomname}\settowidth{\nomlabelwidth}{ECE}
 \printnomenclature{}
 
-\nomenclature{ECE}{An acronym for Electrical and Computer Engineering.}
+\nomenclature{FCC}{Federal Communications Commission}
+\nomenclature{CR}{Cognitive Radio}
+\nomenclature{CRN}{Cognitive Radio Network}
+\nomenclature{SU}{Secondary User}
+\nomenclature{PU}{Primary User}
+\nomenclature{CCC}{Common Control Channel}
+\nomenclature{QoS}{Quality-of-Service}
+\nomenclature{MAC}{Medium Access Control}
+\nomenclature{RTS}{Request-to-Send}
+\nomenclature{CTS}{Clear-to-Send}
+\nomenclature{SS}{Spectrum Segment}
+\nomenclature{HS}{Home Spectrum Segment}
+\nomenclature{SSL}{Spectrum Splitting List}
+\nomenclature{QoS}{Quality-of-Service}
+\nomenclature{RS}{Rendezvous Sequence}
+\nomenclature{TTR}{Time to Rendezvous}
+\nomenclature{MTTR}{Maximum Time to Rendezvous}
+\nomenclature{ETTR}{Expected Time to Rendezvous}
 
 \newpage
 \setcounter{page}{1}
@@ -380,7 +400,7 @@ We induce  the following lemma to help us design our rendezvous sequence.
 Assume that $s_{i} = s_{j} = k, i < j$, $1\leq k\leq n$. If $j - i = k$, $s$ could be a RS.
 
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 We define the \textit{Sequential Distance} of  the element $k$ in the sequence $s$ as $ d_{k} = j-i=k$, and the  \textit{Circular Distance} of  the element $k$ in the sequence $s$ as $ D_{k} = 2n+i-j=2n-k$, which is the number of time slots taken to hop from $s_{j}$ to $s_{i}$ circularly in $s$. We define the distance pair of the channel index $k$ as $p_{k} = (d_{k}, D_{k})$. Since each $d_{k}$ is different and bounded in $[1,n]$ and each $D_{k}=2n-d_{k}$ is different and bounded in $[n,2n-1]$, each $p_{k}$ is different. Assume that initially the SU sender is on channel $s_{1}$ and the SU receiver is on channel $s_{c}$ Therefore, $\varepsilon=c-1$ or $\varepsilon = 2n-(c-1)$, where $0\leq \varepsilon \leq 2n-1$. We ignore the case when $\varepsilon=0$, because under this case, the two SUs are already on the same channel. Thus, we only need to prove our lemma when $1\leq \varepsilon \leq 2n-1$. Since each $p_{i}$ is different, we can definitely find a $p_{t}$ such that $\varepsilon = d_{t}\ \mbox{or}\ D_{t}$. Suppose $s_{i1} = s_{j1} = t, i1 < j1$. Thus, when the SU sender hops on channel $s_{i1}$, it will rendezvous with the SU receiver on channel $s_{j1}$, or when the SU sender hops on channel $s_{j1}$, it will rendezvous with the SU receiver on channel $s_{i1}$. Therefore, sequence $s$ can guarantee a successful rendezvous within $2n-1$ time slots no matter which channel the SU receiver dwells on at the beginning of the rendezvous process.
 \end{proof}
 
@@ -389,7 +409,7 @@ In order to efficiently generate $s$, we notice that $s$ has the following prope
 \label{lemma:no_exist}
 When $n = 4t+2$ or $4t+3$, where $t$ is an integer and $t \geq 1$, the rendezvous sequence does not exist.
 \end{lemma}
-        \begin{proof}
+        \begin{proof}\renewcommand{\qedsymbol}{}
         Designing a rendezvous sequence $s$ as described in \textbf{Lemma \ref{lemma:guar_rend}} is equivalent to dividing  $1,2,\dots, 2n$,  these $2n$ numbers into two lists $l_{l}$ and $l_{r}$, each of which has exactly $n$ different numbers, such that for $k=1,2,\dots,n$, $l_{r}[k] - l_{l}[k] = k$. Then, we have
         \begin{equation}
         \label{sec_3_1_eq_sum1}
@@ -410,7 +430,7 @@ When $n = 4t+2$ or $4t+3$, where $t$ is an integer and $t \geq 1$, the rendezvou
 \label{sec_3_1_lemma_exist}
 When $n=4t$ or $4t+1$, where $t$ is an integer and $t \geq 1$, the rendezvous sequence always exists.
 \end{lemma}
-        \begin{proof}
+        \begin{proof}\renewcommand{\qedsymbol}{}
         When $n=4$, sequence $"1,1,4,2,3,2,4,3"$ satisfies the requirements of our desired rendezvous sequence.
         When $n=5$, sequence $"1,1,5,2,4,2,3,5,4,3"$ satisfies the requirements of our desired rendezvous sequence.
         When $n > 5$, the proof can be found in the second page of \cite{tSkolem57OCDOI}.
@@ -504,7 +524,7 @@ From \textbf{Lemma \ref{lemma:guar_rend}} and \textbf{Algorithm \ref{al:sym}}, w
         \label{theo:ettr}
         Under the symmetrical model, \textbf{Algorithm \ref{al:sym}} can guarantee rendezvous in one round of the channel hopping.  The MTTR of our proposed rendezvous scheme is $2m-1$ and the  ETTR is $m-1$, where n is the number of channels in current SS, $m=n$ if $n\%4 = 0$ or $n\%4=1$, and $m=4(\lfloor n/4\rfloor+1)$ if $n\%4 = 2$ or $n\%4=3$.
         \end{theorem}
-        \begin{proof}
+        \begin{proof}\renewcommand{\qedsymbol}{}
         From \textbf{Lemma \ref{lemma:guar_rend}} and \textbf{Algorithm \ref{al:sym}}, the length of our channel hopping sequence is $2m$ and our  rendezvous algorithm can guarantee rendezvous. Thus, according to \textbf{Algorithm \ref{al:sym}}, the \textit{MTTR} is $2m-1$. When the SU sender is on channel $s_{1}$, assume that the SU receiver has equal probability, which is $1/2m$, to be on any channel from $s_{1}$ to $s_{2m}$. According to the proof of \textbf{Lemma \ref{lemma:guar_rend}}, the total number of time slots needed to rendezvous of all possible situations is $\sum_{i=0}^{2m-1}i=m(2m-1)$. Thus, the \textit{ETTR} is $\lfloor  m(2m-1)/2m\rfloor=m-1$.
         \end{proof}
         
@@ -561,7 +581,7 @@ According to the conclusions under the symmetrical model and \textbf{Algorithm \
         \label{theo:ettr_asym}
         Under the asymmetrical model, \textbf{Algorithm \ref{al:asym}} can guarantee rendezvous.  The \textit{MTTR} of the guaranteed rendezvous is $2n(n-G+1)$, and the upper bound of the \textit{ETTR} is approximately  $(2n-1)/p$, where $n$ is the number of channels in current SS, $G$ is the number of common available channels in current SS, and $p$ is the probability that a channel is available for both the SU sender and receiver.
         \end{theorem}
-        \begin{proof}
+        \begin{proof}\renewcommand{\qedsymbol}{}
          The length of the designed sequence $s$ is $2n$. According 
          to \textbf{Algorithm \ref{al:asym}} and the proof of \textbf{Lemma \ref{lemma:guar_rend}}, during each channel hopping round, two SUs can meet  on a different available channel. Since there are total $G$ common available channels in current SS, there are at most $n-G+1$ channel hopping rounds before two SUs hop a common available channel. Therefore, the maximum time slots to a successful rendezvous (\textit{MTTR}) is $2n(n-G+1)$.
           
@@ -609,7 +629,7 @@ We can induce the following four lemmas.
 When $\delta-\Delta \geq \lambda$ and the system time of the SU sender is
 $\Delta$ seconds ahead of the SU receiver's, $\varepsilon$ does not change.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 Under this scenario, $\delta-\Delta \geq \lambda$ indicates that the overlapping
 part of the time slots of an SU pair is long enough for a RTS and CTS packet
 exchange. Therefore, this scenario is equivalent to the original rendezvous
@@ -631,7 +651,7 @@ When $\delta-\Delta < \lambda$ and the system time of the SU sender is $\Delta$
 seconds ahead of the SU receiver's, $\varepsilon$ changes to $(\varepsilon-1+2n)$
 mod $2n$, where $n$ is the total number of channels in a SS.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 Under this scenario, $\delta-\Delta < \lambda$ indicates that the overlapping
 part of the time slots of an SU pair is not long enough for a RTS and CTS
 packet exchange. However, the overlapping part between the current time slot
@@ -656,7 +676,7 @@ time slots.}
 When $\delta-\Delta \geq \lambda$ and the system time of the SU receiver
 is $\Delta$ seconds ahead of the SU sender's, $\varepsilon$ does not change.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 Under this scenario, $\delta-\Delta \geq \lambda$ indicates that the overlapping
 part of the time slots of an SU pair is long enough for a RTS and CTS packet
 exchange. Therefore, this scenario is equivalent to the scenario in Lemma
@@ -679,7 +699,7 @@ When $\delta-\Delta < \lambda$ and the system time of the SU receiver is
 $\Delta$ seconds ahead of the SU sender's, $\varepsilon$ changes to $(\varepsilon+1)$
 mod $2n$, where $n$ is the total number of channels in a SS.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 Under this scenario, $\delta-\Delta < \lambda$ indicates that the overlapping
 part of the time slots of an SU pair is not long enough for a RTS and CTS
 packet exchange. However, the overlapping part between the current time slot
@@ -706,7 +726,7 @@ According to the above examples we can get the following theorem:
 Considering unaligned time slots, our proposed rendezvous schemes under both
 the symmetrical and asymmetrical models can still work without any modification.
 \end{theorem}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 According to the four scenarios above, under the asynchronous scenario, $\varepsilon$
 has three different values: $\varepsilon$, $(\varepsilon-1+2n)$ mod $2n$,
 and $(\varepsilon+1) $ mod $2n$, where $2n$ is the length of the channel
@@ -792,7 +812,7 @@ First, our proposed spectrum splitting algorithm is based on the following mathe
 \label{lemma:spl_1_4t2}
 For any integer $a = 4t+2, t > 2$, $a$ can be represented as $a=x+y$, where $x =  4u+1, u \geq 1$ and $y = 4v+1, v \geq 1$, $a,t,u,\mbox{and}\ v$ are integers.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 When $a=4t+2, t>2$, 
 if $t = 2q$, $q$ is an integer and $q \geq 1$, then $ a = 8q+2$, thus $a=(4q+1)+(4q+1)$.  
 If $t = 2q+1, q \geq 1$, then $a = 8q+6$, thus $a=[4(q+1)+1]+(4q+1)$.
@@ -802,7 +822,7 @@ If $t = 2q+1, q \geq 1$, then $a = 8q+6$, thus $a=[4(q+1)+1]+(4q+1)$.
 \label{lemma:spl_2_4t3}
 For any integer $a = 4t+3, t > 2$, $a$ can be represented as $a=x+y+z$, where $x =  4u+1, u \geq 1$, $y = 4v+1, v \geq 1$, and $z=4w+1$, $a,t,u,v, \mbox{and}\ w$ are integers.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 When $a=4t+3$, 
 if $t = 3q$, $q$ is an integer and $q \geq 1$, then $a = 12q+3$, thus $a=(4q+1)+(4q+1)+(4q+1)$.  If $t = 3q+1, q \geq 1$, then $a = 12q+7$, thus $a=[4(q+1)+1]+(4q+1)+(4q+1)$. If $t = 3q+2, q \geq 1$, then $a = 12q+11$, thus $a=[4(q+1)+1]+[4(q+1)+1]+(4q+1)$.\end{proof}
 
@@ -810,7 +830,7 @@ if $t = 3q$, $q$ is an integer and $q \geq 1$, then $a = 12q+3$, thus $a=(4q+1)+
 \label{lemma:spl_3_4t}
 For any integer $a = 4t, t >= 2$, $a$ can be represented as $a=x+y$, where $x =  4u, u \geq 1$ and $y = 4v, u \geq 1$, $a,t,u,\mbox{and}\ v$ are integers.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 When $a=4t, t>=2$, 
 if $t = 2q$, $q$ is an integer and $q \geq 1$, then $ a = 8q$, thus $a=4q+4q$. If $t = 2q+1, q \geq 1$, then $a = 8q+4$, thus $a=4q+4(q+1)$.
 \end{proof}
@@ -819,7 +839,7 @@ if $t = 2q$, $q$ is an integer and $q \geq 1$, then $ a = 8q$, thus $a=4q+4q$. I
 \label{lemma:spl_4_4t1}
 For any integer $a = 4t+1, t >= 2$, $a$ can be represented as $a=x+y$, where $x =  4u, u \geq 1$ and $y = 4v+1, v \geq 1$, $a,t,u,\mbox{and}\ v$ are integers.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 When $a=4t+1, t>=2$, 
 if $t = 2q$, $q$ is an integer and $q \geq 1$, then $ a = 8q+1$, thus $a=4q+(4q+1)$.   
 If $t = 2q+1, q \geq 1$, then $a = 8q+5$, thus $a=4(q+1)+(4q+1)$.
@@ -1443,7 +1463,7 @@ Based on \textbf{Algorithm \ref{al:basic}}, we can get  \textbf{Theorem \ref{the
 \label{the:basic}
 Algorithm \ref{al:basic} can guarantee a successful \textbf{channel} rendezvous, and the generated \textit{task allocation list} $\mathbb{A}^{t}_{i}$ can satisfy the constraints in Section \ref{sec_3_2_pro}
 \end{theorem}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
   Since each cognitive radio of the $i$th SU hops following a pre-defined channel hopping sequence which can guarantee a successful channel rendezvous, our proposed scheme can also guarantee a successful channel rendezvous between two SUs as long as two of their radios achieve a channel rendezvous. Furthermore, according to \textbf{Algorithm \ref{al:basic}}, if multiple radios hop to a same channel,  all of them will wait for RTS packets. Therefore, all the constraints in Section \ref{sec_3_2_pro} can be satisfied.
 \end{proof}
 
@@ -1470,7 +1490,7 @@ The last step is to solve the \textit{send-or-receive problem}. Note that this p
 \label{le:guarantee}
 A necessary condition of a successful \textbf{link} rendezvous between the $i$th and $j$th SU during time slot $t$ is that $\beta^{t}_{iR}\ \mbox{XOR}\ \beta^{t}_{jR} > 0$, if we regard $\beta^{t}_{iR}$ and $\beta^{t}_{iR}$ as the binary representations of two integers.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 If $\beta^{t}_{iR}\ \mbox{XOR}\ \beta^{t}_{jR} = 0$, i.e., every bit of the two binary strings is the same, there does not exist a send-and-receive pair between the two SUs which can  guarantee successfully sending and receiving RTS packets. However, if $\beta^{t}_{iR}\ \mbox{XOR}\ \beta^{t}_{jR} > 0$, there are at least two corresponding bits that are different and they can make one radio of an SU send and one radio of the other SU  receive.\end{proof}
 
 The challenge of designing $\beta^{t}_{iR}$ is that the two SUs do not know any information about each other before a successful rendezvous. Our goal is to find a good distributed scheme to generate $\beta$ so that $\beta^{t}_{iR}\ \mbox{XOR}\ \beta^{t}_{jR} = 0$ happens as less as possible. The following lemma can help us design a well performed $\beta_{R}$.
@@ -1478,7 +1498,7 @@ The challenge of designing $\beta^{t}_{iR}$ is that the two SUs do not know any 
 \label{le:equal1}
 Two different binary strings $\beta_{iR}$ and $\beta_{jR}$, always satisfy $\beta_{iR}\ \mbox{XOR}\ \beta_{jR} > 0$, as long as they are the binary representations of two different integers from the range $[0, 2^{R}-1]$.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 If $\beta_{iR}\ \mbox{XOR}\ \beta_{jR} = 0$, the decimal representations of the two binary strings should be the same, as each bit of the two strings is the same, which contradicts the fact that they represent two different numbers.
 \end{proof}
 
@@ -1524,7 +1544,7 @@ Based on \textbf{Lemma \ref{le:equal1}} and \textbf{Algorithm \ref{al:enhanced}}
 \begin{theorem}
 \label{th:enhanced}
 The enhanced rendezvous scheme in Algorithm \ref{al:enhanced} can guarantee a successful \textit{\textbf{channel} rendezvous}. The probability that two SUs independently choose the same binary string for the send-or-receive problem, which may fail a \textit{link rendezvous}, is  $\DF{1}{2^{R\eta}}$, where $R$ is the number of cognitive radios each SU is equipped with and $\eta$ is the number of times that two radios of the two SUs hop to a common available channel during a blind rendezvous process.\end{theorem}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
   We define a channel group between two SUs as a valid group if there is a common available channel in it. As long as two SUs have at least one common available channel, there is a valid group between them as they split all the channels into the same channel groups. Therefore, the two SUs will hop to a valid group as long as they follow the hopping sequence which can guarantee a successful \textit{channel rendezvous} on a common available channel. According to \textbf{Algorithm \ref{al:enhanced}}, two SUs have the same send-or-receive allocations only when they choose the same random integer from the range $[0, 2^{R}-1]$. The probability that two SUs independently choose the same integer from  $[0, 2^{R}-1]$ is $\DF{1}{2^{R}}\times\DF{1}{2^{R}} = \DF{1}{2^{2R}}$. There are totally $2^{R}$ different integers from $[0, 2^{R}-1]$. Therefore, the final probability of a link rendezvous failure is $(\DF{1}{2^{2R}}\times 2^{R})^{\eta} = \DF{1}{2^{R\eta}}$.
 \end{proof}
 
@@ -1596,7 +1616,7 @@ To get $\mu_{i}$ and $\mathbb{B}_{i}$  is equivalent to solving the maximum
 clique problem of a corresponding undirected graph $G = \{V, E\}$. 
 \end{lemma}
 
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 The maximum clique problem of an undirected graph $G = \{V, E\}$ is defined
 as finding a subgraph $G_{m} = \{V_{m}, E_{m}\}\in G$ which has the maximum
 number of nodes, $V_{m} \in V$, $E_{m} \in E$, and for any two different
@@ -1719,7 +1739,7 @@ of \textit{valid allocated radios} among all SUs  will reach its maximum,
 and no two SUs who are located within each other's interference range use
 the same available channel.
 \end{theorem}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
  If the result is not the maximum, there must be a free radio that still
 can be allocated with a channel without causing interference to other SUs.
 We assume that the $j$th radio of the $i$th SU can be allocated with channel
@@ -2072,7 +2092,7 @@ To get the optimal basic transmission sequence $S_b$ with length $L$, we first d
 For a basic transmission sequence with length $L$, if there are $n$ $1$ elements
 in it. The average valid number $\overline{N_v}$ is $2(nL-n^2)/L.$
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 Considering all the $L$  scenarios regarding different circular shifts regarding a basic transmission sequence, each $1$ element can generate total
 $L-n$ such $(1,0)$ pairs which are valid transmission pairs. Therefore there are total $2n(L-n)$ $(1,0)$ pairs two basic transmission sequences can get. Finally,
 the average valid number considering all $L$ different circular shifts 
@@ -2085,7 +2105,7 @@ $2(nL-n^2)/L$.
 When the number of $1$  elements in $S_b$ is $\DF{L}{2}$, The average valid number
 $\overline{N_v}$ reaches its maximum value $L/2$.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 For a given $L$, $\overline{N_v} = \DF{2}{L}(n_rL-n_r^{2}) = \DF{2}{L}(-(n_r-\DF{L}{2})^{2}+\DF{L^{2}}{4})$.
 Therefore, when $n=\DF{2}{L}$, $\overline{N_v}$ reaches the maximum value
 $\DF{2}{L}\times \DF{L^2}{4} = \DF{L}{2}$.
@@ -2138,7 +2158,7 @@ Based on \textbf{Algorithm \ref{al:rend1}}, we can get the following theorem:
 The expectation of time slots to achieve a link rendezvous for \textbf{Algorithm \ref{al:rend1}}
 is $E[T]=2T_e$, where $T_e$ is the expectation of the channel rendezvous time for a specific given channel hopping sequence.
 \end{theorem}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 According to the design of the transmission sequence of each SU, the probability that there is one sender and one receiver when two SUs hop to a common available channel is $0.5$, Therefore, if two SUs hop to a common available channel, the probability of a successful link rendezvous is $0.5$. If a link rendezvous fails because of that there is not a valid transmission pair, two SUs should continue the channel hopping process until a successful link rendezvous. Finally, the expectation of time slots to achieve a link rendezvous time is:
 \begin{equation}
 \sum_{i=1}^{\infty} T_e(1-0.5)^{(i-1)}(0.5) = \DF{T_e}{0.5} = 2T_e.
@@ -2205,7 +2225,7 @@ If two SUs follow the same basic virtual channel hopping sequence $\mathcal{B}$,
 starts from the $j$th element, and $k=|i-j|>0$, they could both hop to 
  virtual channel $k$ if $k\leq 2M$, or virtual channel $4M-K$ if $2M<k<4M$, within $4M$ time slots.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 According to the definition of $\mathcal{B}$, if $k\leq 2M$, there are two
 elements in the sequence $\mathcal{B}[u]=\mathcal{B}[v]=k, v > u$, and $|v-u|=k$.
 Therefore, the two SUs can all hop to the virtual channel $k$ within $4M$
@@ -2247,7 +2267,7 @@ In order to generate the virtual channel hopping sequence $\mathcal{S}$, we have
 \label{lemma:noexist}
 When $2M\ mod\ 4=2$, $\mathcal{B}$ does not exist.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 According to the definition of $\mathcal{B}$, designing the basic
 sequence is equivalent to dividing all the indexes $1,2,\dots, 4M$, these $4M$ numbers into
 two lists $\mathcal{L}_{1}$ and $\mathcal{L}_{2}$, each of which has exactly
@@ -2279,7 +2299,7 @@ $2M$ different numbers, such that for $k=1,2,\dots,2M$, $\mathcal{L}_{2}[k]
 \label{sec_3_3_lemma_exist}
 When $M>1$ and $2M\ mod\ 4=0$, $\mathcal{B}$ exists.
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
         When $M=2$, sequence $\{1,1,4,2,3,2,4,3\}$ satisfies the requirements
 of our desired basic link rendezvous sequence.
         When $M>2$, the proof can be found in the second page of \cite{tSkolem57OCDOI}.
@@ -2351,7 +2371,7 @@ $k=|i-j|>0$. Within $4M$ time slots, two SUs can hop to two different virtual
 channels
 $c_1$ and $c_2$ such that $|c_1-c_2|=M$. 
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 According to \textbf{Lemma \ref{lemma:guar_rend1}}, within $4M$ time slots,
 two SUs can hop to the same virtual channel $c$ on the different positions
 of $\mathcal{B}$. Since we perform the replacement manipulations of $\mathcal{B}$
@@ -2421,7 +2441,7 @@ The probability that two SUs fail to rendezvous within every $4M$ time slots
 is $p_f\approx 1-p_c$, where $p_c$ is the probability that a channel is a
 common available channel of the two SUs. 
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 The probability that two SUs choose different starting indexes in $\mathcal{S}$
 is $\DF{4M(4M-1)}{(4M)^2}=\DF{4M-1}{4M}$. Two SUs can achieve a  successful
 link rendezvous only when they choose different starting indexes and the virtual 
@@ -2439,7 +2459,7 @@ is $E[T]=\DF{4M}{p_c}$, where $M$ is the total number of channels and $p_c$
 is the probability that a channel is a common available channel of the two
 SUs.
 \end{theorem}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 The expectation of link rendezvous time slots is:
 \begin{equation}
 \sum_{i=1}^{\infty} 4Mp_{f}^{(i-1)}(1-p_f) = \DF{4M}{1-p_f} = \DF{4M}{p_c}.
@@ -2680,7 +2700,7 @@ The transmission area of an SU is evenly divided into $N$ sectors without overla
 There always exists a sector rendezvous between two SUs and the rendezvous pair is unique, regardless of the number of transmission sectors of each SU.
 
 \end{theorem}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 We assume that the SU receiver is covered by the $p$th transmission sector of the SU sender and the SU sender is covered by the $q$th transmission sector of the SU receiver. Since each sector of an SU does not overlap with another sector, both $p$ and $q$ are unique (if an SU is located on the border of a transmission sector, only one sector is  counted). Therefore, when the SU sender is on the transmission sector $p$ and the SU receiver is on transmission sector $q$ simultaneously, they achieve a successful sector rendezvous. Since $p$ and $q$ are unique, the sector rendezvous pair $(p, q)$ is also unique.
 \end{proof}
 
@@ -2785,7 +2805,7 @@ Based on \textbf{Algorithm \ref{al:seq_rev}} and \textbf{Algorithm \ref{al:seq_s
 By following the sector hopping sequences generated by  \textbf{Algorithm \ref{al:seq_rev}} and \textbf{Algorithm \ref{al:seq_send}}, two SUs can achieve a successful sector rendezvous within $N^{2}$ sector hops. The average sector hops for a successful sector rendezvous is $N^{2}/2$.
 
 \end{theorem}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 Assume that the sector rendezvous pair is $(p, q)\in \{1, 2, \dots, N\} \times \{1, 2, \dots, N\}$, where $\times$ is the Cartesian product of the two sets, and during the first round, when the SU sender is on its $p$th sector, the SU receiver is on its $\beta_{1} = \beta_{0}\%N+1$ sector, where $1\leq \beta_{0} \leq N$. According to \textbf{Algorithm \ref{al:seq_send}}, during the next $N-1$ rounds, when the SU sender is on its $p$th sector, the SU receiver should be on sectors $\beta_{2} = (\beta_{0}-1+N)\%N+1, \beta_{3} = (\beta_{0}-2+N)\%N+1,\dots, \beta_{N} = (\beta_{0}-(N-1)+N)\%N+1$, respectively. During the whole $N$ sector hopping rounds, $\beta_{1}, \beta_{2}, \dots, \beta_{N}$ are $N$ different numbers in $[1,N]$. Therefore, there always exists a number $\beta_{t} = q$, where $1\leq t \leq N$. Since each sector hopping round contains $N$ sector hops, the maximum number of hops to guarantee a sector rendezvous is $N^{2}$. Since $(p,q)$ and the starting indexes are evenly distributed, the average sector hops for a successful sector rendezvous is $N^{2}/2$.
 \end{proof}
 
@@ -2810,7 +2830,7 @@ When $N_{s} \neq N_{r}$, both the SU sender and receiver execute \textbf{Algorit
 If $P_{1} > P_{2}$ are two different prime numbers,  $x$ is a random number from $[0, P_{1}-1]$, the following $P_{1}$ numbers $x\%P_{1}+1$, $(x+P_{2})\%P_{1}+1$, $\dots$, $(x+(P_{1}-1)P_{2})\%P_{1}+1$ are all different.
 
 \end{lemma}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 If there exist two different numbers $k_{1}\in [0, P_{1}-1], k_{2}\in [0, P_{1}-1]$ that $(x+k_{1}P_{2})\%P_{1}+1= (x+k_{2}P_{2})\%P_{1}+1$. Then, $[(k1-k2)P_{2}]\%P_{1} = 0$. As $P_{2}$ is a prime number, $P_{2}$ and $P_{1}$ are relatively prime. Therefore, $(k1-k2)\%P_{1} = 0$. Since $0\leq k_{1}< P_{1}, 0\leq k_{2}< P_{1}$, only when $k1 = k2$, $(k1-k2)\%P_{1} = 0$, which contradicts the assumption that $k_{1}\neq k_{2}$.
 \end{proof}
 
@@ -2820,7 +2840,7 @@ If there exist two different numbers $k_{1}\in [0, P_{1}-1], k_{2}\in [0, P_{1}-
 If $N_{s}, N_{r}$ are different prime numbers and both SUs follow the sector hopping sequence generated from \textbf{Algorithm \ref{al:seq_rev}}, they can achieve a successful sector rendezvous within $N_{s}N_{r}$ sector hops.
 
 \end{theorem}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 Without loss of generality, we assume that $N_{s} < N_{r}$, the sector rendezvous pair is $(p, q)$, and during the first round, when the SU sender is on the $p$th sector, the SU receiver is on the $\beta_{1} = \beta_{0}\%N_{r}+1$ sector, where $1\leq \beta_{0}\leq N_{r}$. According to \textbf{Algorithm \ref{al:seq_rev}}, during the next $N_{r}-1$ rounds, when the SU sender is on its $p$th sector, the SU receiver should be sequentially on $\beta_{2}=(\beta_{0}+N_{s})\%N_{r}+1, \beta_{3}=(\beta_{0}+2N_{s})\%N_{r}+1,\dots, \beta_{N_{r}}=[\beta_{0}+(N_{r}-1)N_{s}]\%N_{r}+1$. According to \textbf{Lemma \ref{le:guarantee2}}, the $N_{r}$ numbers $\beta_{1}, \beta_{2},\dots, \beta_{N_{r}}$ are all different. Therefore, there always exists a number $\beta_{t} = q$, where $1\leq t \leq N_{r}$. Since each sector hopping round contains $N_{s}$ sector hops, the maximum number of hops to guarantee a sector rendezvous is $N_{s}N_{r}$.
 \end{proof}
 
@@ -2862,7 +2882,7 @@ Based on \textbf{Algorithm \ref{al:rend_rev}} and \textbf{Algorithm \ref{al:rend
 Our proposed distributed schemes in \textbf{Algorithm \ref{al:rend_rev}} and \textbf{Algorithm \ref{al:rend_send}} can guarantee a successful sector rendezvous  within at most $N_{s}^{2}+N_{s}N_{r}$ sector hops, considering both the indexing problem and different sector number problem.
 
 \end{theorem}
-\begin{proof}
+\begin{proof}\renewcommand{\qedsymbol}{}
 After adjustments, $N_{s}$ and $N_{r}$ should be prime numbers. If $N_{s} = N_{r}$ after the adjustments, the two SUs can achieve a successful sector rendezvous within $N_{s}^{2}$ sector hops according to \textbf{Theorem \ref{th:guarantee1}}. If $N_{s} \neq N_{r}$ after the adjustments, the two SUs may not achieve a successful sector rendezvous within $N_{s}^{2}$ sector hops. Therefore, after $N_{s}^{2}$ sector hops, the SU sender can realize that $N_{s} \neq N_{r}$ and then generates a sector hopping sequence based on \textbf{Algorithm \ref{al:seq_rev}}. According to \textbf{Theorem \ref{th:guarantee2}}, during the next $N_{s}N_{r}$ sector hops, two SUs can achieve a successful sector rendezvous. Therefore, two SUs can achieve a successful sector rendezvous within at most $N_{s}^{2}+N_{s}N_{r}$ sector hops, considering all scenarios.
 \end{proof}
 
@@ -3207,7 +3227,7 @@ Let $E[|\mathcal{M}_{used}|]$ be a function of $\frac{S_{0}}{S}$, named $f(x)$.
 \begin{lemma} 
 $f(x_{1}) \geq f(x_{2})$  when $x_{1} \geq x_{2}$ and $N > 1$.\label{lemma1} 
 \end{lemma} 
-\begin{proof} 
+\begin{proof} \renewcommand{\qedsymbol}{}
 We can rewrite $f(x)$ as: 
 \begin{align*} 
 f(x) &=\sum_{k=0}^{N}\binom{N}{k}x^{k}(1-x)^{N-k}g(k),\\ 
@@ -3243,7 +3263,7 @@ area, then we can get the following lemma:
 \begin{lemma} 
 When $r_{0} = r_{1}$, $s$ will be minimum.\label{lemma2} 
 \end{lemma} 
-\begin{proof} 
+\begin{proof} \renewcommand{\qedsymbol}{}
 Assume $r_{1}$ increases from $0$ to the maximum value $r_{max}$.  
 As the radius changes with a constant but opposite rate, $r_{0}$ decreases 
 from $r_{max}$ to $0$. Let $s=G(r_{0})$. We can get that $G(x)$ is symmetric 

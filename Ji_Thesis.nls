@@ -1,0 +1,34 @@
+\begin{thenomenclature} 
+
+ \nomgroup{A}
+
+  \item [{CCC}]\begingroup Common Control Channel\nomeqref {0}
+		\nompageref{1}
+  \item [{CR}]\begingroup Cognitive Radio\nomeqref {0}\nompageref{1}
+  \item [{CRN}]\begingroup Cognitive Radio Network\nomeqref {0}
+		\nompageref{1}
+  \item [{CTS}]\begingroup Clear-to-Send\nomeqref {0}\nompageref{1}
+  \item [{ETTR}]\begingroup Expected Time to Rendezvous\nomeqref {0}
+		\nompageref{1}
+  \item [{FCC}]\begingroup Federal Communications Commission\nomeqref {0}
+		\nompageref{1}
+  \item [{HS}]\begingroup Home Spectrum Segment\nomeqref {0}
+		\nompageref{1}
+  \item [{MAC}]\begingroup Medium Access Control\nomeqref {0}
+		\nompageref{1}
+  \item [{MTTR}]\begingroup Maximum Time to Rendezvous\nomeqref {0}
+		\nompageref{1}
+  \item [{PU}]\begingroup Primary User\nomeqref {0}\nompageref{1}
+  \item [{QoS}]\begingroup Quality-of-Service\nomeqref {0}
+		\nompageref{1}
+  \item [{RS}]\begingroup Rendezvous Sequence\nomeqref {0}
+		\nompageref{1}
+  \item [{RTS}]\begingroup Request-to-Send\nomeqref {0}\nompageref{1}
+  \item [{SS}]\begingroup Spectrum Segment\nomeqref {0}\nompageref{1}
+  \item [{SSL}]\begingroup Spectrum Splitting List\nomeqref {0}
+		\nompageref{1}
+  \item [{SU}]\begingroup Secondary User\nomeqref {0}\nompageref{1}
+  \item [{TTR}]\begingroup Time to Rendezvous\nomeqref {0}
+		\nompageref{1}
+
+\end{thenomenclature}
