@@ -54,6 +54,7 @@
 %%%%%%%%%%%%%%%%%Own Include part%%%%%%%%%%%%%%%
 
 
+
 \begin{document}
 
 \pagenumbering{roman}
@@ -89,11 +90,13 @@
 
 \maketitlepage
 \makecopyright
+
 \begin{abstract}
 Cognitive radio emerges as a technology to realize the dynamic spectrum access by dynamically configuring its transmission parameters. In a cognitive radio network (CRN), there are two types of users: primary users (PUs) and secondary users (SUs). PUs are the licensed users or the traditional wireless users who can access a specific licensed spectrum band. SUs are the unlicensed users equipped with cognitive radios that can opportunistically use currently unoccupied channels to transmit, but have to vacate channels for the returning PUs, and then switch to other available channels for continuous transmissions.  When two SUs want to establish a link, they have to meet on the same channel that must be available for both of them simultaneously. This process is called \textit{rendezvous}.
 
-Past research works on rendezvous only focused on designing the channel hopping sequence for the rendezvous process while ignoring some practical problems like rendezvous in wide-band CRNs, rendezvous without a predetermined sender and receiver, rendezvous considering directional antennas, and how to maximize the number of common available channels. In this dissertation, we propose five schemes to realize efficient rendezvous and spectrum management considering these practical problems under different scenarios. We first propose a rendezvous and communication framework for wide-band CRNs. Furthermore, we propose two efficient rendezvous schemes without  predetermined sender and receiver. Moreover, we propose a rendezvous scheme specifically for SUs equipped with directional antennas. Last, we propose a power control protocol to maximize the number of common available channels. All of the proposed schemes can realize both efficient rendezvous and spectrum management with practical assumptions under different scenarios.\end{abstract}
-\let\cleardoublepage\clearpage
+Past research works on rendezvous only focused on designing the channel hopping sequence for the rendezvous process while ignoring some practical problems like rendezvous in wide-band CRNs, rendezvous without a predetermined sender and receiver, rendezvous considering directional antennas, and how to maximize the number of common available channels. In this dissertation, we propose five schemes to realize efficient rendezvous and spectrum management considering these practical problems under different scenarios. We first propose a rendezvous and communication framework for wide-band CRNs. Furthermore, we propose two efficient rendezvous schemes without  predetermined sender and receiver. Moreover, we propose a rendezvous scheme specifically for SUs equipped with directional antennas. Last, we propose a power control protocol to maximize the number of common available channels. All of the proposed schemes can realize both efficient rendezvous and spectrum management with practical assumptions under different scenarios.
+\end{abstract}
+
 \begin{acknowledgements}
 Firstly, I would like to express my sincere gratitude to my Ph.D. advisor,
 Dr. Jiang (Linda) Xie, for giving me this opportunity to work in her research
@@ -110,7 +113,9 @@ Rajib Md., Zhiguang Cui, Yuanye Liu, Xiongwei Xie, Weidong Zheng, Qinyue He, and
 
 Thanks to my parents and grandparents, who have supported and encouraged me for all the past years with their best wishes.
 
-Finally, I would like to specially thank my beloved wife, Juan Chen. I could not finish my Ph.D. and this dissertation without her patience, support, and encouragement.\end{acknowledgements}
+Finally, I would like to specially thank my beloved wife, Juan Chen. I could not finish my Ph.D. and this dissertation without her patience, support, and encouragement.
+\end{acknowledgements}
+
 \tableofcontents{}
 
 \listoffigures
@@ -118,7 +123,7 @@ Finally, I would like to specially thank my beloved wife, Juan Chen. I could not
 
 \listoftables
 
-%\newpage
+\newpage
 
 \renewcommand{\nomname}{LIST OF ABBREVIATIONS}
 %%%%%%uncomment line below to title your nomenclature list as LIST OF SYMBOLS
@@ -132,7 +137,7 @@ Finally, I would like to specially thank my beloved wife, Juan Chen. I could not
 \addcontentsline{toc}{chapter}{\nomname}\settowidth{\nomlabelwidth}{ECE}
 \printnomenclature{}
 
-\nomenclature{FCC}{\hspace{5cm}Federal Communications Commission}
+\nomenclature{FCC}{Federal Communications Commission}
 \nomenclature{CR}{Cognitive Radio}
 \nomenclature{CRN}{Cognitive Radio Network}
 \nomenclature{SU}{Secondary User}
