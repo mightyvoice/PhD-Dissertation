@@ -129,10 +129,12 @@ Finally, I would like to specially thank my beloved wife, Juan Chen. I could not
 % bash$> pdflatex phdthesis.tex
 % bash$> makeindex phdthesis.nlo -s nomencl.ist -o phdthesis.nls
 % bash$> pdflatex phdthesis.tex
-\addcontentsline{toc}{chapter}{\nomname}\settowidth{\nomlabelwidth}{ECE}
+\addcontentsline{toc}{chapter}{\nomname}
+%%%%%change the gap between FCC and content
+\settowidth{\nomlabelwidth}{ECEECEECEECE}
 \printnomenclature{}
 
-\nomenclature{FCC}{\hspace{5cm}Federal Communications Commission}
+\nomenclature{FCC}{Federal Communications Commission}
 \nomenclature{CR}{Cognitive Radio}
 \nomenclature{CRN}{Cognitive Radio Network}
 \nomenclature{SU}{Secondary User}
